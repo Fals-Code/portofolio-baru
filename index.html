@@ -1,229 +1,489 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Portfolio – Ahmad Mathlaul Falah</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Ahmad Mathlaul Falah | Portfolio </title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/css/meyawo.css">
+</head>
 
-    <meta
-      name="description"
-      content="Portfolio resmi Ahmad Mathlaul Falah, Software Developer & Informatics Engineering Student at Universitas Airlangga."
-    />
-    <meta
-      name="keywords"
-      content="Ahmad Mathlaul Falah, portfolio, software developer, web developer, mahasiswa informatika"
-    />
-    <meta name="author" content="Ahmad Mathlaul Falah" />
-    <meta name="theme-color" content="#695aa6" />
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="assets/vendors/themify-icons/css/themify-icons.css"
-    />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/meyawo.css" />
-    <link rel="stylesheet" href="assets/css/mobile.css" />
-  </head>
-
-  <body
-    id="home"
-    data-spy="scroll"
-    data-target=".custom-navbar"
-    data-offset="80"
-  >
-    <!-- Overlay Mobile -->
-    <div class="nav-overlay" id="navOverlay"></div>
-
-    <!-- Navbar -->
-    <nav class="custom-navbar">
-      <div class="container">
-        <a class="logo" href="#home">Falah</a>
-
-        <ul class="nav" id="mainNav">
-          <li class="item"><a class="link" href="#home">Home</a></li>
-          <li class="item"><a class="link" href="#about">About</a></li>
-          <li class="item"><a class="link" href="#service">Skills</a></li>
-          <li class="item"><a class="link" href="#portfolio">Projects</a></li>
-          <li class="item"><a class="link" href="#contact">Contact</a></li>
-        </ul>
-
-        <!-- Hamburger -->
-        <button
-          id="nav-toggle"
-          class="hamburger hamburger--elastic"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-        >
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-          </span>
-        </button>
-      </div>
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="#">Falah</a>
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="#home">Home</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#about">About</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#testmonial">Testmonial</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#blog">Blog</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#contact">Contact</a>
+                </li>
+                <li class="item ml-md-3">
+                    <a href="components.html" class="btn btn-primary">Components</a>
+                </li>
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
     </nav>
 
-    <!-- Header -->
-    <header class="header">
-      <div class="overlay"></div>
-      <div class="header-content container">
+<header id="home" class="header">
+    <div class="overlay" aria-hidden="true"></div>
+
+    <div class="container header-content text-center">
         <h1 class="header-title">
-          <span class="up">Hello,</span>
-          <span class="down">I am Ahmad Mathlaul Falah</span>
+            <span class="text-uppercase">Hi!</span><br />
+            <span class="fw-bold">I am Ahmad Mathlaul Falah</span>
         </h1>
-        <p class="header-subtitle">
-          Software Developer & Informatics Engineering Student
+
+        <p class="header-subtitle text-uppercase">
+            Informatics Engineering Student
         </p>
-        <a href="#portfolio" class="btn btn-primary">View Projects</a>
-      </div>
-    </header>
 
-    <!-- About -->
-    <section class="section pt-0" id="about">
-      <div class="container text-center">
+        <a href="#portfolio" class="btn btn-primary mt-3">
+            View My Portfolio
+        </a>
+    </div>
+</header>
+
+
+
+<!-- About Section -->
+<section class="section pt-0" id="about">
+    <div class="container text-center">
         <div class="about">
-          <div class="about-img-holder">
-            <img
-              src="assets/imgs/profile.jpg"
-              class="about-img"
-              alt="Ahmad Mathlaul Falah"
-              loading="lazy"
-            />
-          </div>
-          <div class="about-caption">
-            <p class="section-subtitle">Who Am I</p>
-            <h2 class="section-title mb-3">About Me</h2>
-            <p>
-              Informatics Engineering student at Universitas Airlangga with
-              interests in software development, information systems, and cloud
-              engineering.
-            </p>
-            <a href="#" class="btn btn-outline-primary btn-rounded mt-4">
-              Download CV
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Skills -->
-    <section class="section" id="service">
-      <div class="container text-center">
-        <p class="section-subtitle">What I Can Do</p>
-        <h6 class="section-title mb-6">Skills</h6>
+            <!-- Foto Profil -->
+            <div class="about-img-holder">
+                <img
+                    src="assets/imgs/man.png"
+                    class="about-img"
+                    alt="Foto profil Ahmad Mathlaul Falah, Mahasiswa Teknik Informatika"
+                />
+            </div>
+
+            <!-- Deskripsi -->
+            <div class="about-caption">
+                <p class="section-subtitle">Siapa Saya?</p>
+                <h2 class="section-title mb-3">Tentang Saya</h2>
+
+                <p>
+                    Saya adalah <strong>Ahmad Mathlaul Falah</strong>, mahasiswa
+                    <strong>Teknik Informatika</strong> yang memiliki minat besar
+                    pada pengembangan web dan teknologi informasi. Saya terbiasa
+                    berpikir secara sistematis, analitis, serta berorientasi pada
+                    pemecahan masalah melalui solusi berbasis teknologi.
+                    <br /><br />
+                    Dalam proses belajar, saya aktif mengembangkan kemampuan di
+                    bidang <em>frontend development</em>, pengelolaan basis data,
+                    serta pemrograman berbasis web. Saya percaya bahwa teknologi
+                    bukan hanya soal kode, tetapi juga tentang bagaimana solusi
+                    digital dapat memberikan dampak nyata dan berkelanjutan.
+                </p>
+
+                <a
+                    href="assets/files/CV-Ahmad-Mathlaul-Falah.pdf"
+                    class="btn-rounded btn btn-outline-primary mt-4"
+                    download
+                >
+                    Unduh CV
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+<!-- Service Section -->
+<section class="section" id="service">
+    <div class="container text-center">
+        <p class="section-subtitle">Apa yang Saya Lakukan?</p>
+        <h6 class="section-title mb-6">Layanan</h6>
 
         <div class="row">
-          <!-- Card repeat tetap -->
-          <!-- Tidak perlu diubah karena struktur sudah benar -->
-        </div>
-      </div>
-    </section>
 
-    <!-- Portfolio -->
-    <section class="section" id="portfolio">
-      <div class="container text-center">
-        <p class="section-subtitle">Recent Works</p>
-        <h6 class="section-title mb-6">Projects</h6>
+            <!-- Web Development -->
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <div class="body">
+                        <img
+                            src="assets/imgs/pencil-case.svg"
+                            class="icon"
+                            alt="Layanan pengembangan website"
+                        />
+                        <h6 class="title">Pengembangan Website</h6>
+                        <p class="subtitle">
+                            Membangun website statis maupun dinamis dengan
+                            struktur kode yang rapi, responsif, dan mudah
+                            dikembangkan sesuai kebutuhan pengguna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Responsive Design -->
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <div class="body">
+                        <img
+                            src="assets/imgs/responsive.svg"
+                            class="icon"
+                            alt="Desain web responsif"
+                        />
+                        <h6 class="title">Desain Responsif</h6>
+                        <p class="subtitle">
+                            Mendesain tampilan web yang optimal di berbagai
+                            perangkat, mulai dari smartphone hingga desktop,
+                            dengan fokus pada kenyamanan pengguna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend & Database -->
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <div class="body">
+                        <img
+                            src="assets/imgs/toolbox.svg"
+                            class="icon"
+                            alt="Pengelolaan backend dan database"
+                        />
+                        <h6 class="title">Backend & Basis Data</h6>
+                        <p class="subtitle">
+                            Mengelola logika aplikasi dan basis data menggunakan
+                            pendekatan terstruktur untuk memastikan sistem
+                            berjalan stabil, aman, dan efisien.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data & Analysis -->
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <div class="body">
+                        <img
+                            src="assets/imgs/analytics.svg"
+                            class="icon"
+                            alt="Analisis data dan sistem"
+                        />
+                        <h6 class="title">Analisis Sistem</h6>
+                        <p class="subtitle">
+                            Melakukan analisis kebutuhan sistem dan data untuk
+                            menghasilkan solusi digital yang tepat guna dan
+                            berorientasi pada tujuan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Service Section -->
+
+<section class="section" id="portfolio">
+    <div class="container text-center">
+        <p class="section-subtitle">Apa yang Pernah Saya Kerjakan?</p>
+        <h6 class="section-title mb-6">Portofolio</h6>
 
         <div class="row">
-          <!-- Portfolio item aman -->
+
+            <!-- Project RSHP -->
+            <div class="col-md-6 col-lg-4">
+                <a
+                    href="#project-rshp"
+                    class="portfolio-card"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalRSHP"
+                >
+                    <img
+                        src="assets/imgs/folio-1.jpg"
+                        class="portfolio-card-img"
+                        alt="Proyek RSHP Sistem Informasi Rumah Sakit"
+                    />
+                    <span class="portfolio-card-overlay">
+                        <span class="portfolio-card-caption">
+                            <h4>RSHP</h4>
+                            <p class="font-weight-normal">
+                                Sistem Informasi Rumah Sakit
+                            </p>
+                        </span>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Project PBD -->
+            <div class="col-md-6 col-lg-4">
+                <a
+                    href="#project-pbd"
+                    class="portfolio-card"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalPBD"
+                >
+                    <img
+                        src="assets/imgs/folio-2.jpg"
+                        class="portfolio-card-img"
+                        alt="Proyek PBD Perancangan Basis Data"
+                    />
+                    <span class="portfolio-card-overlay">
+                        <span class="portfolio-card-caption">
+                            <h4>PBD</h4>
+                            <p class="font-weight-normal">
+                                Membuat Sistem Inventory Gudang
+                            </p>
+                        </span>
+                    </span>
+                </a>
+            </div>
+
         </div>
-      </div>
-    </section>
+    </div>
 
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <div class="container text-center">
-        <p class="section-subtitle">Get In Touch</p>
-        <h6 class="section-title mb-5">Contact Me</h6>
+<div
+    class="modal fade"
+    id="modalRSHP"
+    tabindex="-1"
+    aria-labelledby="modalRSHPLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
 
-        <form class="contact-form col-md-10 col-lg-8 m-auto" novalidate>
-          <div class="form-row">
-            <div class="form-group col-sm-6">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Your Name"
-                required
-              />
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalRSHPLabel">
+                    RSHP – Sistem Informasi Rumah Sakit
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <div class="form-group col-sm-6">
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Email Address"
-                required
-              />
+
+            <div class="modal-body text-start">
+                <p>
+                    Proyek <strong>RSHP</strong> merupakan sistem informasi
+                    berbasis web yang dirancang untuk mendukung pengelolaan
+                    data rumah sakit, termasuk data pasien, tenaga medis,
+                    jadwal pelayanan, serta rekam medis secara terstruktur.
+                </p>
+
+                <ul>
+                    <li>Bahasa & Teknologi: PHP, Laravel, MySQL</li>
+                    <li>Fitur utama: Manajemen pasien, dokter, dan pelayanan</li>
+                    <li>Fokus: Struktur data, relasi tabel, dan validasi sistem</li>
+                </ul>
             </div>
-            <div class="form-group col-sm-12">
-              <textarea
-                rows="6"
-                class="form-control"
-                placeholder="Your Message"
-              ></textarea>
+
+            <div class="modal-footer">
+                <a
+                    href="https://github.com/Fals-Code/Proyek_RSHPV1"
+                    target="_blank"
+                    class="btn btn-primary"
+                >
+                    Lihat di GitHub
+                </a>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">
+                    Tutup
+                </button>
             </div>
-            <div class="form-group col-sm-12 mt-3">
-              <button class="btn btn-outline-primary rounded" type="submit">
-                Send Message
-              </button>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal PBD -->
+<div
+    class="modal fade"
+    id="modalPBD"
+    tabindex="-1"
+    aria-labelledby="modalPBDLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalPBDLabel">
+                    PBD – Sistem Inventory Gudang
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-          </div>
+
+            <div class="modal-body text-start">
+                <p>
+                    Proyek <strong>PBD</strong> berfokus pada pembuatan sistem inventory gudang
+                    yang memungkinkan pengelolaan stok barang, transaksi, dan
+                    laporan terkait.
+                </p>
+
+                <ul>
+                    <li>DBMS: MySQL</li>
+                    <li>Fitur: Tabel relasional, view, trigger, procedure</li>
+                    <li>Fokus: Integritas data dan efisiensi query</li>
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <a
+                    href="https://github.com/Fals-Code/Proyek_PBDV1"
+                    target="_blank"
+                    class="btn btn-primary"
+                >
+                    Lihat di GitHub
+                </a>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">
+                    Tutup
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" id="contact">
+    <div class="container text-center">
+        <p class="section-subtitle">Bagaimana Cara Menghubungi Saya?</p>
+        <h6 class="section-title mb-5">Hubungi Saya</h6>
+
+        <form
+            action="#"
+            method="post"
+            class="contact-form col-md-10 col-lg-8 m-auto"
+        >
+            <div class="form-row">
+
+                <!-- Nama -->
+                <div class="form-group col-sm-6">
+                    <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        placeholder="Nama Lengkap"
+                        required
+                    />
+                </div>
+
+                <!-- Email -->
+                <div class="form-group col-sm-6">
+                    <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="Alamat Email"
+                        required
+                    />
+                </div>
+
+                <!-- Pesan -->
+                <div class="form-group col-sm-12">
+                    <textarea
+                        name="message"
+                        rows="6"
+                        class="form-control"
+                        placeholder="Tulis pesan Anda di sini..."
+                        required
+                    ></textarea>
+                </div>
+
+                <!-- Submit -->
+                <div class="form-group col-sm-12 mt-3">
+                    <button
+                        type="submit"
+                        class="btn btn-outline-primary rounded"
+                    >
+                        Kirim Pesan
+                    </button>
+                </div>
+
+            </div>
         </form>
-      </div>
-    </section>
+    </div>
+</section>
+<!-- End Contact Section -->
 
-    <!-- Footer -->
-    <footer class="footer container">
-      <p class="mb-0">© <span id="year"></span> Ahmad Mathlaul Falah</p>
+<!-- Footer -->
+<div class="container">
+    <footer class="footer">
+        <p class="mb-0">
+            &copy;
+            <script>document.write(new Date().getFullYear())</script>
+            <strong>Ahmad Mathlaul Falah</strong>. All rights reserved.
+            <span class="d-none d-sm-inline">
+                | Built with Bootstrap • Theme by DevCRUD
+            </span>
+        </p>
 
-      <div class="social-links ml-auto">
-        <!-- GitHub -->
-        <a
-          href="https://github.com/Fals-Code"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-          aria-label="GitHub Ahmad Mathlaul Falah"
-          title="GitHub"
-        >
-          <i class="ti-github" aria-hidden="true"></i>
-        </a>
+        <div class="social-links text-right m-auto ml-sm-auto">
 
-        <!-- LinkedIn -->
-        <a
-          href="https://www.linkedin.com/in/USERNAME-KAMU"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-          aria-label="LinkedIn Ahmad Mathlaul Falah"
-          title="LinkedIn"
-        >
-          <i class="ti-linkedin" aria-hidden="true"></i>
-        </a>
+            <a
+                href="https://www.instagram.com/falahh.am?igsh=MTQ1b2oyODBsZ25lYg%3D%3D&utm_source=qr"
+                class="link"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram Ahmad Mathlaul Falah"
+            >
+                <i class="ti-instagram"></i>
+            </a>
 
-        <!-- Instagram -->
-        <a
-          href="https://www.instagram.com/falahh.am?igsh=MTQ1b2oyODBsZ25lYg%3D%3D&utm_source=qr"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-          aria-label="Instagram Ahmad Mathlaul Falah"
-          title="Instagram"
-        >
-          <i class="ti-instagram" aria-hidden="true"></i>
-        </a>
-      </div>
+            <a
+                href="https://github.com/Fals-Code"
+                class="link"
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub Ahmad Mathlaul Falah"
+            >
+                <i class="ti-github"></i>
+            </a>
+
+            <a
+                href="https://linkedin.com/in/USERNAME_KAMU"
+                class="link"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn Ahmad Mathlaul Falah"
+            >
+                <i class="ti-linkedin"></i>
+            </a>
+
+            <a
+                href="mailto:emailkamu@email.com"
+                class="link"
+                aria-label="Email Ahmad Mathlaul Falah"
+            >
+                <i class="ti-email"></i>
+            </a>
+
+        </div>
     </footer>
+</div>
+<!-- End Footer -->
 
-    <!-- Scripts -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.min.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
     <script src="assets/js/meyawo.js"></script>
-    <script src="assets/js/main.js"></script>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+</body>
+
 </html>
