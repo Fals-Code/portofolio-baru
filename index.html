@@ -1,766 +1,510 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Portfolio Ahmad Mathlaul Falah - Backend & Web Developer"
-    />
-    <meta name="author" content="Ahmad Mathlaul Falah" />
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio Ahmad Mathlaul Falah - Backend & Web Developer">
+    <meta name="author" content="Ahmad Mathlaul Falah">
     <title>Ahmad Mathlaul Falah | Backend & Web Developer</title>
 
     <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
     <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
 
-  <body>
+<body>
+
     <!-- Cursor Glow -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
-      <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </button>
+
 
     <!-- ============================================================
          NAVBAR
     ============================================================ -->
     <nav class="navbar">
-      <div class="navbar-inner">
-        <a href="#home" class="nav-logo">Falah.</a>
+        <div class="navbar-inner">
+            <a href="#home" class="nav-logo">Falah.</a>
 
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#about">About</a></li>
-          <li><a href="#stack">Stack</a></li>
-          <li><a href="#journey">Journey</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#stack">Stack</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
-        <div class="nav-right">
-          <i class="fas fa-sun theme-icon" id="themeIcon"></i>
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle dark mode"
-          ></button>
-          <button class="hamburger" id="hamburger" aria-label="Open menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+            <div class="nav-right">
+                <i class="fas fa-sun theme-icon" id="themeIcon"></i>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+                <button class="hamburger" id="hamburger" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
-      </div>
     </nav>
+
 
     <!-- ============================================================
          HERO
     ============================================================ -->
     <section id="home">
-      <div class="hero">
-        <div class="hero-content">
-          <div class="hero-badge reveal">
-            <span class="dot"></span>
-            Available for work
-          </div>
+        <div class="hero">
+            <div class="hero-content">
 
-          <h1 class="reveal delay-1">
-            Hi, I'm <span class="accent">Ahmad</span><br />
-            Mathlaul Falah
-          </h1>
+                <div class="hero-badge reveal">
+                    <span class="dot"></span>
+                    Available for work
+                </div>
 
-          <p class="reveal delay-2">
-            Informatics Engineering student at Universitas Airlangga — building
-            reliable, structured, and impactful web solutions with Laravel &
-            PHP.
-          </p>
+                <h1 class="reveal delay-1">
+                    Hi, I'm <span class="accent">Ahmad</span><br>
+                    Mathlaul Falah
+                </h1>
 
-          <div class="hero-cta reveal delay-3">
-            <a href="#portfolio" class="btn btn-primary">
-              <i class="fas fa-folder-open"></i> View My Work
-            </a>
-            <a href="#contact" class="btn btn-outline">
-              <i class="fas fa-paper-plane"></i> Get In Touch
-            </a>
-          </div>
+                <p class="reveal delay-2">
+                    Informatics Engineering student at Universitas Airlangga — building reliable,
+                    structured, and impactful web solutions with Laravel & PHP.
+                </p>
+
+                <div class="hero-cta reveal delay-3">
+                    <a href="#portfolio" class="btn btn-primary">
+                        <i class="fas fa-folder-open"></i> View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Geometric Visual -->
+            <div class="hero-visual reveal delay-2">
+                <svg class="geo-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+                    <!-- Outer rotating ring -->
+                    <circle cx="250" cy="250" r="200" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="8 14" opacity="0.25" class="geo-spin-slow"/>
+
+                    <!-- Middle dashed ring -->
+                    <circle cx="250" cy="250" r="155" fill="none" stroke="var(--accent-2)" stroke-width="1" stroke-dasharray="4 10" opacity="0.2" class="geo-spin-reverse"/>
+
+                    <!-- Inner filled circle (subtle) -->
+                    <circle cx="250" cy="250" r="108" fill="var(--accent)" opacity="0.04"/>
+                    <circle cx="250" cy="250" r="108" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.15"/>
+
+                    <!-- Central hexagon -->
+                    <polygon points="250,172 318,211 318,289 250,328 182,289 182,211"
+                        fill="none" stroke="var(--accent)" stroke-width="1.8" opacity="0.5" class="geo-pulse"/>
+
+                    <!-- Inner hexagon -->
+                    <polygon points="250,202 290,225 290,271 250,294 210,271 210,225"
+                        fill="var(--accent)" opacity="0.06"/>
+                    <polygon points="250,202 290,225 290,271 250,294 210,271 210,225"
+                        fill="none" stroke="var(--accent)" stroke-width="1.2" opacity="0.3"/>
+
+                    <!-- Center dot -->
+                    <circle cx="250" cy="248" r="6" fill="var(--accent)" opacity="0.7" class="geo-pulse"/>
+
+                    <!-- Cross lines -->
+                    <line x1="250" y1="142" x2="250" y2="180" stroke="var(--accent)" stroke-width="1.5" opacity="0.3"/>
+                    <line x1="250" y1="320" x2="250" y2="358" stroke="var(--accent)" stroke-width="1.5" opacity="0.3"/>
+                    <line x1="140" y1="248" x2="178" y2="248" stroke="var(--accent)" stroke-width="1.5" opacity="0.3"/>
+                    <line x1="322" y1="248" x2="360" y2="248" stroke="var(--accent)" stroke-width="1.5" opacity="0.3"/>
+
+                    <!-- Corner brackets -->
+                    <path d="M90,90 L90,130 M90,90 L130,90" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.35"/>
+                    <path d="M410,90 L410,130 M410,90 L370,90" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.35"/>
+                    <path d="M90,410 L90,370 M90,410 L130,410" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.35"/>
+                    <path d="M410,410 L410,370 M410,410 L370,410" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.35"/>
+
+                    <!-- Floating triangles -->
+                    <polygon points="250,50 265,76 235,76" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.3" class="geo-float"/>
+                    <polygon points="250,450 265,424 235,424" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.3" class="geo-float-delay"/>
+
+                    <!-- Small accent dots on ring -->
+                    <circle cx="250" cy="50"  r="3.5" fill="var(--accent)" opacity="0.4" class="geo-spin-slow" style="transform-origin:250px 250px"/>
+                    <circle cx="450" cy="250" r="3.5" fill="var(--accent)" opacity="0.4"/>
+                    <circle cx="50"  cy="250" r="3.5" fill="var(--accent)" opacity="0.4"/>
+                    <circle cx="250" cy="450" r="3.5" fill="var(--accent)" opacity="0.4"/>
+
+                    <!-- Tech labels -->
+                    <text x="250" y="244" text-anchor="middle" font-family="'Syne', sans-serif" font-size="13" font-weight="700" fill="var(--accent)" opacity="0.8">{ Laravel }</text>
+                    <text x="250" y="262" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="10" fill="var(--text-muted)" opacity="0.6">PHP · MySQL · Blade</text>
+
+                </svg>
+            </div>
+
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
-
-        <!-- Geometric Visual -->
-        <div class="hero-visual reveal delay-2">
-          <svg
-            class="geo-svg"
-            viewBox="0 0 500 500"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <!-- Outer rotating ring -->
-            <circle
-              cx="250"
-              cy="250"
-              r="200"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1"
-              stroke-dasharray="8 14"
-              opacity="0.25"
-              class="geo-spin-slow"
-            />
-
-            <!-- Middle dashed ring -->
-            <circle
-              cx="250"
-              cy="250"
-              r="155"
-              fill="none"
-              stroke="var(--accent-2)"
-              stroke-width="1"
-              stroke-dasharray="4 10"
-              opacity="0.2"
-              class="geo-spin-reverse"
-            />
-
-            <!-- Inner filled circle (subtle) -->
-            <circle
-              cx="250"
-              cy="250"
-              r="108"
-              fill="var(--accent)"
-              opacity="0.04"
-            />
-            <circle
-              cx="250"
-              cy="250"
-              r="108"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.15"
-            />
-
-            <!-- Central hexagon -->
-            <polygon
-              points="250,172 318,211 318,289 250,328 182,289 182,211"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.8"
-              opacity="0.5"
-              class="geo-pulse"
-            />
-
-            <!-- Inner hexagon -->
-            <polygon
-              points="250,202 290,225 290,271 250,294 210,271 210,225"
-              fill="var(--accent)"
-              opacity="0.06"
-            />
-            <polygon
-              points="250,202 290,225 290,271 250,294 210,271 210,225"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.2"
-              opacity="0.3"
-            />
-
-            <!-- Center dot -->
-            <circle
-              cx="250"
-              cy="248"
-              r="6"
-              fill="var(--accent)"
-              opacity="0.7"
-              class="geo-pulse"
-            />
-
-            <!-- Cross lines -->
-            <line
-              x1="250"
-              y1="142"
-              x2="250"
-              y2="180"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-            />
-            <line
-              x1="250"
-              y1="320"
-              x2="250"
-              y2="358"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-            />
-            <line
-              x1="140"
-              y1="248"
-              x2="178"
-              y2="248"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-            />
-            <line
-              x1="322"
-              y1="248"
-              x2="360"
-              y2="248"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-            />
-
-            <!-- Corner brackets -->
-            <path
-              d="M90,90 L90,130 M90,90 L130,90"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="2"
-              opacity="0.35"
-            />
-            <path
-              d="M410,90 L410,130 M410,90 L370,90"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="2"
-              opacity="0.35"
-            />
-            <path
-              d="M90,410 L90,370 M90,410 L130,410"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="2"
-              opacity="0.35"
-            />
-            <path
-              d="M410,410 L410,370 M410,410 L370,410"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="2"
-              opacity="0.35"
-            />
-
-            <!-- Floating triangles -->
-            <polygon
-              points="250,50 265,76 235,76"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-              class="geo-float"
-            />
-            <polygon
-              points="250,450 265,424 235,424"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-              class="geo-float-delay"
-            />
-
-            <!-- Small accent dots on ring -->
-            <circle
-              cx="250"
-              cy="50"
-              r="3.5"
-              fill="var(--accent)"
-              opacity="0.4"
-              class="geo-spin-slow"
-              style="transform-origin: 250px 250px"
-            />
-            <circle
-              cx="450"
-              cy="250"
-              r="3.5"
-              fill="var(--accent)"
-              opacity="0.4"
-            />
-            <circle
-              cx="50"
-              cy="250"
-              r="3.5"
-              fill="var(--accent)"
-              opacity="0.4"
-            />
-            <circle
-              cx="250"
-              cy="450"
-              r="3.5"
-              fill="var(--accent)"
-              opacity="0.4"
-            />
-
-            <!-- Tech labels -->
-            <text
-              x="250"
-              y="244"
-              text-anchor="middle"
-              font-family="'Syne', sans-serif"
-              font-size="13"
-              font-weight="700"
-              fill="var(--accent)"
-              opacity="0.8"
-            >
-              { Laravel }
-            </text>
-            <text
-              x="250"
-              y="262"
-              text-anchor="middle"
-              font-family="'DM Sans', sans-serif"
-              font-size="10"
-              fill="var(--text-muted)"
-              opacity="0.6"
-            >
-              PHP · MySQL · Blade
-            </text>
-          </svg>
-        </div>
-
-        <div class="hero-scroll">
-          <span>Scroll</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-      </div>
     </section>
+
 
     <!-- ============================================================
          ABOUT
     ============================================================ -->
     <section id="about" class="section">
-      <p class="section-label reveal">Who I Am</p>
-      <h2 class="section-title reveal">About Me</h2>
-      <div class="section-divider reveal"></div>
 
-      <div class="about-grid">
-        <div class="about-img-wrap reveal">
-          <img
-            src="assets/imgs/falah.jpeg"
-            alt="Ahmad Mathlaul Falah"
-            class="about-img"
-          />
+        <p class="section-label reveal">Who I Am</p>
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="section-divider reveal"></div>
+
+        <div class="about-grid">
+
+            <div class="about-img-wrap reveal">
+                <img src="assets/imgs/man.png" alt="Ahmad Mathlaul Falah" class="about-img">
+            </div>
+
+            <div class="about-text">
+                <p class="reveal delay-1">
+                    Saya Ahmad Mathlaul Falah, mahasiswa Teknik Informatika Universitas Airlangga
+                    dengan minat kuat pada backend development, sistem informasi, dan optimasi
+                    performa aplikasi.
+                </p>
+                <p class="reveal delay-2">
+                    Saya terbiasa berpikir logis, terstruktur, dan analitis dalam menyelesaikan
+                    masalah — baik di konteks akademik maupun proyek praktis. Fokus utama saya
+                    adalah membangun solusi digital yang efisien dan berdampak nyata.
+                </p>
+
+                <div class="about-stats reveal delay-3">
+                    <div class="stat-card">
+                        <div class="stat-num">8+</div>
+                        <div class="stat-label">Repositories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">2+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num">∞</div>
+                        <div class="stat-label">Curiosity</div>
+                    </div>
+                </div>
+
+                <div class="reveal delay-4">
+                    <a href="assets/cv.pdf" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+            </div>
+
         </div>
-
-        <div class="about-text">
-          <p class="reveal delay-1">
-            Saya Ahmad Mathlaul Falah, mahasiswa Teknik Informatika Universitas
-            Airlangga dengan minat kuat pada backend development, sistem
-            informasi, dan optimasi performa aplikasi.
-          </p>
-          <p class="reveal delay-2">
-            Saya terbiasa berpikir logis, terstruktur, dan analitis dalam
-            menyelesaikan masalah — baik di konteks akademik maupun proyek
-            praktis. Fokus utama saya adalah membangun solusi digital yang
-            efisien dan berdampak nyata.
-          </p>
-
-          <div class="about-stats reveal delay-3">
-            <div class="stat-card">
-              <div class="stat-num">8+</div>
-              <div class="stat-label">Repositories</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">2+</div>
-              <div class="stat-label">Projects</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">∞</div>
-              <div class="stat-label">Curiosity</div>
-            </div>
-          </div>
-
-          <div class="reveal delay-4">
-            <a href="assets/cv.pdf" class="btn btn-primary" download>
-              <i class="fas fa-download"></i> Download CV
-            </a>
-          </div>
-        </div>
-      </div>
     </section>
+
 
     <!-- ============================================================
          TECH STACK
     ============================================================ -->
     <section id="stack" class="section">
-      <p class="section-label reveal">What I Use</p>
-      <h2 class="section-title reveal">Tech Stack</h2>
-      <div class="section-divider reveal"></div>
 
-      <p class="tech-category reveal">Languages & Frameworks</p>
-      <div class="tech-grid">
-        <div class="tech-card reveal delay-1">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-            alt="PHP"
-          />
-          <span>PHP</span>
-        </div>
-        <div class="tech-card reveal delay-1">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
-            alt="Laravel"
-          />
-          <span>Laravel</span>
-        </div>
-        <div class="tech-card reveal delay-2">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-            alt="HTML5"
-          />
-          <span>HTML5</span>
-        </div>
-        <div class="tech-card reveal delay-2">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-            alt="CSS3"
-          />
-          <span>CSS3</span>
-        </div>
-        <div class="tech-card reveal delay-3">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-            alt="JavaScript"
-          />
-          <span>JavaScript</span>
-        </div>
-      </div>
+        <p class="section-label reveal">What I Use</p>
+        <h2 class="section-title reveal">Tech Stack</h2>
+        <div class="section-divider reveal"></div>
 
-      <p class="tech-category reveal">Tools & Infrastructure</p>
-      <div class="tech-grid">
-        <div class="tech-card reveal delay-1">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-            alt="MySQL"
-          />
-          <span>MySQL</span>
+        <p class="tech-category reveal">Languages & Frameworks</p>
+        <div class="tech-grid">
+            <div class="tech-card reveal delay-1">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+                <span>PHP</span>
+            </div>
+            <div class="tech-card reveal delay-1">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel">
+                <span>Laravel</span>
+            </div>
+            <div class="tech-card reveal delay-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                <span>HTML5</span>
+            </div>
+            <div class="tech-card reveal delay-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                <span>CSS3</span>
+            </div>
+            <div class="tech-card reveal delay-3">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                <span>JavaScript</span>
+            </div>
         </div>
-        <div class="tech-card reveal delay-1">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-            alt="Git"
-          />
-          <span>Git</span>
+
+        <p class="tech-category reveal">Tools & Infrastructure</p>
+        <div class="tech-grid">
+            <div class="tech-card reveal delay-1">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                <span>MySQL</span>
+            </div>
+            <div class="tech-card reveal delay-1">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                <span>Git</span>
+            </div>
+            <div class="tech-card reveal delay-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                <span>GitHub</span>
+            </div>
+            <div class="tech-card reveal delay-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
+                <span>VS Code</span>
+            </div>
+            <div class="tech-card reveal delay-3">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/composer/composer-original.svg" alt="Composer">
+                <span>Composer</span>
+            </div>
         </div>
-        <div class="tech-card reveal delay-2">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-            alt="GitHub"
-          />
-          <span>GitHub</span>
-        </div>
-        <div class="tech-card reveal delay-2">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-            alt="VS Code"
-          />
-          <span>VS Code</span>
-        </div>
-        <div class="tech-card reveal delay-3">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/composer/composer-original.svg"
-            alt="Composer"
-          />
-          <span>Composer</span>
-        </div>
-      </div>
+
     </section>
+
 
     <!-- ============================================================
          JOURNEY / TIMELINE
     ============================================================ -->
     <section id="journey" class="section">
-      <p class="section-label reveal">My Path</p>
-      <h2 class="section-title reveal">Education & Journey</h2>
-      <div class="section-divider reveal"></div>
 
-      <div class="timeline reveal">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date">2024 — Present</div>
-            <div class="timeline-title">D4 Teknik Informatika</div>
-            <div class="timeline-place">
-              Vokasi Universitas Airlangga · Surabaya, Indonesia
-            </div>
-            <div class="timeline-desc">
-              Menempuh pendidikan sarjana terapan dengan fokus pada rekayasa
-              perangkat lunak, basis data, dan arsitektur sistem. Aktif
-              mengerjakan proyek berbasis Laravel dan eksplorasi backend
-              engineering.
-            </div>
-            <div class="timeline-tags">
-              <span class="tag">Algorithms</span>
-              <span class="tag">Database Design</span>
-              <span class="tag">Web Engineering</span>
-              <span class="tag">System Analysis</span>
-            </div>
-          </div>
-        </div>
+        <p class="section-label reveal">My Path</p>
+        <h2 class="section-title reveal">Education & Journey</h2>
+        <div class="section-divider reveal"></div>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date">2024</div>
-            <div class="timeline-title">
-              Proyek RSHP — Hospital Information System
-            </div>
-            <div class="timeline-place">Personal Project</div>
-            <div class="timeline-desc">
-              Membangun sistem informasi rumah sakit berbasis Laravel dengan
-              manajemen data pasien, tenaga medis, jadwal layanan, dan
-              pencatatan terintegrasi.
-            </div>
-            <div class="timeline-tags">
-              <span class="tag">Laravel</span>
-              <span class="tag">Blade</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">PHP</span>
-            </div>
-          </div>
-        </div>
+        <div class="timeline reveal">
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date">2024</div>
-            <div class="timeline-title">
-              Proyek PBD — Warehouse Inventory System
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-date">2023 — Present</div>
+                    <div class="timeline-title">D4 Teknik Informatika</div>
+                    <div class="timeline-place">Vokasi Universitas Airlangga · Surabaya, Indonesia</div>
+                    <div class="timeline-desc">
+                        Menempuh pendidikan sarjana terapan dengan fokus pada rekayasa perangkat lunak,
+                        basis data, dan arsitektur sistem. Aktif mengerjakan proyek berbasis Laravel
+                        dan eksplorasi backend engineering.
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">Database Design</span>
+                        <span class="tag">Web Engineering</span>
+                        <span class="tag">System Analysis</span>
+                    </div>
+                </div>
             </div>
-            <div class="timeline-place">Personal Project</div>
-            <div class="timeline-desc">
-              Mengembangkan sistem inventory gudang dengan fitur barang
-              masuk/keluar, manajemen stok, dan laporan inventaris otomatis
-              dengan relasi database yang konsisten.
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-title">Proyek RSHP — Hospital Information System</div>
+                    <div class="timeline-place">Personal Project</div>
+                    <div class="timeline-desc">
+                        Membangun sistem informasi rumah sakit berbasis Laravel dengan manajemen
+                        data pasien, tenaga medis, jadwal layanan, dan pencatatan terintegrasi.
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Blade</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">PHP</span>
+                    </div>
+                </div>
             </div>
-            <div class="timeline-tags">
-              <span class="tag">Laravel</span>
-              <span class="tag">Database Design</span>
-              <span class="tag">CRUD</span>
-              <span class="tag">Reporting</span>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-title">Proyek PBD — Warehouse Inventory System</div>
+                    <div class="timeline-place">Personal Project</div>
+                    <div class="timeline-desc">
+                        Mengembangkan sistem inventory gudang dengan fitur barang masuk/keluar,
+                        manajemen stok, dan laporan inventaris otomatis dengan relasi database yang konsisten.
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Database Design</span>
+                        <span class="tag">CRUD</span>
+                        <span class="tag">Reporting</span>
+                    </div>
+                </div>
             </div>
-          </div>
+
         </div>
-      </div>
     </section>
+
 
     <!-- ============================================================
          SERVICES
     ============================================================ -->
     <section id="services" class="section">
-      <p class="section-label reveal">What I Do</p>
-      <h2 class="section-title reveal">Services</h2>
-      <div class="section-divider reveal"></div>
 
-      <div class="services-grid">
-        <div class="service-card reveal delay-1">
-          <div class="service-icon"><i class="fas fa-code"></i></div>
-          <h3>Web Development</h3>
-          <p>
-            Membangun website responsif dengan struktur rapi, performa optimal,
-            dan user experience terbaik.
-          </p>
+        <p class="section-label reveal">What I Do</p>
+        <h2 class="section-title reveal">Services</h2>
+        <div class="section-divider reveal"></div>
+
+        <div class="services-grid">
+            <div class="service-card reveal delay-1">
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h3>Web Development</h3>
+                <p>Membangun website responsif dengan struktur rapi, performa optimal, dan user experience terbaik.</p>
+            </div>
+            <div class="service-card reveal delay-2">
+                <div class="service-icon"><i class="fas fa-server"></i></div>
+                <h3>Backend & Database</h3>
+                <p>Mengelola logika sistem, integrasi database, dan perancangan skema data yang efisien dan terstruktur.</p>
+            </div>
+            <div class="service-card reveal delay-3">
+                <div class="service-icon"><i class="fas fa-brain"></i></div>
+                <h3>Analytical Thinking</h3>
+                <p>Menganalisis permasalahan teknis secara sistematis dan menghasilkan solusi efektif berbasis logika.</p>
+            </div>
+            <div class="service-card reveal delay-4">
+                <div class="service-icon"><i class="fas fa-gauge-high"></i></div>
+                <h3>Performance Optimization</h3>
+                <p>Mengoptimalkan performa aplikasi mencakup kecepatan loading, kompatibilitas, dan efisiensi kode.</p>
+            </div>
         </div>
-        <div class="service-card reveal delay-2">
-          <div class="service-icon"><i class="fas fa-server"></i></div>
-          <h3>Backend & Database</h3>
-          <p>
-            Mengelola logika sistem, integrasi database, dan perancangan skema
-            data yang efisien dan terstruktur.
-          </p>
-        </div>
-        <div class="service-card reveal delay-3">
-          <div class="service-icon"><i class="fas fa-brain"></i></div>
-          <h3>Analytical Thinking</h3>
-          <p>
-            Menganalisis permasalahan teknis secara sistematis dan menghasilkan
-            solusi efektif berbasis logika.
-          </p>
-        </div>
-        <div class="service-card reveal delay-4">
-          <div class="service-icon"><i class="fas fa-gauge-high"></i></div>
-          <h3>Performance Optimization</h3>
-          <p>
-            Mengoptimalkan performa aplikasi mencakup kecepatan loading,
-            kompatibilitas, dan efisiensi kode.
-          </p>
-        </div>
-      </div>
+
     </section>
+
 
     <!-- ============================================================
          PORTFOLIO
     ============================================================ -->
     <section id="portfolio" class="section">
-      <p class="section-label reveal">What I Built</p>
-      <h2 class="section-title reveal">Portfolio</h2>
-      <div class="section-divider reveal"></div>
 
-      <div class="portfolio-grid">
-        <a
-          href="https://github.com/Fals-Code/Proyek_RSHPV1"
-          target="_blank"
-          rel="noopener"
-          class="portfolio-card reveal delay-1"
-        >
-          <div class="portfolio-img-wrap">
-            <img
-              src="assets/imgs/folio-1.jpg"
-              alt="RSHP - Sistem Informasi Rumah Sakit"
-              class="portfolio-img"
-            />
-          </div>
-          <div class="portfolio-body">
-            <div class="timeline-tags">
-              <span class="tag">Laravel</span>
-              <span class="tag">Blade</span>
-              <span class="tag">MySQL</span>
-            </div>
-            <h3>RSHP – Sistem Informasi Rumah Sakit</h3>
-            <p>
-              Aplikasi web untuk pengelolaan operasional rumah sakit: manajemen
-              pasien, tenaga medis, dan jadwal layanan terintegrasi.
-            </p>
-            <span class="portfolio-link"
-              >View on GitHub <i class="fas fa-arrow-right"></i
-            ></span>
-          </div>
-        </a>
+        <p class="section-label reveal">What I Built</p>
+        <h2 class="section-title reveal">Portfolio</h2>
+        <div class="section-divider reveal"></div>
 
-        <a
-          href="https://github.com/Fals-Code/Proyek_PBDV1"
-          target="_blank"
-          rel="noopener"
-          class="portfolio-card reveal delay-2"
-        >
-          <div class="portfolio-img-wrap">
-            <img
-              src="assets/imgs/folio-2.jpg"
-              alt="PBD - Sistem Inventory Gudang"
-              class="portfolio-img"
-            />
-          </div>
-          <div class="portfolio-body">
-            <div class="timeline-tags">
-              <span class="tag">Laravel</span>
-              <span class="tag">Database</span>
-              <span class="tag">Reporting</span>
-            </div>
-            <h3>PBD – Sistem Inventory Gudang</h3>
-            <p>
-              Sistem informasi inventory dengan manajemen barang masuk/keluar,
-              stok persediaan, dan laporan inventaris otomatis.
-            </p>
-            <span class="portfolio-link"
-              >View on GitHub <i class="fas fa-arrow-right"></i
-            ></span>
-          </div>
-        </a>
-      </div>
+        <div class="portfolio-grid">
+
+            <a href="https://github.com/Fals-Code/Proyek_RSHPV1" target="_blank" rel="noopener" class="portfolio-card reveal delay-1">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/imgs/folio-1.jpg" alt="RSHP - Sistem Informasi Rumah Sakit" class="portfolio-img">
+                </div>
+                <div class="portfolio-body">
+                    <div class="timeline-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Blade</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                    <h3>RSHP – Sistem Informasi Rumah Sakit</h3>
+                    <p>Aplikasi web untuk pengelolaan operasional rumah sakit: manajemen pasien, tenaga medis, dan jadwal layanan terintegrasi.</p>
+                    <span class="portfolio-link">View on GitHub <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="https://github.com/Fals-Code/Proyek_PBDV1" target="_blank" rel="noopener" class="portfolio-card reveal delay-2">
+                <div class="portfolio-img-wrap">
+                    <img src="assets/imgs/folio-2.jpg" alt="PBD - Sistem Inventory Gudang" class="portfolio-img">
+                </div>
+                <div class="portfolio-body">
+                    <div class="timeline-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Database</span>
+                        <span class="tag">Reporting</span>
+                    </div>
+                    <h3>PBD – Sistem Inventory Gudang</h3>
+                    <p>Sistem informasi inventory dengan manajemen barang masuk/keluar, stok persediaan, dan laporan inventaris otomatis.</p>
+                    <span class="portfolio-link">View on GitHub <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+        </div>
     </section>
+
 
     <!-- ============================================================
          CONTACT
     ============================================================ -->
     <section id="contact" class="section">
-      <p class="section-label reveal">Get In Touch</p>
-      <h2 class="section-title reveal">Contact Me</h2>
-      <div class="section-divider reveal"></div>
 
-      <div class="contact-wrap">
-        <div class="contact-info reveal">
-          <h3>Let's work together.</h3>
-          <p>
-            Punya proyek menarik atau mau berdiskusi soal teknologi? Jangan ragu
-            untuk menghubungi saya.
-          </p>
+        <p class="section-label reveal">Get In Touch</p>
+        <h2 class="section-title reveal">Contact Me</h2>
+        <div class="section-divider reveal"></div>
 
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>ahmadmathlaulfalah14@gmail.com</span>
-          </div>
-          <div class="contact-item">
-            <i class="fab fa-instagram"></i>
-            <span>@falahh.am</span>
-          </div>
-          <div class="contact-item">
-            <i class="fab fa-github"></i>
-            <span>github.com/Fals-Code</span>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Gresik, East Java, Indonesia</span>
-          </div>
+        <div class="contact-wrap">
+
+            <div class="contact-info reveal">
+                <h3>Let's work together.</h3>
+                <p>Punya proyek menarik atau mau berdiskusi soal teknologi? Jangan ragu untuk menghubungi saya.</p>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ahmadmathlaulfalah14@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@falahh.am</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/Fals-Code</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Gresik, East Java, Indonesia</span>
+                </div>
+            </div>
+
+            <form class="contact-form reveal delay-2" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <div class="form-status" id="formStatus"></div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send Message</span>
+                </button>
+            </form>
+
         </div>
-
-        <form class="contact-form reveal delay-2" onsubmit="return false;">
-          <div class="form-row">
-            <div class="form-group">
-              <input type="text" placeholder="Your Name" required />
-            </div>
-            <div class="form-group">
-              <input type="email" placeholder="Your Email" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <input type="text" placeholder="Subject" />
-          </div>
-          <div class="form-group">
-            <textarea placeholder="Tell me about your project..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
-        </form>
-      </div>
     </section>
+
 
     <!-- ============================================================
          FOOTER
     ============================================================ -->
     <footer>
-      <div class="footer-inner">
-        <p>
-          © <span id="year"></span> Ahmad Mathlaul Falah — Built with ❤️ and
-          Laravel spirit.
-        </p>
-        <div class="social-links">
-          <a
-            href="https://github.com/Fals-Code"
-            target="_blank"
-            rel="noopener"
-            title="GitHub"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/falahh.am"
-            target="_blank"
-            rel="noopener"
-            title="Instagram"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="mailto:ahmadmathlaulfalah14@gmail.com" title="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
+        <div class="footer-inner">
+            <p>© <span id="year"></span> Ahmad Mathlaul Falah — Built with ❤️ and Laravel spirit.</p>
+            <div class="social-links">
+                <a href="https://github.com/Fals-Code" target="_blank" rel="noopener" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/falahh.am" target="_blank" rel="noopener" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:ahmadmathlaulfalah14@gmail.com" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </div>
-      </div>
     </footer>
+
 
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
-  </body>
+
+</body>
 </html>

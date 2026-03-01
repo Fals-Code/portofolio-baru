@@ -1132,3 +1132,40 @@ footer {
     .portfolio-card:active      { transform: scale(0.98); }
     .btn:active                 { transform: scale(0.97); opacity: 0.85; }
 }
+
+
+/* =============================================
+   Form Status Message
+   ============================================= */
+.form-status {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0;
+    border-radius: 8px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.form-status.success,
+.form-status.error {
+    max-height: 60px;
+    padding: 0.75rem 1rem;
+}
+
+.form-status.success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+    border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.form-status.error {
+    background: rgba(232, 83, 58, 0.08);
+    color: var(--accent);
+    border: 1px solid rgba(232, 83, 58, 0.2);
+}
+
+[data-theme="dark"] .form-status.success {
+    background: rgba(34, 197, 94, 0.08);
+    color: #4ade80;
+}

@@ -2,130 +2,177 @@
    main.js — Portfolio Ahmad Mathlaul Falah
    ============================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  // =========================================
+  // Dark Mode
+  // =========================================
+  const html = document.documentElement;
+  const toggle = document.getElementById("themeToggle");
+  const themeIcon = document.getElementById("themeIcon");
 
-    // =========================================
-    // Dark Mode
-    // =========================================
-    const html       = document.documentElement;
-    const toggle     = document.getElementById('themeToggle');
-    const themeIcon  = document.getElementById('themeIcon');
+  const savedTheme = localStorage.getItem("theme") || "light";
+  html.setAttribute("data-theme", savedTheme);
+  applyThemeIcon(savedTheme);
+  fixGithubIcon(savedTheme);
 
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    html.setAttribute('data-theme', savedTheme);
-    applyThemeIcon(savedTheme);
-    fixGithubIcon(savedTheme);
+  toggle.addEventListener("click", () => {
+    const current = html.getAttribute("data-theme");
+    const next = current === "light" ? "dark" : "light";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    applyThemeIcon(next);
+    fixGithubIcon(next);
+  });
 
-    toggle.addEventListener('click', () => {
-        const current = html.getAttribute('data-theme');
-        const next    = current === 'light' ? 'dark' : 'light';
-        html.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-        applyThemeIcon(next);
-        fixGithubIcon(next);
+  function applyThemeIcon(theme) {
+    themeIcon.className =
+      theme === "dark" ? "fas fa-moon theme-icon" : "fas fa-sun theme-icon";
+  }
+
+  // GitHub icon is black by default — invert on dark mode
+  function fixGithubIcon(theme) {
+    document.querySelectorAll('.tech-card img[alt="GitHub"]').forEach((img) => {
+      img.style.filter = theme === "dark" ? "invert(1)" : "none";
+    });
+  }
+
+  // =========================================
+  // Mobile Nav (Hamburger)
+  // =========================================
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+
+  // Close nav when a link is clicked
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => navLinks.classList.remove("open"));
+  });
+
+  // =========================================
+  // Scroll Reveal
+  // =========================================
+  const revealEls = document.querySelectorAll(".reveal");
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+
+  revealEls.forEach((el) => revealObserver.observe(el));
+
+  // =========================================
+  // Active Nav Link on Scroll
+  // =========================================
+  const sections = document.querySelectorAll("section[id]");
+  const navAnchors = document.querySelectorAll(".nav-links a");
+
+  window.addEventListener("scroll", highlightNavLink, { passive: true });
+
+  function highlightNavLink() {
+    let current = "";
+
+    sections.forEach((section) => {
+      if (window.scrollY >= section.offsetTop - 100) {
+        current = section.getAttribute("id");
+      }
     });
 
-    function applyThemeIcon(theme) {
-        themeIcon.className = theme === 'dark'
-            ? 'fas fa-moon theme-icon'
-            : 'fas fa-sun theme-icon';
-    }
-
-    // GitHub icon is black by default — invert on dark mode
-    function fixGithubIcon(theme) {
-        document.querySelectorAll('.tech-card img[alt="GitHub"]').forEach(img => {
-            img.style.filter = theme === 'dark' ? 'invert(1)' : 'none';
-        });
-    }
-
-
-    // =========================================
-    // Mobile Nav (Hamburger)
-    // =========================================
-    const hamburger = document.getElementById('hamburger');
-    const navLinks  = document.getElementById('navLinks');
-
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
+    navAnchors.forEach((a) => {
+      a.classList.toggle("active", a.getAttribute("href") === `#${current}`);
     });
+  }
 
-    // Close nav when a link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => navLinks.classList.remove('open'));
+  // =========================================
+  // Back to Top Button
+  // =========================================
+  const backToTop = document.getElementById("backToTop");
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      backToTop.classList.toggle("show", window.scrollY > 400);
+    },
+    { passive: true },
+  );
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // =========================================
+  // Cursor Glow (desktop only)
+  // =========================================
+  const glow = document.getElementById("cursorGlow");
+
+  if (window.matchMedia("(pointer: fine)").matches) {
+    document.addEventListener("mousemove", (e) => {
+      glow.style.left = `${e.clientX}px`;
+      glow.style.top = `${e.clientY}px`;
     });
+  } else {
+    glow.style.display = "none";
+  }
 
+  // =========================================
+  // Footer Year
+  // =========================================
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // =========================================
-    // Scroll Reveal
-    // =========================================
-    const revealEls = document.querySelectorAll('.reveal');
+  // =========================================
+  // Contact Form — Formspree
+  // =========================================
+  const contactForm = document.getElementById("contactForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const formStatus = document.getElementById("formStatus");
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
+  const FORMSPREE_URL = "https://formspree.io/f/xbdaeavv";
 
-    revealEls.forEach(el => revealObserver.observe(el));
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
+    // Loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML =
+      '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
+    formStatus.className = "form-status";
+    formStatus.textContent = "";
 
-    // =========================================
-    // Active Nav Link on Scroll
-    // =========================================
-    const sections   = document.querySelectorAll('section[id]');
-    const navAnchors = document.querySelectorAll('.nav-links a');
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      });
 
-    window.addEventListener('scroll', highlightNavLink, { passive: true });
-
-    function highlightNavLink() {
-        let current = '';
-
-        sections.forEach(section => {
-            if (window.scrollY >= section.offsetTop - 100) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navAnchors.forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-        });
+      if (res.ok) {
+        formStatus.className = "form-status success";
+        formStatus.textContent =
+          "\u2705 Pesan terkirim! Saya akan segera membalasnya.";
+        contactForm.reset();
+      } else {
+        throw new Error("Server error");
+      }
+    } catch {
+      formStatus.className = "form-status error";
+      formStatus.textContent =
+        "\u274c Gagal mengirim. Silakan hubungi via email langsung.";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML =
+        '<i class="fas fa-paper-plane"></i> <span>Send Message</span>';
+      setTimeout(() => {
+        formStatus.textContent = "";
+        formStatus.className = "form-status";
+      }, 6000);
     }
-
-
-    // =========================================
-    // Back to Top Button
-    // =========================================
-    const backToTop = document.getElementById('backToTop');
-
-    window.addEventListener('scroll', () => {
-        backToTop.classList.toggle('show', window.scrollY > 400);
-    }, { passive: true });
-
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-
-    // =========================================
-    // Cursor Glow (desktop only)
-    // =========================================
-    const glow = document.getElementById('cursorGlow');
-
-    if (window.matchMedia('(pointer: fine)').matches) {
-        document.addEventListener('mousemove', e => {
-            glow.style.left = `${e.clientX}px`;
-            glow.style.top  = `${e.clientY}px`;
-        });
-    } else {
-        glow.style.display = 'none';
-    }
-
-
-    // =========================================
-    // Footer Year
-    // =========================================
-    document.getElementById('year').textContent = new Date().getFullYear();
-
+  });
 });
