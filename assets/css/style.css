@@ -303,15 +303,74 @@ img { max-width: 100%; }
    ============================================= */
 .hero {
     min-height: 100vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 8rem 2rem 4rem;
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
+    gap: 2rem;
 }
 
-.hero-content { max-width: 640px; }
+.hero-content { max-width: 560px; }
+
+/* Geometric Visual */
+.hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.geo-svg {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    filter: drop-shadow(0 0 40px rgba(232, 83, 58, 0.08));
+}
+
+/* Geometric Animations */
+.geo-spin-slow {
+    animation: spinSlow 24s linear infinite;
+    transform-origin: 250px 250px;
+}
+
+.geo-spin-reverse {
+    animation: spinSlow 18s linear infinite reverse;
+    transform-origin: 250px 250px;
+}
+
+.geo-pulse {
+    animation: geoPulse 3s ease-in-out infinite;
+}
+
+.geo-float {
+    animation: geoFloat 3.5s ease-in-out infinite;
+}
+
+.geo-float-delay {
+    animation: geoFloat 3.5s ease-in-out infinite 1.75s;
+}
+
+@keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@keyframes geoPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1);    transform-origin: 250px 250px; }
+    50%       { opacity: 0.9; transform: scale(1.04); transform-origin: 250px 250px; }
+}
+
+@keyframes geoFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+
+@media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+}
 
 .hero-badge {
     display: inline-flex;
@@ -938,4 +997,138 @@ footer {
 @keyframes float {
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50%       { transform: translateX(-50%) translateY(-6px); }
+}
+
+
+/* =============================================
+   Responsive — Tablet (max 900px)
+   ============================================= */
+@media (max-width: 900px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 4rem;
+        gap: 0;
+    }
+    .hero-visual  { display: none; }
+    .hero-content { max-width: 100%; }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .about-img-wrap {
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .contact-wrap {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+
+/* =============================================
+   Responsive — Mobile (max 640px)
+   ============================================= */
+@media (max-width: 640px) {
+
+    body { font-size: 15px; }
+
+    /* Section */
+    .section        { padding: 4rem 1.25rem; }
+    .section-title  { font-size: 1.75rem; letter-spacing: -0.5px; }
+    .section-divider { margin-bottom: 2rem; }
+
+    /* Navbar */
+    .navbar-inner   { padding: 0 1.25rem; }
+
+    .nav-links.open {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+    .nav-links.open a {
+        font-size: 1.05rem;
+        font-weight: 600;
+        padding: 0.4rem 0;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 6rem 1.25rem 3.5rem;
+        min-height: 100svh;
+    }
+    .hero h1        { font-size: 2.4rem; letter-spacing: -1px; }
+    .hero p         { font-size: 1rem; }
+    .hero-cta       { flex-direction: column; gap: 0.75rem; }
+    .hero-cta .btn  { width: 100%; justify-content: center; }
+    .hero-scroll    { display: none; }
+
+    /* About */
+    .about-stats            { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .stat-num               { font-size: 1.5rem; }
+    .stat-label             { font-size: 0.72rem; }
+
+    /* Tech Stack */
+    .tech-grid              { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .tech-card              { padding: 1rem 0.5rem; }
+    .tech-card img          { width: 32px; height: 32px; }
+    .tech-card span         { font-size: 0.72rem; }
+
+    /* Timeline */
+    .timeline               { padding-left: 1.5rem; }
+    .timeline-card          { padding: 1.1rem 1.2rem; }
+    .timeline-title         { font-size: 0.98rem; }
+
+    /* Services */
+    .services-grid          { grid-template-columns: 1fr; gap: 1rem; }
+    .service-card           { padding: 1.5rem 1.25rem; }
+
+    /* Portfolio */
+    .portfolio-grid         { grid-template-columns: 1fr; gap: 1.25rem; }
+
+    /* Contact */
+    .form-row               { grid-template-columns: 1fr; }
+    .contact-info h3        { font-size: 1.15rem; }
+
+    /* Footer */
+    .footer-inner           { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+    /* Back to Top */
+    .back-to-top            { bottom: 1.25rem; right: 1.25rem; width: 40px; height: 40px; }
+}
+
+
+/* =============================================
+   Responsive — Small Mobile (max 400px)
+   ============================================= */
+@media (max-width: 400px) {
+    .hero h1        { font-size: 2rem; }
+    .about-stats    { gap: 0.5rem; }
+    .stat-num       { font-size: 1.3rem; }
+    .hero-badge     { font-size: 0.72rem; }
+}
+
+
+/* =============================================
+   Touch Device — Replace hover with active
+   ============================================= */
+@media (hover: none) {
+    .service-card:hover,
+    .portfolio-card:hover,
+    .tech-card:hover,
+    .stat-card:hover,
+    .timeline-item:hover .timeline-card,
+    .btn-primary:hover,
+    .btn-outline:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .service-card:hover::before { transform: scaleX(0); }
+
+    .service-card:active        { transform: scale(0.98); }
+    .portfolio-card:active      { transform: scale(0.98); }
+    .btn:active                 { transform: scale(0.97); opacity: 0.85; }
 }

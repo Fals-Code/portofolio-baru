@@ -27,12 +27,17 @@
   </head>
 
   <body>
+    <!-- Cursor Glow -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
+    <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
       <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- ============================================================
+         NAVBAR
+    ============================================================ -->
     <nav class="navbar">
       <div class="navbar-inner">
         <a href="#home" class="nav-logo">Falah.</a>
@@ -62,6 +67,9 @@
       </div>
     </nav>
 
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
     <section id="home">
       <div class="hero">
         <div class="hero-content">
@@ -91,6 +99,237 @@
           </div>
         </div>
 
+        <!-- Geometric Visual -->
+        <div class="hero-visual reveal delay-2">
+          <svg
+            class="geo-svg"
+            viewBox="0 0 500 500"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <!-- Outer rotating ring -->
+            <circle
+              cx="250"
+              cy="250"
+              r="200"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="1"
+              stroke-dasharray="8 14"
+              opacity="0.25"
+              class="geo-spin-slow"
+            />
+
+            <!-- Middle dashed ring -->
+            <circle
+              cx="250"
+              cy="250"
+              r="155"
+              fill="none"
+              stroke="var(--accent-2)"
+              stroke-width="1"
+              stroke-dasharray="4 10"
+              opacity="0.2"
+              class="geo-spin-reverse"
+            />
+
+            <!-- Inner filled circle (subtle) -->
+            <circle
+              cx="250"
+              cy="250"
+              r="108"
+              fill="var(--accent)"
+              opacity="0.04"
+            />
+            <circle
+              cx="250"
+              cy="250"
+              r="108"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="1.5"
+              opacity="0.15"
+            />
+
+            <!-- Central hexagon -->
+            <polygon
+              points="250,172 318,211 318,289 250,328 182,289 182,211"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="1.8"
+              opacity="0.5"
+              class="geo-pulse"
+            />
+
+            <!-- Inner hexagon -->
+            <polygon
+              points="250,202 290,225 290,271 250,294 210,271 210,225"
+              fill="var(--accent)"
+              opacity="0.06"
+            />
+            <polygon
+              points="250,202 290,225 290,271 250,294 210,271 210,225"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="1.2"
+              opacity="0.3"
+            />
+
+            <!-- Center dot -->
+            <circle
+              cx="250"
+              cy="248"
+              r="6"
+              fill="var(--accent)"
+              opacity="0.7"
+              class="geo-pulse"
+            />
+
+            <!-- Cross lines -->
+            <line
+              x1="250"
+              y1="142"
+              x2="250"
+              y2="180"
+              stroke="var(--accent)"
+              stroke-width="1.5"
+              opacity="0.3"
+            />
+            <line
+              x1="250"
+              y1="320"
+              x2="250"
+              y2="358"
+              stroke="var(--accent)"
+              stroke-width="1.5"
+              opacity="0.3"
+            />
+            <line
+              x1="140"
+              y1="248"
+              x2="178"
+              y2="248"
+              stroke="var(--accent)"
+              stroke-width="1.5"
+              opacity="0.3"
+            />
+            <line
+              x1="322"
+              y1="248"
+              x2="360"
+              y2="248"
+              stroke="var(--accent)"
+              stroke-width="1.5"
+              opacity="0.3"
+            />
+
+            <!-- Corner brackets -->
+            <path
+              d="M90,90 L90,130 M90,90 L130,90"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="2"
+              opacity="0.35"
+            />
+            <path
+              d="M410,90 L410,130 M410,90 L370,90"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="2"
+              opacity="0.35"
+            />
+            <path
+              d="M90,410 L90,370 M90,410 L130,410"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="2"
+              opacity="0.35"
+            />
+            <path
+              d="M410,410 L410,370 M410,410 L370,410"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="2"
+              opacity="0.35"
+            />
+
+            <!-- Floating triangles -->
+            <polygon
+              points="250,50 265,76 235,76"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="1.5"
+              opacity="0.3"
+              class="geo-float"
+            />
+            <polygon
+              points="250,450 265,424 235,424"
+              fill="none"
+              stroke="var(--accent)"
+              stroke-width="1.5"
+              opacity="0.3"
+              class="geo-float-delay"
+            />
+
+            <!-- Small accent dots on ring -->
+            <circle
+              cx="250"
+              cy="50"
+              r="3.5"
+              fill="var(--accent)"
+              opacity="0.4"
+              class="geo-spin-slow"
+              style="transform-origin: 250px 250px"
+            />
+            <circle
+              cx="450"
+              cy="250"
+              r="3.5"
+              fill="var(--accent)"
+              opacity="0.4"
+            />
+            <circle
+              cx="50"
+              cy="250"
+              r="3.5"
+              fill="var(--accent)"
+              opacity="0.4"
+            />
+            <circle
+              cx="250"
+              cy="450"
+              r="3.5"
+              fill="var(--accent)"
+              opacity="0.4"
+            />
+
+            <!-- Tech labels -->
+            <text
+              x="250"
+              y="244"
+              text-anchor="middle"
+              font-family="'Syne', sans-serif"
+              font-size="13"
+              font-weight="700"
+              fill="var(--accent)"
+              opacity="0.8"
+            >
+              { Laravel }
+            </text>
+            <text
+              x="250"
+              y="262"
+              text-anchor="middle"
+              font-family="'DM Sans', sans-serif"
+              font-size="10"
+              fill="var(--text-muted)"
+              opacity="0.6"
+            >
+              PHP · MySQL · Blade
+            </text>
+          </svg>
+        </div>
+
         <div class="hero-scroll">
           <span>Scroll</span>
           <i class="fas fa-chevron-down"></i>
@@ -98,6 +337,9 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
     <section id="about" class="section">
       <p class="section-label reveal">Who I Am</p>
       <h2 class="section-title reveal">About Me</h2>
@@ -149,6 +391,9 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         TECH STACK
+    ============================================================ -->
     <section id="stack" class="section">
       <p class="section-label reveal">What I Use</p>
       <h2 class="section-title reveal">Tech Stack</h2>
@@ -233,6 +478,9 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         JOURNEY / TIMELINE
+    ============================================================ -->
     <section id="journey" class="section">
       <p class="section-label reveal">My Path</p>
       <h2 class="section-title reveal">Education & Journey</h2>
@@ -242,15 +490,16 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="timeline-date">2023 — Present</div>
-            <div class="timeline-title">S1 Teknik Informatika</div>
+            <div class="timeline-date">2024 — Present</div>
+            <div class="timeline-title">D4 Teknik Informatika</div>
             <div class="timeline-place">
-              Universitas Airlangga · Surabaya, Indonesia
+              Vokasi Universitas Airlangga · Surabaya, Indonesia
             </div>
             <div class="timeline-desc">
-              Menempuh pendidikan sarjana dengan fokus pada rekayasa perangkat
-              lunak, basis data, dan arsitektur sistem. Aktif mengerjakan proyek
-              berbasis Laravel dan eksplorasi backend engineering.
+              Menempuh pendidikan sarjana terapan dengan fokus pada rekayasa
+              perangkat lunak, basis data, dan arsitektur sistem. Aktif
+              mengerjakan proyek berbasis Laravel dan eksplorasi backend
+              engineering.
             </div>
             <div class="timeline-tags">
               <span class="tag">Algorithms</span>
@@ -307,6 +556,9 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         SERVICES
+    ============================================================ -->
     <section id="services" class="section">
       <p class="section-label reveal">What I Do</p>
       <h2 class="section-title reveal">Services</h2>
@@ -348,6 +600,9 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         PORTFOLIO
+    ============================================================ -->
     <section id="portfolio" class="section">
       <p class="section-label reveal">What I Built</p>
       <h2 class="section-title reveal">Portfolio</h2>
@@ -416,6 +671,9 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         CONTACT
+    ============================================================ -->
     <section id="contact" class="section">
       <p class="section-label reveal">Get In Touch</p>
       <h2 class="section-title reveal">Contact Me</h2>
@@ -469,6 +727,9 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
     <footer>
       <div class="footer-inner">
         <p>
@@ -499,6 +760,7 @@
       </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
   </body>
 </html>
