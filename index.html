@@ -8,7 +8,11 @@
       content="Portfolio Ahmad Mathlaul Falah - Backend & Web Developer"
     />
     <meta name="author" content="Ahmad Mathlaul Falah" />
-    <title>Ahmad Mathlaul Falah | Backend & Web Developer</title>
+    <title>Falah. | Backend Developer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/imgs/favicon.svg" />
+    <link rel="shortcut icon" href="assets/imgs/favicon.svg" />
 
     <!-- Fonts -->
     <link
@@ -27,6 +31,37 @@
   </head>
 
   <body>
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <svg
+          class="loader-geo"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon
+            points="50,10 90,75 10,75"
+            fill="none"
+            stroke="#e8533a"
+            stroke-width="2"
+            stroke-linejoin="round"
+            class="loader-tri"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="30"
+            fill="none"
+            stroke="#e8533a"
+            stroke-width="1.5"
+            stroke-dasharray="6 6"
+            class="loader-ring"
+          />
+          <circle cx="50" cy="50" r="5" fill="#e8533a" class="loader-dot" />
+        </svg>
+        <div class="loader-text">Falah<span>.</span></div>
+      </div>
+    </div>
+
     <!-- Cursor Glow -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -35,9 +70,6 @@
       <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- ============================================================
-         NAVBAR
-    ============================================================ -->
     <nav class="navbar">
       <div class="navbar-inner">
         <a href="#home" class="nav-logo">Falah.</a>
@@ -67,9 +99,6 @@
       </div>
     </nav>
 
-    <!-- ============================================================
-         HERO
-    ============================================================ -->
     <section id="home">
       <div class="hero">
         <div class="hero-content">
@@ -79,8 +108,8 @@
           </div>
 
           <h1 class="reveal delay-1">
-            Hi, I'm <span class="accent">Ahmad</span><br />
-            Mathlaul Falah
+            Hi, I'm Ahmad Mathlaul
+            <span class="accent">Falah</span><br />
           </h1>
 
           <p class="reveal delay-2">
@@ -337,9 +366,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         ABOUT
-    ============================================================ -->
     <section id="about" class="section">
       <p class="section-label reveal">Who I Am</p>
       <h2 class="section-title reveal">About Me</h2>
@@ -391,9 +417,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         TECH STACK
-    ============================================================ -->
     <section id="stack" class="section">
       <p class="section-label reveal">What I Use</p>
       <h2 class="section-title reveal">Tech Stack</h2>
@@ -478,9 +501,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         JOURNEY / TIMELINE
-    ============================================================ -->
     <section id="journey" class="section">
       <p class="section-label reveal">My Path</p>
       <h2 class="section-title reveal">Education & Journey</h2>
@@ -490,7 +510,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="timeline-date">2023 — Present</div>
+            <div class="timeline-date">2024 — Present</div>
             <div class="timeline-title">D4 Teknik Informatika</div>
             <div class="timeline-place">
               Vokasi Universitas Airlangga · Surabaya, Indonesia
@@ -556,9 +576,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         SERVICES
-    ============================================================ -->
     <section id="services" class="section">
       <p class="section-label reveal">What I Do</p>
       <h2 class="section-title reveal">Services</h2>
@@ -600,9 +617,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         PORTFOLIO
-    ============================================================ -->
     <section id="portfolio" class="section">
       <p class="section-label reveal">What I Built</p>
       <h2 class="section-title reveal">Portfolio</h2>
@@ -671,9 +685,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         CONTACT
-    ============================================================ -->
     <section id="contact" class="section">
       <p class="section-label reveal">Get In Touch</p>
       <h2 class="section-title reveal">Contact Me</h2>
@@ -738,9 +749,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         FOOTER
-    ============================================================ -->
     <footer>
       <div class="footer-inner">
         <p>
@@ -771,7 +779,6 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
   </body>
 </html>

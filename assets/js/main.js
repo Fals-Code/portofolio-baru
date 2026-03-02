@@ -1,11 +1,12 @@
-/* =============================================
-   main.js — Portfolio Ahmad Mathlaul Falah
-   ============================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-  // =========================================
-  // Dark Mode
-  // =========================================
+  const loader = document.getElementById("loader");
+
+  window.addEventListener("load", () => {
+    setTimeout(() => loader.classList.add("hidden"), 800);
+  });
+
+  setTimeout(() => loader.classList.add("hidden"), 3000);
+
   const html = document.documentElement;
   const toggle = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");
@@ -29,16 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
       theme === "dark" ? "fas fa-moon theme-icon" : "fas fa-sun theme-icon";
   }
 
-  // GitHub icon is black by default — invert on dark mode
   function fixGithubIcon(theme) {
     document.querySelectorAll('.tech-card img[alt="GitHub"]').forEach((img) => {
       img.style.filter = theme === "dark" ? "invert(1)" : "none";
     });
   }
 
-  // =========================================
-  // Mobile Nav (Hamburger)
-  // =========================================
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
 
@@ -46,14 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.classList.toggle("open");
   });
 
-  // Close nav when a link is clicked
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => navLinks.classList.remove("open"));
   });
 
-  // =========================================
-  // Scroll Reveal
-  // =========================================
   const revealEls = document.querySelectorAll(".reveal");
 
   const revealObserver = new IntersectionObserver(
@@ -69,9 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   revealEls.forEach((el) => revealObserver.observe(el));
 
-  // =========================================
-  // Active Nav Link on Scroll
-  // =========================================
   const sections = document.querySelectorAll("section[id]");
   const navAnchors = document.querySelectorAll(".nav-links a");
 
@@ -91,9 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // =========================================
-  // Back to Top Button
-  // =========================================
   const backToTop = document.getElementById("backToTop");
 
   window.addEventListener(
@@ -108,9 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // =========================================
-  // Cursor Glow (desktop only)
-  // =========================================
   const glow = document.getElementById("cursorGlow");
 
   if (window.matchMedia("(pointer: fine)").matches) {
@@ -122,14 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
     glow.style.display = "none";
   }
 
-  // =========================================
-  // Footer Year
-  // =========================================
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // =========================================
-  // Contact Form — Formspree
-  // =========================================
   const contactForm = document.getElementById("contactForm");
   const submitBtn = document.getElementById("submitBtn");
   const formStatus = document.getElementById("formStatus");
