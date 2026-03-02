@@ -127,236 +127,40 @@
             </a>
           </div>
         </div>
-
-        <!-- Geometric Visual -->
         <div class="hero-visual reveal delay-2">
-          <svg
-            class="geo-svg"
-            viewBox="0 0 500 500"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <!-- Outer rotating ring -->
-            <circle
-              cx="250"
-              cy="250"
-              r="200"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1"
-              stroke-dasharray="8 14"
-              opacity="0.25"
-              class="geo-spin-slow"
-            />
+          <div class="orbit-container">
+            <div class="orbit-center">
+              <img
+                src="https://skillicons.dev/icons?i=laravel"
+                alt="Laravel"
+                class="center-icon"
+              />
+              <div class="center-glow"></div>
+            </div>
 
-            <!-- Middle dashed ring -->
-            <circle
-              cx="250"
-              cy="250"
-              r="155"
-              fill="none"
-              stroke="var(--accent-2)"
-              stroke-width="1"
-              stroke-dasharray="4 10"
-              opacity="0.2"
-              class="geo-spin-reverse"
-            />
+            <div class="orbit-ring ring-1">
+              <div class="orbit-icon">
+                <img src="https://skillicons.dev/icons?i=php" alt="PHP" />
+              </div>
+              <div class="orbit-icon">
+                <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL" />
+              </div>
+            </div>
 
-            <!-- Inner filled circle (subtle) -->
-            <circle
-              cx="250"
-              cy="250"
-              r="108"
-              fill="var(--accent)"
-              opacity="0.04"
-            />
-            <circle
-              cx="250"
-              cy="250"
-              r="108"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.15"
-            />
+            <div class="orbit-ring ring-2">
+              <div class="orbit-icon">
+                <img src="https://skillicons.dev/icons?i=js" alt="JS" />
+              </div>
+              <div class="orbit-icon">
+                <img src="https://skillicons.dev/icons?i=github" alt="GitHub" />
+              </div>
+            </div>
 
-            <!-- Central hexagon -->
-            <polygon
-              points="250,172 318,211 318,289 250,328 182,289 182,211"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.8"
-              opacity="0.5"
-              class="geo-pulse"
-            />
-
-            <!-- Inner hexagon -->
-            <polygon
-              points="250,202 290,225 290,271 250,294 210,271 210,225"
-              fill="var(--accent)"
-              opacity="0.06"
-            />
-            <polygon
-              points="250,202 290,225 290,271 250,294 210,271 210,225"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.2"
-              opacity="0.3"
-            />
-
-            <!-- Center dot -->
-            <circle
-              cx="250"
-              cy="248"
-              r="6"
-              fill="var(--accent)"
-              opacity="0.7"
-              class="geo-pulse"
-            />
-
-            <!-- Cross lines -->
-            <line
-              x1="250"
-              y1="142"
-              x2="250"
-              y2="180"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-            />
-            <line
-              x1="250"
-              y1="320"
-              x2="250"
-              y2="358"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-            />
-            <line
-              x1="140"
-              y1="248"
-              x2="178"
-              y2="248"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-            />
-            <line
-              x1="322"
-              y1="248"
-              x2="360"
-              y2="248"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-            />
-
-            <!-- Corner brackets -->
-            <path
-              d="M90,90 L90,130 M90,90 L130,90"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="2"
-              opacity="0.35"
-            />
-            <path
-              d="M410,90 L410,130 M410,90 L370,90"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="2"
-              opacity="0.35"
-            />
-            <path
-              d="M90,410 L90,370 M90,410 L130,410"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="2"
-              opacity="0.35"
-            />
-            <path
-              d="M410,410 L410,370 M410,410 L370,410"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="2"
-              opacity="0.35"
-            />
-
-            <!-- Floating triangles -->
-            <polygon
-              points="250,50 265,76 235,76"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-              class="geo-float"
-            />
-            <polygon
-              points="250,450 265,424 235,424"
-              fill="none"
-              stroke="var(--accent)"
-              stroke-width="1.5"
-              opacity="0.3"
-              class="geo-float-delay"
-            />
-
-            <!-- Small accent dots on ring -->
-            <circle
-              cx="250"
-              cy="50"
-              r="3.5"
-              fill="var(--accent)"
-              opacity="0.4"
-              class="geo-spin-slow"
-              style="transform-origin: 250px 250px"
-            />
-            <circle
-              cx="450"
-              cy="250"
-              r="3.5"
-              fill="var(--accent)"
-              opacity="0.4"
-            />
-            <circle
-              cx="50"
-              cy="250"
-              r="3.5"
-              fill="var(--accent)"
-              opacity="0.4"
-            />
-            <circle
-              cx="250"
-              cy="450"
-              r="3.5"
-              fill="var(--accent)"
-              opacity="0.4"
-            />
-
-            <!-- Tech labels -->
-            <text
-              x="250"
-              y="244"
-              text-anchor="middle"
-              font-family="'Syne', sans-serif"
-              font-size="13"
-              font-weight="700"
-              fill="var(--accent)"
-              opacity="0.8"
-            >
-              { Laravel }
-            </text>
-            <text
-              x="250"
-              y="262"
-              text-anchor="middle"
-              font-family="'DM Sans', sans-serif"
-              font-size="10"
-              fill="var(--text-muted)"
-              opacity="0.6"
-            >
-              PHP · MySQL · Blade
-            </text>
-          </svg>
+            <div class="particle p1"></div>
+            <div class="particle p2"></div>
+            <div class="particle p3"></div>
+            <div class="particle p4"></div>
+          </div>
         </div>
 
         <div class="hero-scroll">
