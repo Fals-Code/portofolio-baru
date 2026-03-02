@@ -1,17 +1,66 @@
+async function fetchGitHubStats() {
+  const username = "Fals-Code";
+  try {
+    const userRes = await fetch(`https://api.github.com/users/Fals-Code`);
+    if (!userRes.ok) throw new Error("User tidak ditemukan");
+    const userData = await userRes.json();
+    const repoRes = await fetch(
+      `https://api.github.com/users/Fals-Code/repos?per_page=100`,
+    );
+    const repos = await repoRes.json();
+    const totalStars = repos.reduce(
+      (sum, repo) => sum + repo.stargazers_count,
+      0,
+    );
+
+    animateValue(
+      document.getElementById("repo-count"),
+      0,
+      userData.public_repos,
+      2000,
+    );
+    animateValue(document.getElementById("star-count"), 0, totalStars, 2000);
+    animateValue(
+      document.getElementById("follower-count"),
+      0,
+      userData.followers,
+      2000,
+    );
+  } catch (error) {
+    console.error("GitHub API Error:", error);
+    if (document.getElementById("repo-count"))
+      document.getElementById("repo-count").innerText = "-";
+  }
+}
+
+function animateValue(obj, start, end, duration) {
+  if (!obj) return;
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerHTML = Math.floor(progress * (end - start) + start) + "+";
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
+document.addEventListener("DOMContentLoaded", fetchGitHubStats);
+
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
-
   window.addEventListener("load", () => {
     setTimeout(() => loader.classList.add("hidden"), 800);
   });
-
   setTimeout(() => loader.classList.add("hidden"), 3000);
 
   const html = document.documentElement;
   const toggle = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");
-
   const savedTheme = localStorage.getItem("theme") || "light";
+
   html.setAttribute("data-theme", savedTheme);
   applyThemeIcon(savedTheme);
   fixGithubIcon(savedTheme);
@@ -38,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
-
   hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
   });
@@ -48,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const revealEls = document.querySelectorAll(".reveal");
-
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -59,30 +106,25 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { threshold: 0.1 },
   );
-
   revealEls.forEach((el) => revealObserver.observe(el));
 
   const sections = document.querySelectorAll("section[id]");
   const navAnchors = document.querySelectorAll(".nav-links a");
-
   window.addEventListener("scroll", highlightNavLink, { passive: true });
 
   function highlightNavLink() {
     let current = "";
-
     sections.forEach((section) => {
       if (window.scrollY >= section.offsetTop - 100) {
         current = section.getAttribute("id");
       }
     });
-
     navAnchors.forEach((a) => {
       a.classList.toggle("active", a.getAttribute("href") === `#${current}`);
     });
   }
 
   const backToTop = document.getElementById("backToTop");
-
   window.addEventListener(
     "scroll",
     () => {
@@ -96,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const glow = document.getElementById("cursorGlow");
-
   if (window.matchMedia("(pointer: fine)").matches) {
     document.addEventListener("mousemove", (e) => {
       glow.style.left = `${e.clientX}px`;
@@ -111,13 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm");
   const submitBtn = document.getElementById("submitBtn");
   const formStatus = document.getElementById("formStatus");
-
   const FORMSPREE_URL = "https://formspree.io/f/xbdaeavv";
 
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    // Loading state
     submitBtn.disabled = true;
     submitBtn.innerHTML =
       '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
@@ -130,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
         body: new FormData(contactForm),
         headers: { Accept: "application/json" },
       });
-
       if (res.ok) {
         formStatus.className = "form-status success";
         formStatus.textContent =
