@@ -1,35 +1,24 @@
 async function fetchGitHubStats() {
   const username = "Fals-Code";
   try {
-    const userRes = await fetch(`https://api.github.com/users/Fals-Code`);
-    if (!userRes.ok) throw new Error("User tidak ditemukan");
+    const userRes = await fetch(`https://api.github.com/users/${username}`);
+    if (!userRes.ok) throw new Error("User not found");
     const userData = await userRes.json();
-    const repoRes = await fetch(
-      `https://api.github.com/users/Fals-Code/repos?per_page=100`,
-    );
+    
+    const repoRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
     const repos = await repoRes.json();
-    const totalStars = repos.reduce(
-      (sum, repo) => sum + repo.stargazers_count,
-      0,
-    );
+    const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
 
-    animateValue(
-      document.getElementById("repo-count"),
-      0,
-      userData.public_repos,
-      2000,
-    );
-    animateValue(document.getElementById("star-count"), 0, totalStars, 2000);
-    animateValue(
-      document.getElementById("follower-count"),
-      0,
-      userData.followers,
-      2000,
-    );
+    const repoEl = document.getElementById("repo-count");
+    const starEl = document.getElementById("star-count");
+    const followerEl = document.getElementById("follower-count");
+
+    if (repoEl) animateValue(repoEl, 0, userData.public_repos, 2000);
+    if (starEl) animateValue(starEl, 0, totalStars, 2000);
+    if (followerEl) animateValue(followerEl, 0, userData.followers, 2000);
   } catch (error) {
     console.error("GitHub API Error:", error);
-    if (document.getElementById("repo-count"))
-      document.getElementById("repo-count").innerText = "-";
+    if (document.getElementById("repo-count")) document.getElementById("repo-count").innerText = "-";
   }
 }
 
@@ -39,7 +28,7 @@ function animateValue(obj, start, end, duration) {
   const step = (timestamp) => {
     if (!startTimestamp) startTimestamp = timestamp;
     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-    obj.innerHTML = Math.floor(progress * (end - start) + start) + "+";
+    obj.innerHTML = Math.floor(progress * (end - start) + start) + (end > 0 ? "+" : "");
     if (progress < 1) {
       window.requestAnimationFrame(step);
     }
@@ -47,147 +36,287 @@ function animateValue(obj, start, end, duration) {
   window.requestAnimationFrame(step);
 }
 
-document.addEventListener("DOMContentLoaded", fetchGitHubStats);
-
 document.addEventListener("DOMContentLoaded", () => {
-  const loader = document.getElementById("loader");
-  window.addEventListener("load", () => {
-    setTimeout(() => loader.classList.add("hidden"), 800);
-  });
-  setTimeout(() => loader.classList.add("hidden"), 3000);
+  // --- Noise Overlay ---
+  const noise = document.createElement("div");
+  noise.className = "noise-overlay";
+  document.body.appendChild(noise);
 
-  const html = document.documentElement;
-  const toggle = document.getElementById("themeToggle");
-  const themeIcon = document.getElementById("themeIcon");
-  const savedTheme = localStorage.getItem("theme") || "light";
+  // --- GitHub Stats ---
+  fetchGitHubStats();
 
-  html.setAttribute("data-theme", savedTheme);
-  applyThemeIcon(savedTheme);
-  fixGithubIcon(savedTheme);
+  // --- Theme Transition Overlay ---
+  const overlay = document.createElement("div");
+  overlay.className = "theme-overlay";
+  document.body.appendChild(overlay);
 
-  toggle.addEventListener("click", () => {
-    const current = html.getAttribute("data-theme");
-    const next = current === "light" ? "dark" : "light";
-    html.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    applyThemeIcon(next);
-    fixGithubIcon(next);
-  });
+  // --- Audio Player Injection ---
+  const audioHTML = `
+    <div class="audio-player" id="audioPlayer">
+        <div class="audio-visualizer">
+            <div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div>
+        </div>
+        <button class="audio-btn" id="audioToggle" title="Play/Pause Music">
+            <i class="fas fa-play"></i>
+        </button>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', audioHTML);
 
-  function applyThemeIcon(theme) {
-    themeIcon.className =
-      theme === "dark" ? "fas fa-moon theme-icon" : "fas fa-sun theme-icon";
+  const music = document.getElementById("bgMusic");
+  const audioToggleToken = document.getElementById("audioToggle");
+  const audioPlayerToken = document.getElementById("audioPlayer");
+  
+  if (audioToggleToken && music) {
+      // Restore music state
+      const isPlaying = localStorage.getItem("musicPlaying") === "true";
+      const savedTime = localStorage.getItem("musicTime") || 0;
+      music.currentTime = parseFloat(savedTime);
+      
+      if (isPlaying) {
+          music.play().catch(() => { /* Autoplay blocked */ });
+          audioToggleToken.innerHTML = '<i class="fas fa-pause"></i>';
+          audioPlayerToken.classList.add("playing");
+      }
+
+      audioToggleToken.addEventListener("click", () => {
+          if (music.paused) {
+              music.play();
+              audioToggleToken.innerHTML = '<i class="fas fa-pause"></i>';
+              audioPlayerToken.classList.add("playing");
+              localStorage.setItem("musicPlaying", "true");
+          } else {
+              music.pause();
+              audioToggleToken.innerHTML = '<i class="fas fa-play"></i>';
+              audioPlayerToken.classList.remove("playing");
+              localStorage.setItem("musicPlaying", "false");
+          }
+      });
+
+      // Save time periodically
+      setInterval(() => {
+          if (!music.paused) localStorage.setItem("musicTime", music.currentTime);
+      }, 2000);
   }
 
-  function fixGithubIcon(theme) {
-    document.querySelectorAll('.tech-card img[alt="GitHub"]').forEach((img) => {
-      img.style.filter = theme === "dark" ? "invert(1)" : "none";
-    });
+  // --- Terminal Intro / Interactive Shell ---
+  const terminalOverlay = document.getElementById("terminal-intro");
+  const terminalBody = document.getElementById("terminal-body");
+  
+  const introLines = [
+    { text: "Initializing portfolio session...", type: "info" },
+    { text: "User: Falah_Visitor", type: "success" },
+    { text: "Access level: AUTHORIZED", type: "success" },
+    { text: "Type 'help' to see commands or 'game' to play.", type: "dim" }
+  ];
+
+  async function runTerminal() {
+    if (!terminalOverlay) return;
+    if (sessionStorage.getItem("visited")) { terminalOverlay.remove(); return; }
+    for (let line of introLines) { await typeLine(line.text, line.type); }
+    showInput();
   }
 
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-  });
+  async function typeLine(text, type) {
+    const lineEl = document.createElement("div");
+    lineEl.className = `terminal-line text-${type}`;
+    terminalBody.appendChild(lineEl);
+    for (let char of text) { lineEl.textContent += char; await new Promise(r => setTimeout(r, 20)); }
+    await new Promise(r => setTimeout(r, 300));
+  }
 
-  navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => navLinks.classList.remove("open"));
-  });
+  function showInput() {
+    const inputLine = document.createElement("div");
+    inputLine.className = "terminal-input-line";
+    inputLine.innerHTML = `<span class="terminal-prompt">falah@portfolio:~$</span><input type="text" class="terminal-input" autofocus>`;
+    terminalBody.appendChild(inputLine);
+    const input = inputLine.querySelector("input");
+    if (input) input.focus();
 
-  const revealEls = document.querySelectorAll(".reveal");
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+    input.addEventListener("keydown", async (e) => {
+        if (e.key === "Enter") {
+            const val = input.value.trim();
+            const args = val.toLowerCase().split(" ");
+            const cmd = args[0];
+            input.disabled = true;
+            
+            const isSubDir = window.location.pathname.includes("/projects/");
+            const prefix = isSubDir ? "../" : "";
+
+            if (cmd === "game") {
+                await typeLine("Redirecting to system_game.exe...", "success");
+                window.location.href = prefix + "game.html";
+            } else if (cmd === "sudo" && args[1] === "guestbook") {
+                const msg = val.substring(15).trim();
+                if (msg) {
+                    await typeLine(`Saving message: "${msg}"...`, "info");
+                    setTimeout(async () => {
+                        await typeLine("Message logged in system core. Thank you!", "success");
+                        inputLine.remove(); showInput();
+                    }, 1000);
+                } else {
+                    await typeLine("Usage: sudo guestbook <your message>", "accent");
+                    inputLine.remove(); showInput();
+                }
+            } else if (["exit", "about", "projects", "contact", "home", "blog"].includes(cmd)) {
+                await typeLine(`Opening ${cmd} page...`, "info");
+                sessionStorage.setItem("visited", "true");
+                if (cmd === "exit") { 
+                    terminalOverlay.classList.add("hidden"); 
+                    setTimeout(() => terminalOverlay.remove(), 800); 
+                } else {
+                    const target = (cmd === "home") ? "index.html" : `${cmd}.html`;
+                    window.location.href = prefix + target;
+                }
+            } else if (cmd === "help") {
+                await typeLine("Available: game, about, projects, blog, contact, exit, clear, sudo guestbook", "dim");
+                inputLine.remove(); showInput();
+            } else if (cmd === "clear") {
+                terminalBody.innerHTML = ""; showInput();
+            } else {
+                await typeLine(`Command not found: ${cmd}`, "accent");
+                inputLine.remove(); showInput();
+            }
         }
-      });
-    },
-    { threshold: 0.1 },
-  );
-  revealEls.forEach((el) => revealObserver.observe(el));
-
-  const sections = document.querySelectorAll("section[id]");
-  const navAnchors = document.querySelectorAll(".nav-links a");
-  window.addEventListener("scroll", highlightNavLink, { passive: true });
-
-  function highlightNavLink() {
-    let current = "";
-    sections.forEach((section) => {
-      if (window.scrollY >= section.offsetTop - 100) {
-        current = section.getAttribute("id");
-      }
     });
-    navAnchors.forEach((a) => {
-      a.classList.toggle("active", a.getAttribute("href") === `#${current}`);
+
+  }
+
+  runTerminal();
+
+  // --- Smooth Theme Transition ---
+  async function toggleTheme(nextTheme, x = window.innerWidth / 2, y = window.innerHeight / 2) {
+    if (overlay.classList.contains('active')) return;
+    
+    overlay.style.left = `${x}px`;
+    overlay.style.top = `${y}px`;
+    overlay.classList.add("active");
+    
+    await new Promise(r => setTimeout(r, 400));
+    
+    document.documentElement.setAttribute("data-theme", nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    
+    if (themeIconNode) {
+        themeIconNode.className = nextTheme === "dark" ? "fas fa-moon theme-icon" : "fas fa-sun theme-icon";
+    }
+    fixGithubIconLinks(nextTheme);
+
+    await new Promise(r => setTimeout(r, 400));
+    overlay.classList.remove("active");
+  }
+
+  // --- Theme Toggle Button ---
+  const htmlElement = document.documentElement;
+  const themeToggleNode = document.getElementById("themeToggle");
+  const themeIconNode = document.getElementById("themeIcon");
+  const initialTheme = localStorage.getItem("theme") || "light";
+
+  htmlElement.setAttribute("data-theme", initialTheme);
+  if (themeIconNode) themeIconNode.className = initialTheme === "dark" ? "fas fa-moon theme-icon" : "fas fa-sun theme-icon";
+
+  if (themeToggleNode) {
+      themeToggleNode.addEventListener("click", (e) => {
+        const current = htmlElement.getAttribute("data-theme");
+        const next = current === "light" ? "dark" : "light";
+        toggleTheme(next, e.clientX, e.clientY);
+      });
+  }
+
+  function fixGithubIconLinks(theme) {
+    document.querySelectorAll('.tech-card img[alt="GitHub"]').forEach((img) => {
+      img.style.filter = (theme === "dark" || theme === "matrix") ? "invert(1)" : "none";
     });
   }
 
-  const backToTop = document.getElementById("backToTop");
-  window.addEventListener(
-    "scroll",
-    () => {
-      backToTop.classList.toggle("show", window.scrollY > 400);
-    },
-    { passive: true },
-  );
+  // --- Konami Code (Matrix Mode) ---
+  const konamiKeyList = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+  let konamiCurrentIndex = 0;
 
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  const glow = document.getElementById("cursorGlow");
-  if (window.matchMedia("(pointer: fine)").matches) {
-    document.addEventListener("mousemove", (e) => {
-      glow.style.left = `${e.clientX}px`;
-      glow.style.top = `${e.clientY}px`;
-    });
-  } else {
-    glow.style.display = "none";
-  }
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  const contactForm = document.getElementById("contactForm");
-  const submitBtn = document.getElementById("submitBtn");
-  const formStatus = document.getElementById("formStatus");
-  const FORMSPREE_URL = "https://formspree.io/f/xbdaeavv";
-
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.innerHTML =
-      '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
-    formStatus.className = "form-status";
-    formStatus.textContent = "";
-
-    try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: "POST",
-        body: new FormData(contactForm),
-        headers: { Accept: "application/json" },
-      });
-      if (res.ok) {
-        formStatus.className = "form-status success";
-        formStatus.textContent =
-          "\u2705 Pesan terkirim! Saya akan segera membalasnya.";
-        contactForm.reset();
-      } else {
-        throw new Error("Server error");
-      }
-    } catch {
-      formStatus.className = "form-status error";
-      formStatus.textContent =
-        "\u274c Gagal mengirim. Silakan hubungi via email langsung.";
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML =
-        '<i class="fas fa-paper-plane"></i> <span>Send Message</span>';
-      setTimeout(() => {
-        formStatus.textContent = "";
-        formStatus.className = "form-status";
-      }, 6000);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === konamiKeyList[konamiCurrentIndex]) {
+        konamiCurrentIndex++;
+        if (konamiCurrentIndex === konamiKeyList.length) {
+            toggleTheme("matrix");
+            konamiCurrentIndex = 0;
+        }
+    } else {
+        konamiCurrentIndex = 0;
     }
   });
+
+  // --- Core Functionality ---
+  const pageLoader = document.getElementById("loader");
+  if (pageLoader) {
+      window.addEventListener("load", () => setTimeout(() => pageLoader.classList.add("hidden"), 800));
+      setTimeout(() => pageLoader.classList.add("hidden"), 3000);
+  }
+
+  const hamburgerMenu = document.getElementById("hamburger");
+  const navbarLinks = document.getElementById("navLinks");
+  if (hamburgerMenu && navbarLinks) {
+      hamburgerMenu.addEventListener("click", () => { navbarLinks.classList.toggle("open"); hamburgerMenu.classList.toggle("active"); });
+      navbarLinks.querySelectorAll("a").forEach(link => { link.addEventListener("click", () => { navbarLinks.classList.remove("open"); hamburgerMenu.classList.remove("active"); }); });
+  }
+
+  // --- Page Link Active State ---
+  const currentFileName = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".nav-links a").forEach(link => {
+      const linkHref = link.getAttribute("href");
+      if (!linkHref) return;
+      const linkFile = linkHref.split("/").pop();
+      
+      if (currentFileName === linkFile || (currentFileName === "" && linkFile === "index.html")) {
+          link.classList.add("active");
+      } else {
+          link.classList.remove("active");
+      }
+      
+      // Special case for sub-projects
+      if (window.location.pathname.includes("/projects/") && linkFile === "projects.html") {
+          link.classList.add("active");
+      }
+  });
+
+  const revealElements = document.querySelectorAll(".reveal");
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { 
+        if (entry.isIntersecting) { 
+            entry.target.classList.add("visible"); 
+            if (entry.target.classList.contains('skill-node')) entry.target.classList.add('visible'); 
+        } 
+    });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  const backToTopBtn = document.getElementById("backToTop");
+  if (backToTopBtn) {
+    window.addEventListener("scroll", () => backToTopBtn.classList.toggle("show", window.scrollY > 400));
+    backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
+
+  // --- Cursor Glow (Optimized) ---
+  const glow = document.getElementById("cursorGlow");
+  if (glow && window.matchMedia("(pointer: fine)").matches) {
+      document.addEventListener("mousemove", (e) => {
+          glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      });
+  } else if (glow) {
+      glow.style.display = "none";
+  }
+
+  // --- Dynamic Year ---
+  const yearSpan = document.getElementById("year");
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+  // --- Service Worker ---
+  if ('serviceWorker' in navigator) {
+      const prefix = window.location.pathname.includes("/projects/") ? "../" : "";
+      navigator.serviceWorker.register(prefix + 'sw.js').catch(err => console.log('SW failed', err));
+  }
 });
+
+

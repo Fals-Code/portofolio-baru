@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Laravel Snake | Falah.</title>
+    <link rel="icon" type="image/svg+xml" href="assets/imgs/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <style>
+        .game-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 160px);
+            padding: 2rem;
+        }
+        .game-container {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(10px);
+        }
+        #gameCanvas {
+            background: #000;
+            display: block;
+            border-radius: 12px;
+            max-width: 100%;
+        }
+        .score-board {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .mobile-controls {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 2rem;
+        }
+        .m-btn {
+            width: 55px;
+            height: 55px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        @media (max-width: 600px) {
+            .mobile-controls { display: grid; }
+            #gameCanvas { width: 300px; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">Falah<span>.</span></div>
+        </div>
+    </div>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">Falah.</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <i class="fas fa-sun theme-icon" id="themeIcon"></i>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-navbar">
+        <div class="game-wrapper">
+            <div class="game-header reveal" style="text-align: center; margin-bottom: 3rem;">
+                <p class="section-label">Mini Game</p>
+                <h1 class="section-title">Laravel <span class="accent">Snake</span></h1>
+                <p class="text-dim">Eat the Laravel icons to score. Use arrow keys or on-screen buttons.</p>
+            </div>
+
+            <div class="game-container reveal delay-1">
+                <div class="score-board">Score: <span id="score">0</span></div>
+                <canvas id="gameCanvas" width="400" height="400"></canvas>
+            </div>
+
+            <div class="mobile-controls reveal delay-2">
+                <div></div><button class="m-btn" id="m-up"><i class="fas fa-chevron-up"></i></button><div></div>
+                <button class="m-btn" id="m-left"><i class="fas fa-chevron-left"></i></button>
+                <button class="m-btn" id="m-down"><i class="fas fa-chevron-down"></i></button>
+                <button class="m-btn" id="m-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="controls reveal delay-3" style="display: flex; gap: 1rem; margin-top: 3rem;">
+                <button id="resetBtn" class="btn btn-outline"><i class="fas fa-redo"></i> Reset</button>
+                <a href="index.html" class="btn btn-primary">Back Home</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p>© <span id="year"></span> Ahmad Mathlaul Falah. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Fals-Code" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com/falahh.am" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:ahmadmathlaulfalah14@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Elements -->
+    <div class="floating-cta">
+        <a href="https://wa.me/6282137609530" target="_blank" class="cta-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:ahmadmathlaulfalah14@gmail.com" class="cta-btn"><i class="fas fa-envelope"></i></a>
+    </div>
+    
+    <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/game.js"></script>
+</body>
+</html>

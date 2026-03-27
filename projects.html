@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio Ahmad Mathlaul Falah - Projects" />
+    <meta name="author" content="Ahmad Mathlaul Falah" />
+    <title>Projects | Falah.</title>
+    <link rel="icon" type="image/svg+xml" href="assets/imgs/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">Falah<span>.</span></div>
+        </div>
+    </div>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">Falah.</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html" class="active">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <i class="fas fa-sun theme-icon" id="themeIcon"></i>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-navbar">
+        <section id="portfolio" class="section">
+            <p class="section-label reveal">What I Built</p>
+            <h2 class="section-title reveal">Portfolio</h2>
+            <div class="section-divider reveal"></div>
+            <div class="bento-grid">
+                <!-- Large Item: RSHP -->
+                <div class="bento-item bento-wide reveal">
+                    <p class="section-label">Featured Project</p>
+                    <h3>RSHP – Hospital Info System</h3>
+                    <p class="text-dim">Digitalizing patient registration and doctor scheduling with real-time integration.</p>
+                    <div class="timeline-tags" style="margin-top: 1rem;">
+                        <span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Eloquent</span>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <a href="projects/rshp.html" class="btn btn-primary btn-sm">Case Study</a>
+                        <a href="https://github.com/Fals-Code/Proyek_RSHPV1" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Wide Item: Warehouse -->
+                <div class="bento-item reveal delay-1">
+                    <p class="section-label">Academic</p>
+                    <h3>Warehouse Inventory</h3>
+                    <p class="text-dim">Automated stock management system for warehouse operations.</p>
+                    <div class="timeline-tags" style="margin-top: 1rem;">
+                        <span class="tag">Laravel</span><span class="tag">MySQL</span>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="projects/warehouse.html" class="portfolio-link">Study <i class="fas fa-eye"></i></a>
+                        <a href="https://github.com/Fals-Code/Proyek_PBDV1" target="_blank" class="portfolio-link">Code <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Tall Item: Book Collection -->
+                <div class="bento-item bento-tall reveal delay-2">
+                    <p class="section-label">Experimental</p>
+                    <h3>Book Collection</h3>
+                    <p class="text-dim">Deep exploration of Laravel ecosystem for personal library management.</p>
+                    <div class="timeline-tags" style="margin-top: 1rem;">
+                        <span class="tag">Laravel</span><span class="tag">WIP</span>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="https://github.com/Fals-Code/Framework_koleksi_buku" target="_blank" class="portfolio-link">GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Regular Item: Status -->
+                <div class="bento-item reveal delay-3">
+                    <p class="section-label">Status</p>
+                    <h3 style="margin-top: 5px;">Currently Active</h3>
+                    <p class="text-dim">Exploring Backend Architecture & Microservices.</p>
+                    <span class="tag" style="margin-top: 1.5rem;">Available for work</span>
+                </div>
+            </div>
+
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p>© 2026 Ahmad Mathlaul Falah. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Fals-Code" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com/falahh.am" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:ahmadmathlaulfalah14@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Elements -->
+    <div class="floating-cta">
+        <a href="https://wa.me/6282137609530" target="_blank" class="cta-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:ahmadmathlaulfalah14@gmail.com" class="cta-btn"><i class="fas fa-envelope"></i></a>
+    </div>
+    
+    <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

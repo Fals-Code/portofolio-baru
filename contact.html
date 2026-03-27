@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Contact Ahmad Mathlaul Falah - Backend & Web Developer" />
+    <meta name="author" content="Ahmad Mathlaul Falah" />
+    <title>Contact | Falah.</title>
+    <link rel="icon" type="image/svg+xml" href="assets/imgs/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">Falah<span>.</span></div>
+        </div>
+    </div>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">Falah.</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <i class="fas fa-sun theme-icon" id="themeIcon"></i>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-navbar">
+        <section id="contact" class="section">
+            <p class="section-label reveal">Get In Touch</p>
+            <h2 class="section-title reveal">Contact Me</h2>
+            <div class="section-divider reveal"></div>
+            <div class="contact-wrap">
+                <div class="contact-info reveal">
+                    <h3>Let's talk about tech.</h3>
+                    <p>Punya pertanyaan seputar proyek Laravel saya, mau diskusi soal tugas kuliah, atau sekadar ingin berjejaring? Pintu saya selalu terbuka.</p>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>ahmadmathlaulfalah14@gmail.com</span></div>
+                    <div class="contact-item"><i class="fab fa-instagram"></i><span>@falahh.am</span></div>
+                    <div class="contact-item"><i class="fab fa-github"></i><span>github.com/Fals-Code</span></div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Gresik — Surabaya, Indonesia</span></div>
+                </div>
+                <form class="contact-form reveal delay-2" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group"><input type="text" name="name" placeholder="Nama Anda" required /></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Email Anda" required /></div>
+                    </div>
+                    <div class="form-group"><input type="text" name="subject" placeholder="Subjek Pesan" /></div>
+                    <div class="form-group"><textarea name="message" placeholder="Ceritakan apa yang bisa saya bantu atau sekadar menyapa..." required></textarea></div>
+                    <div class="form-status" id="formStatus"></div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fas fa-paper-plane"></i><span>Kirim Pesan</span></button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p>© 2026 Ahmad Mathlaul Falah. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Fals-Code" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com/falahh.am" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:ahmadmathlaulfalah14@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Elements -->
+    <div class="floating-cta">
+        <a href="https://wa.me/6282137609530" target="_blank" class="cta-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:ahmadmathlaulfalah14@gmail.com" class="cta-btn"><i class="fas fa-envelope"></i></a>
+    </div>
+    
+    <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

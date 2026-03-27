@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog | Falah.</title>
+    <link rel="icon" type="image/svg+xml" href="assets/imgs/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#e8533a" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">Falah<span>.</span></div>
+        </div>
+    </div>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-logo">Falah.</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Portfolio</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <i class="fas fa-sun theme-icon" id="themeIcon"></i>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-navbar">
+        <header class="section" style="text-align: center; padding-top: 4rem;">
+            <p class="section-label reveal">Writing & Insights</p>
+            <h1 class="section-title reveal">My Technical Blog</h1>
+            <div class="section-divider reveal"></div>
+        </header>
+
+        <section class="section">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <!-- Article 1 -->
+                <article class="blog-card reveal">
+                    <p class="text-dim">March 27, 2026 • 5 min read</p>
+                    <h2 style="margin: 10px 0; color: var(--accent);">Laravel Performance Optimization with Eloquent</h2>
+                    <p class="text-dim" style="margin-bottom: 20px;">Menjelajahi teknik Advance Eager Loading dan Caching untuk mempercepat query database pada sistem informasi skala besar.</p>
+                    <a href="#" class="btn btn-outline btn-sm">Read More</a>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card reveal delay-1">
+                    <p class="text-dim">March 20, 2026 • 8 min read</p>
+                    <h2 style="margin: 10px 0; color: var(--accent);">Architecting Robust API with Laravel Middleware</h2>
+                    <p class="text-dim" style="margin-bottom: 20px;">Bagaimana cara mendesain sistem otentikasi dan rate limiting yang aman menggunakan Middleware kustom.</p>
+                    <a href="#" class="btn btn-outline btn-sm">Read More</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p>© 2026 Ahmad Mathlaul Falah. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Fals-Code" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com/falahh.am" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:ahmadmathlaulfalah14@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Elements -->
+    <div class="floating-cta">
+        <a href="https://wa.me/6282137609530" target="_blank" class="cta-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:ahmadmathlaulfalah14@gmail.com" class="cta-btn"><i class="fas fa-envelope"></i></a>
+    </div>
+    
+    <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

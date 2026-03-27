@@ -1,0 +1,20 @@
+{
+  "name": "Falah Portfolio",
+  "short_name": "Falah.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#e8533a",
+  "icons": [
+    {
+      "src": "assets/imgs/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/imgs/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
