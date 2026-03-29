@@ -312,6 +312,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearSpan = document.getElementById("year");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
+  // --- Formspree AJAX Handler ---
+  const contactForm = document.getElementById("contactForm");
+  const formStatus = document.getElementById("formStatus");
+  if (contactForm && formStatus) {
+      contactForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = document.getElementById("submitBtn");
+          const originalText = btn.innerHTML;
+          btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i><span>Mengirim...</span>";
+          btn.disabled = true;
+
+          const data = new FormData(contactForm);
+          try {
+              const res = await fetch(contactForm.action, {
+                  method: contactForm.method,
+                  body: data,
+                  headers: { 'Accept': 'application/json' }
+              });
+              if (res.ok) {
+                  formStatus.innerHTML = "<div style='color: var(--green); margin-top: 1rem;'>Pesan berhasil dikirim!</div>";
+                  contactForm.reset();
+              } else {
+                  formStatus.innerHTML = "<div style='color: var(--accent); margin-top: 1rem;'>Gagal mengirim pesan. Silakan coba lagi.</div>";
+              }
+          } catch (error) {
+              formStatus.innerHTML = "<div style='color: var(--accent); margin-top: 1rem;'>Terjadi kesalahan jaringan.</div>";
+          }
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+      });
+  }
+
   // --- Service Worker ---
   if ('serviceWorker' in navigator) {
       const prefix = window.location.pathname.includes("/projects/") ? "../" : "";
