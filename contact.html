@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Contact Ahmad Mathlaul Falah - Backend & Web Developer" />
+    <meta name="description" content="Contact Ahmad Mathlaul Falah - Backend Developer" />
     <meta name="author" content="Ahmad Mathlaul Falah" />
     <title>Contact | Falah.</title>
     <link rel="icon" type="image/svg+xml" href="assets/imgs/favicon.svg" />
@@ -18,7 +18,6 @@
             <div class="loader-text">Falah<span>.</span></div>
         </div>
     </div>
-
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <nav class="navbar">
@@ -28,7 +27,6 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Portfolio</a></li>
-                <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
             <div class="nav-right">
@@ -42,30 +40,97 @@
     </nav>
 
     <main class="pt-navbar">
-        <section id="contact" class="section">
-            <p class="section-label reveal">Get In Touch</p>
-            <h2 class="section-title reveal">Contact Me</h2>
-            <div class="section-divider reveal"></div>
-            <div class="contact-wrap">
-                <div class="contact-info reveal">
-                    <h3>Let's talk about tech.</h3>
-                    <p>Punya pertanyaan seputar proyek Laravel saya, mau diskusi soal tugas kuliah, atau sekadar ingin berjejaring? Pintu saya selalu terbuka.</p>
-                    <div class="contact-item"><i class="fas fa-envelope"></i><span>ahmadmathlaulfalah14@gmail.com</span></div>
-                    <div class="contact-item"><i class="fab fa-instagram"></i><span>@falahh.am</span></div>
-                    <div class="contact-item"><i class="fab fa-github"></i><span>github.com/Fals-Code</span></div>
-                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Gresik — Surabaya, Indonesia</span></div>
-                </div>
-                <!-- Note: Replace "YOUR_FORM_ID" with your actual Formspree ID -->
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form reveal delay-2" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group"><input type="text" name="name" placeholder="Nama Anda" required /></div>
-                        <div class="form-group"><input type="email" name="email" placeholder="Email Anda" required /></div>
+        <div class="mesh-bg"></div>
+
+        <!-- Hero -->
+        <section class="section contact-hero">
+            <p class="section-label reveal"><span class="dot"></span> Get In Touch</p>
+            <h1 class="reveal delay-1">Let's <span class="gradient-text">Talk</span></h1>
+            <p class="reveal delay-2 contact-hero-sub">Punya pertanyaan soal proyek, mau kolaborasi, atau sekadar ingin berjejaring? Kirim pesan dan saya akan balas sesegera mungkin.</p>
+        </section>
+
+        <!-- Contact Layout -->
+        <section class="section pt-0">
+            <div class="contact-layout">
+
+                <!-- Left: Info -->
+                <div class="contact-sidebar reveal">
+                    <div class="contact-info-block glass-panel">
+                        <h3>Contact Info</h3>
+                        <p class="text-dim" style="margin: 1rem 0 2rem;">Tersedia untuk proyek freelance & diskusi teknis. Waktu respon biasanya < 24 jam.</p>
+                        <div class="contact-info-list">
+                            <a href="mailto:ahmadmathlaulfalah14@gmail.com" class="contact-info-item">
+                                <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <span class="contact-info-label">Email</span>
+                                    <span class="contact-info-value">ahmadmathlaulfalah14@gmail.com</span>
+                                </div>
+                            </a>
+                            <a href="https://instagram.com/falahh.am" target="_blank" class="contact-info-item">
+                                <div class="contact-info-icon"><i class="fab fa-instagram"></i></div>
+                                <div>
+                                    <span class="contact-info-label">Instagram</span>
+                                    <span class="contact-info-value">@falahh.am</span>
+                                </div>
+                            </a>
+                            <a href="https://github.com/Fals-Code" target="_blank" class="contact-info-item">
+                                <div class="contact-info-icon"><i class="fab fa-github"></i></div>
+                                <div>
+                                    <span class="contact-info-label">GitHub</span>
+                                    <span class="contact-info-value">github.com/Fals-Code</span>
+                                </div>
+                            </a>
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <span class="contact-info-label">Location</span>
+                                    <span class="contact-info-value">Gresik — Surabaya, Indonesia</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group"><input type="text" name="subject" placeholder="Subjek Pesan" /></div>
-                    <div class="form-group"><textarea name="message" placeholder="Ceritakan apa yang bisa saya bantu atau sekadar menyapa..." required></textarea></div>
-                    <div class="form-status" id="formStatus"></div>
-                    <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fas fa-paper-plane"></i><span>Kirim Pesan</span></button>
-                </form>
+
+                    <!-- Availability -->
+                    <div class="avail-card glass-panel">
+                        <div class="avail-dot"></div>
+                        <div>
+                            <strong>Currently Available</strong>
+                            <p class="text-dim" style="font-size: 0.85rem; margin-top: 0.25rem;">Open to freelance & collaborations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="contact-form-wrap reveal delay-2">
+                    <div class="contact-form-card glass-panel">
+                        <h3>Send a Message</h3>
+                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm" style="margin-top: 2rem;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nama</label>
+                                    <input type="text" name="name" placeholder="Ahmad Falah" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" placeholder="kamu@email.com" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Subjek</label>
+                                <input type="text" name="subject" placeholder="Tentang proyek / kolaborasi / ..." />
+                            </div>
+                            <div class="form-group">
+                                <label>Pesan</label>
+                                <textarea name="message" placeholder="Ceritakan apa yang bisa saya bantu..." required></textarea>
+                            </div>
+                            <div class="form-status" id="formStatus"></div>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-paper-plane"></i><span>Kirim Pesan</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
@@ -81,18 +146,11 @@
         </div>
     </footer>
 
-    <!-- Global Elements -->
-    <div class="floating-cta">
-        <a href="https://wa.me/6282137609530" target="_blank" class="cta-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:ahmadmathlaulfalah14@gmail.com" class="cta-btn"><i class="fas fa-envelope"></i></a>
-    </div>
-    
+
     <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- AI Chatbot (Reused across pages) -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-panel hidden" id="chatbotPanel">
-            <!-- Bot UI -->
             <div class="chatbot-header">
                 <div class="chatbot-avatar"><div class="bot-status"></div><i class="fas fa-robot"></i></div>
                 <div><h4>Falah Bot</h4><span class="status-text">Online</span></div>

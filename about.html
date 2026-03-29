@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="About Ahmad Mathlaul Falah - Backend & Web Developer" />
+    <meta name="description" content="About Ahmad Mathlaul Falah - D4 Informatics Student & Laravel Backend Developer" />
     <meta name="author" content="Ahmad Mathlaul Falah" />
     <title>About | Falah.</title>
     <link rel="icon" type="image/svg+xml" href="assets/imgs/favicon.svg" />
@@ -28,7 +28,6 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="projects.html">Portfolio</a></li>
-                <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="nav-right">
@@ -42,32 +41,81 @@
     </nav>
 
     <main class="pt-navbar">
-        <section id="about" class="section">
-            <p class="section-label reveal">Who I Am</p>
-            <h2 class="section-title reveal">About Me</h2>
-            <div class="section-divider reveal"></div>
-            <div class="about-grid">
-                <div class="about-img-wrap reveal">
-                    <img src="assets/imgs/falah.jpeg" alt="Ahmad Mathlaul Falah" class="about-img" />
-                </div>
-                <div class="about-text">
-                    <p class="reveal delay-1">Saya Ahmad Mathlaul Falah, mahasiswa D4 Teknik Informatika UNAIR yang lebih suka menghabiskan waktu di balik layar <i>(backend)</i>. Fokus saya saat ini adalah mendalami ekosistem Laravel dan optimasi basis data.</p>
-                    <p class="reveal delay-2">Bagi saya, ngoding bukan cuma soal bikin aplikasi jalan, tapi bagaimana membangun sistem yang rapi dan mudah dikelola. Beberapa proyek sistem informasi yang saya kerjakan di kampus menjadi bukti nyata ketertarikan saya pada dunia pengembangan web.</p>
-                    <div class="about-stats reveal delay-3">
-                        <div class="stat-card"><div class="stat-num" id="repo-count">0</div><div class="stat-label">Repositories</div></div>
-                        <div class="stat-card"><div class="stat-num" id="follower-count">0</div><div class="stat-label">Followers</div></div>
-                        <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">Curiosity</div></div>
+        <div class="mesh-bg"></div>
+
+        <!-- Hero -->
+        <section class="section about-hero-section">
+            <div class="about-hero-grid">
+                <!-- Left: Text -->
+                <div class="about-hero-text">
+                    <p class="section-label reveal"><span class="dot"></span> Who I Am</p>
+                    <h1 class="reveal delay-1">Hi, I'm <span class="gradient-text">Falah</span></h1>
+                    <p class="reveal delay-2 about-hero-sub">D4 Informatics Engineering student at <strong>Universitas Airlangga</strong> — passionate about backend architecture, clean code, and building things that actually work.</p>
+                    <div class="about-hero-chips reveal delay-3">
+                        <span class="about-chip"><i class="fas fa-map-marker-alt"></i> Surabaya, Indonesia</span>
+                        <span class="about-chip"><i class="fas fa-graduation-cap"></i> D4 Teknik Informatika</span>
+                        <span class="about-chip"><i class="fas fa-circle" style="color:#22c55e; font-size: 0.5rem;"></i> Available for Work</span>
                     </div>
-                    <div class="reveal delay-4"><a href="assets/cv.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download CV</a></div>
+                    <div class="reveal delay-4">
+                        <a href="assets/cv.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download CV</a>
+                        <a href="contact.html" class="btn btn-outline" style="margin-left: 1rem;"><i class="fas fa-paper-plane"></i> Contact</a>
+                    </div>
+                </div>
+                <!-- Right: Photo Card -->
+                <div class="about-hero-photo reveal delay-2">
+                    <div class="photo-card-wrap">
+                        <img src="assets/imgs/falah.jpeg" alt="Ahmad Mathlaul Falah" class="about-img" />
+                        <div class="photo-accent-ring"></div>
+                        <div class="photo-badge-card glass-panel">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="section">
-            <p class="section-label reveal">What I Do</p>
+        <!-- Stats -->
+        <section class="section pt-0">
+            <div class="premium-bento-grid reveal">
+                <div class="bento-stat-card glass-panel">
+                    <div class="stat-icon"><i class="fab fa-github"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-num gradient-text" id="repo-count">0</span>
+                        <span class="stat-label">Repositories</span>
+                    </div>
+                </div>
+                <div class="bento-stat-card glass-panel">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-num gradient-text" id="follower-count">0</span>
+                        <span class="stat-label">Followers</span>
+                    </div>
+                </div>
+                <div class="bento-stat-card glass-panel">
+                    <div class="stat-icon"><i class="fas fa-infinity"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-num gradient-text">∞</span>
+                        <span class="stat-label">Curiosity</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills: Real GitHub Language Data -->
+        <section class="section">
+            <p class="section-label reveal"><span class="dot"></span> Skills</p>
+            <h2 class="section-title reveal">Languages <span class="gradient-text">from GitHub</span></h2>
+            <div class="section-divider reveal"></div>
+            <div id="github-langs-wrap" class="gh-langs-wrap reveal">
+                <div class="gh-langs-loading"><i class="fas fa-circle-notch fa-spin"></i> Loading from GitHub...</div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="section">
+            <p class="section-label reveal"><span class="dot"></span> What I Do</p>
             <h2 class="section-title reveal">Core Expertise</h2>
             <div class="section-divider reveal"></div>
-            <div class="services-grid">
+            <div class="services-grid services-grid-4">
                 <div class="service-card reveal delay-1">
                     <div class="service-icon"><i class="fas fa-code"></i></div>
                     <h3>Web Development</h3>
@@ -76,64 +124,24 @@
                 <div class="service-card reveal delay-2">
                     <div class="service-icon"><i class="fas fa-database"></i></div>
                     <h3>Database Management</h3>
-                    <p>Merancang skema database relasional yang efisien. Saya terbiasa mengoptimalkan relasi data menggunakan Eloquent ORM untuk integritas sistem.</p>
+                    <p>Merancang skema database relasional yang efisien. Terbiasa mengoptimalkan relasi data menggunakan Eloquent ORM untuk integritas sistem.</p>
                 </div>
                 <div class="service-card reveal delay-3">
                     <div class="service-icon"><i class="fas fa-terminal"></i></div>
                     <h3>System Logic</h3>
-                    <p>Menganalisis alur bisnis dan menerjemahkannya ke dalam logika backend yang solid, memastikan setiap fitur berjalan sesuai kebutuhan pengguna.</p>
+                    <p>Menganalisis alur bisnis dan menerjemahkannya ke dalam logika backend yang solid, memastikan setiap fitur berjalan sesuai kebutuhan.</p>
                 </div>
                 <div class="service-card reveal delay-4">
                     <div class="service-icon"><i class="fas fa-rocket"></i></div>
                     <h3>Tech Exploration</h3>
-                    <p>Sebagai mahasiswa, saya sangat antusias mengeksplorasi teknologi baru di ekosistem PHP/Laravel untuk terus meningkatkan standar koding saya.</p>
+                    <p>Sangat antusias mengeksplorasi teknologi baru di ekosistem PHP/Laravel untuk terus meningkatkan standar koding saya.</p>
                 </div>
             </div>
         </section>
 
-        <section id="stack" class="section">
-            <p class="section-label reveal">What I Use</p>
-            <h2 class="section-title reveal">Skill Tree</h2>
-            <div class="section-divider reveal"></div>
-            <div class="skill-tree">
-                <!-- Backend Node -->
-                <div class="skill-node reveal" style="--percent: 90%;">
-                    <div class="skill-icon"><i class="fab fa-laravel"></i></div>
-                    <h3>Laravel</h3>
-                    <p class="text-dim">Eloquent, Middleware, API</p>
-                    <div class="skill-level-bar"><div class="skill-progress"></div></div>
-                    <span class="skill-percent">Lvl. 90</span>
-                </div>
-                <!-- Database Node -->
-                <div class="skill-node reveal delay-1" style="--percent: 85%;">
-                    <div class="skill-icon"><i class="fas fa-database"></i></div>
-                    <h3>MySQL</h3>
-                    <p class="text-dim">Schema Design, Query Opt.</p>
-                    <div class="skill-level-bar"><div class="skill-progress"></div></div>
-                    <span class="skill-percent">Lvl. 85</span>
-                </div>
-                <!-- Frontend Node -->
-                <div class="skill-node reveal delay-2" style="--percent: 75%;">
-                    <div class="skill-icon"><i class="fab fa-js"></i></div>
-                    <h3>JavaScript</h3>
-                    <p class="text-dim">DOM, ES6+, Async/Wait</p>
-                    <div class="skill-level-bar"><div class="skill-progress"></div></div>
-                    <span class="skill-percent">Lvl. 75</span>
-                </div>
-                <!-- PHP Node -->
-                <div class="skill-node reveal delay-3" style="--percent: 92%;">
-                    <div class="skill-icon"><i class="fab fa-php"></i></div>
-                    <h3>PHP Core</h3>
-                    <p class="text-dim">OOP, MVC Patterns</p>
-                    <div class="skill-level-bar"><div class="skill-progress"></div></div>
-                    <span class="skill-percent">Lvl. 92</span>
-                </div>
-            </div>
-        </section>
-
-
-        <section id="journey" class="section">
-            <p class="section-label reveal">My Path</p>
+        <!-- Timeline -->
+        <section class="section">
+            <p class="section-label reveal"><span class="dot"></span> My Path</p>
             <h2 class="section-title reveal">Education & Journey</h2>
             <div class="section-divider reveal"></div>
             <div class="timeline reveal">
@@ -143,7 +151,7 @@
                         <div class="timeline-date">2024 — Sekarang</div>
                         <div class="timeline-title">D4 Teknik Informatika</div>
                         <div class="timeline-place">Vokasi Universitas Airlangga · Surabaya</div>
-                        <div class="timeline-desc">Fokus pada pengembangan keahlian teknis melalui kurikulum berbasis praktik. Saat ini aktif mendalami struktur data, optimasi basis data, dan implementasi framework Laravel untuk solusi web yang skalabel.</div>
+                        <div class="timeline-desc">Fokus pada pengembangan keahlian teknis melalui kurikulum berbasis praktik. Mendalami struktur data, optimasi basis data, dan framework Laravel untuk solusi web yang skalabel.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -152,7 +160,7 @@
                         <div class="timeline-date">2025</div>
                         <div class="timeline-title">RSHP — Hospital Info System</div>
                         <div class="timeline-place">Academic Project</div>
-                        <div class="timeline-desc">Digitalisasi manajemen data rumah sakit. Saya fokus pada integrasi jadwal dokter dengan sistem pendaftaran pasien agar data tetap sinkron secara real-time.</div>
+                        <div class="timeline-desc">Digitalisasi manajemen data rumah sakit. Fokus pada integrasi jadwal dokter dengan sistem pendaftaran pasien agar data tetap sinkron secara real-time.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -161,24 +169,26 @@
                         <div class="timeline-date">2025</div>
                         <div class="timeline-title">Warehouse Inventory System</div>
                         <div class="timeline-place">Academic Project</div>
-                        <div class="timeline-desc">Proyek mata kuliah Pemrosesan Basis Data. Mengimplementasikan relasi database yang kompleks untuk menangani pencatatan stok barang masuk dan keluar secara otomatis.</div>
+                        <div class="timeline-desc">Proyek mata kuliah Pemrosesan Basis Data. Mengimplementasikan relasi database kompleks untuk pencatatan stok barang masuk dan keluar secara otomatis.</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
-                        <div class="timeline-date">2026 - Sekarang</div>
+                        <div class="timeline-date">2026 — Sekarang</div>
                         <div class="timeline-title">Book Collection Manager</div>
                         <div class="timeline-place">Framework Development Labs</div>
-                        <div class="timeline-desc">Eksperimen mendalam dengan Laravel untuk mengelola database koleksi buku. Saya sedang mengoptimalkan fitur pencarian dan relasi antar kategori buku agar lebih dinamis.</div>
+                        <div class="timeline-desc">Eksperimen mendalam dengan Laravel untuk mengelola database koleksi buku. Mengoptimalkan fitur pencarian dan relasi antar kategori buku agar lebih dinamis.</div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Tools Bento -->
         <section class="section">
-            <div class="bento-grid">
-                <div class="bento-item bento-wide reveal">
-                    <p class="section-label">Ecosystem</p>
+            <div class="cs-two-col reveal">
+                <div class="cs-panel glass-panel">
+                    <p class="section-label" style="margin-bottom: 1rem;">Ecosystem</p>
                     <h3>Tools I Use</h3>
                     <div class="tech-grid" style="margin-top: 2rem;">
                         <div class="tech-card"><i class="fab fa-git-alt"></i><span>Git</span></div>
@@ -187,20 +197,21 @@
                         <div class="tech-card"><i class="fab fa-github"></i><span>GitHub</span></div>
                     </div>
                 </div>
-                <div class="bento-item reveal delay-1">
-                    <p class="section-label">Future</p>
-                    <h3>Current Goal</h3>
-                    <p class="text-dim" style="margin-top: 1rem;">Mastering Cloud Architecture & Microservices.</p>
-                </div>
-                <div class="bento-item reveal delay-2">
-                    <p class="section-label">Base</p>
-                    <h3>Location</h3>
-                    <p class="text-dim" style="margin-top: 1rem;">Surabaya, Indonesia 🇮🇩</p>
+                <div class="cs-panel glass-panel" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div>
+                        <p class="section-label" style="margin-bottom: 0.5rem;">Future</p>
+                        <h3>Current Goal</h3>
+                        <p class="text-dim" style="margin-top: 0.5rem;">Mastering Cloud Architecture & Microservices design patterns.</p>
+                    </div>
+                    <div>
+                        <p class="section-label" style="margin-bottom: 0.5rem;">Base</p>
+                        <h3>Location</h3>
+                        <p class="text-dim" style="margin-top: 0.5rem;">Gresik — Surabaya, Indonesia 🇮🇩</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-
 
     <footer>
         <div class="footer-inner">
@@ -213,18 +224,11 @@
         </div>
     </footer>
 
-    <!-- Global Elements -->
-    <div class="floating-cta">
-        <a href="https://wa.me/6282137609530" target="_blank" class="cta-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:ahmadmathlaulfalah14@gmail.com" class="cta-btn"><i class="fas fa-envelope"></i></a>
-    </div>
-    
+
     <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- AI Chatbot (Reused across pages) -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-panel hidden" id="chatbotPanel">
-            <!-- Bot UI -->
             <div class="chatbot-header">
                 <div class="chatbot-avatar"><div class="bot-status"></div><i class="fas fa-robot"></i></div>
                 <div><h4>Falah Bot</h4><span class="status-text">Online</span></div>
@@ -241,5 +245,111 @@
 
     <script src="assets/js/chatbot.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+    // ─── GitHub Language Stats ───────────────────────────────────────
+    (async () => {
+        const username = 'Fals-Code';
+        const wrap = document.getElementById('github-langs-wrap');
+        if (!wrap) return;
+
+        // Language color map
+        const langColors = {
+            PHP: '#4F5D95', JavaScript: '#f1e05a', HTML: '#e34c26',
+            CSS: '#563d7c', Blade: '#f7523f', Shell: '#89e051',
+            Python: '#3572A5', TypeScript: '#2b7489', 'Vue': '#2c3e50',
+            Java: '#b07219', Ruby: '#701516', Go: '#00ADD8',
+            Swift: '#F05138', Kotlin: '#A97BFF', Rust: '#dea584',
+        };
+
+        try {
+            // Fetch public repos
+            const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&type=owner`);
+            if (!res.ok) throw new Error('GitHub API failed');
+            const repos = await res.json();
+
+            // Fetch language bytes for each repo
+            const langTotals = {};
+            await Promise.allSettled(
+                repos.map(async (repo) => {
+                    if (repo.fork) return;
+                    const lr = await fetch(repo.languages_url);
+                    if (!lr.ok) return;
+                    const data = await lr.json();
+                    Object.entries(data).forEach(([lang, bytes]) => {
+                        langTotals[lang] = (langTotals[lang] || 0) + bytes;
+                    });
+                })
+            );
+
+            const total = Object.values(langTotals).reduce((a, b) => a + b, 0);
+            if (total === 0) throw new Error('No language data');
+
+            // Sort by bytes descending, take top 8
+            const sorted = Object.entries(langTotals)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 8);
+
+            // Build UI
+            const bar = sorted.map(([lang, bytes]) => {
+                const pct = ((bytes / total) * 100).toFixed(1);
+                const color = langColors[lang] || '#6b7280';
+                return `<div class="gh-lang-segment" style="width:${pct}%;background:${color};" title="${lang}: ${pct}%"></div>`;
+            }).join('');
+
+            const cards = sorted.map(([lang, bytes], i) => {
+                const pct = ((bytes / total) * 100).toFixed(1);
+                const color = langColors[lang] || '#6b7280';
+                return `
+                <div class="gh-lang-card" style="animation-delay:${i * 0.07}s">
+                    <div class="gh-lang-dot" style="background:${color};box-shadow:0 0 8px ${color}66;"></div>
+                    <div class="gh-lang-info">
+                        <span class="gh-lang-name">${lang}</span>
+                        <span class="gh-lang-pct" style="color:${color}">${pct}%</span>
+                    </div>
+                    <div class="gh-lang-bar-wrap">
+                        <div class="gh-lang-bar-fill" style="width:${pct}%;background:${color};"></div>
+                    </div>
+                </div>`;
+            }).join('');
+
+            wrap.innerHTML = `
+                <div class="gh-meta">
+                    <span><i class="fab fa-github"></i> <strong>Fals-Code</strong></span>
+                    <span class="gh-repo-count">from ${repos.filter(r => !r.fork).length} repos</span>
+                </div>
+                <div class="gh-stacked-bar">${bar}</div>
+                <div class="gh-lang-grid">${cards}</div>`;
+
+        } catch(e) {
+            wrap.innerHTML = `<p class="text-dim" style="text-align:center;padding:2rem 0;"><i class="fab fa-github" style="font-size:2rem;opacity:.3;display:block;margin-bottom:1rem;"></i>Could not load language data from GitHub.</p>`;
+        }
+    })();
+    </script>
+
+    <style>
+    /* GitHub Language Stats */
+    .gh-langs-loading { text-align: center; padding: 3rem 0; color: var(--text-muted); }
+    .gh-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 0.875rem; font-weight: 600; }
+    .gh-repo-count { color: var(--text-muted); font-weight: 400; }
+    .gh-stacked-bar { display: flex; height: 12px; border-radius: 99px; overflow: hidden; gap: 2px; margin-bottom: 2rem; }
+    .gh-lang-segment { border-radius: 99px; transition: opacity 0.2s; cursor: default; }
+    .gh-lang-segment:hover { opacity: 0.8; }
+    .gh-lang-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .gh-lang-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; transition: transform 0.2s, border-color 0.2s; animation: fadeSlideUp 0.4s ease both; }
+    .gh-lang-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .gh-lang-info { display: flex; justify-content: space-between; align-items: center; margin: 0.5rem 0 0.75rem; }
+    .gh-lang-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .gh-lang-name { font-weight: 700; font-size: 0.9rem; }
+    .gh-lang-pct { font-size: 0.875rem; font-weight: 800; font-family: var(--font-heading); }
+    .gh-lang-bar-wrap { height: 5px; border-radius: 99px; background: var(--bg-hover); overflow: hidden; }
+    .gh-lang-bar-fill { height: 100%; border-radius: 99px; }
+
+    /* 4-column services */
+    .services-grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
+    @media (max-width: 900px) { .services-grid-4 { grid-template-columns: repeat(2, 1fr) !important; } .gh-lang-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .services-grid-4 { grid-template-columns: 1fr !important; } .gh-lang-grid { grid-template-columns: 1fr 1fr; } }
+    </style>
 </body>
 </html>

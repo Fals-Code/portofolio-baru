@@ -8,7 +8,7 @@ class MusicSystem {
         this.filter = null;
         this.volume = 0.5;
         this.fallbackAudio = null;
-        this.fallbackUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3";
+        this.fallbackUrl = "https://youtu.be/y4zdDXPYo0I?si=XMK_3_7zHfZnrOom";
         
         this.init();
     }
