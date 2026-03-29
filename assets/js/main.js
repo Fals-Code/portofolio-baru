@@ -231,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   });
 
+  // --- V3 Reveal Observer & Fallback ---
   const revealElements = document.querySelectorAll(".reveal");
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => { 
@@ -239,8 +240,35 @@ document.addEventListener("DOMContentLoaded", () => {
             if (entry.target.classList.contains('skill-node')) entry.target.classList.add('visible'); 
         } 
     });
-  }, { threshold: 0.1 });
-  revealElements.forEach(el => revealObserver.observe(el));
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  
+  revealElements.forEach(el => {
+      revealObserver.observe(el);
+      // Guarantee reveal if visible on load
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+          setTimeout(() => el.classList.add('visible'), 500);
+      }
+  });
+
+  // --- V3 Typewriter Effect ---
+  const typeTarget = document.getElementById("typewriter");
+  if (typeTarget) {
+      const roles = ["Backend Developer", "Laravel Enthusiast", "Problem Solver"];
+      let roleIdx = 0, charIdx = 0, isDeleting = false;
+      const typeLoop = () => {
+          const currentRole = roles[roleIdx];
+          typeTarget.textContent = currentRole.substring(0, charIdx);
+          let speed = isDeleting ? 50 : 100;
+          if (!isDeleting && charIdx === currentRole.length) {
+              speed = 2000; isDeleting = true;
+          } else if (isDeleting && charIdx === 0) {
+              isDeleting = false; roleIdx = (roleIdx + 1) % roles.length; speed = 500;
+          }
+          charIdx += isDeleting ? -1 : 1;
+          setTimeout(typeLoop, speed);
+      };
+      setTimeout(typeLoop, 1500); // Wait for initial loader transition
+  }
 
   const backToTopBtn = document.getElementById("backToTop");
   if (backToTopBtn) {

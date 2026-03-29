@@ -59,52 +59,75 @@
     </nav>
 
     <main>
-        <section class="hero">
-            <div class="hero-badge reveal">
-                <span class="dot"></span> Available for new projects
+        <!-- Animated Background Mesh -->
+        <div class="mesh-bg"></div>
+
+        <section class="hero hero-grid">
+            <!-- Left Column: Typography & CTA -->
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <span class="dot"></span> Available for new projects
+                </div>
+                <h1 class="reveal delay-1">
+                    Crafting <span class="gradient-text">Digital</span><br/>Experiences with Backend Precision.
+                </h1>
+                <p class="reveal delay-2 hero-subtitle">
+                    I'm Ahmad Mathlaul Falah, a <span class="typewriter-text" id="typewriter"></span> specializing in building robust, scalable systems with Laravel and modern web technologies.
+                </p>
+                <div class="hero-cta reveal delay-3">
+                  <a href="projects.html" class="btn btn-primary"><i class="fas fa-rocket"></i> View My Work</a>
+                  <a href="game.html" class="btn btn-outline"><i class="fas fa-gamepad"></i> Play Game</a>
+                  <a href="contact.html" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
             </div>
-            <h1 class="reveal delay-1">Crafting <span class="accent">Digital</span> Experiences with Backend Precision.</h1>
-            <p class="reveal delay-2">I'm Ahmad Mathlaul Falah, a Backend-focused Developer specializing in building robust, scalable systems with Laravel and modern web technologies.</p>
-            <div class="hero-cta reveal delay-3">
-              <a href="projects.html" class="btn btn-primary">View My Work</a>
-              <a href="game.html" class="btn btn-outline"><i class="fas fa-gamepad"></i> Play Game</a>
-              <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+
+            <!-- Right Column: Visual Orbit -->
+            <div class="hero-visual-wrapper reveal delay-2">
+                <div class="orbit-container">
+                    <div class="orbit-center">
+                        <img src="https://skillicons.dev/icons?i=laravel" alt="Laravel" class="center-icon" />
+                        <div class="center-glow"></div>
+                    </div>
+                    <div class="orbit-ring ring-1">
+                        <div class="orbit-icon"><img src="https://skillicons.dev/icons?i=php" alt="PHP" /></div>
+                        <div class="orbit-icon"><img src="https://skillicons.dev/icons?i=mysql" alt="MySQL" /></div>
+                    </div>
+                    <div class="orbit-ring ring-2">
+                        <div class="orbit-icon"><img src="https://skillicons.dev/icons?i=js" alt="JS" /></div>
+                        <div class="orbit-icon"><img src="https://skillicons.dev/icons?i=github" alt="GitHub" /></div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="section">
-            <div class="about-stats reveal">
-                <div class="stat-card">
-                    <span class="stat-num" id="repo-count">0</span>
-                    <span class="stat-label">Repositories</span>
+        <section class="section pt-0">
+            <div class="premium-bento-grid reveal">
+                <!-- Stat Card 1 -->
+                <div class="bento-stat-card glass-panel group">
+                    <div class="stat-icon"><i class="fab fa-github"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-num gradient-text" id="repo-count">0</span>
+                        <span class="stat-label">Repositories</span>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-num" id="star-count">0</span>
-                    <span class="stat-label">Total Stars</span>
+                <!-- Stat Card 2 -->
+                <div class="bento-stat-card glass-panel group">
+                    <div class="stat-icon"><i class="fas fa-star"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-num gradient-text" id="star-count">0</span>
+                        <span class="stat-label">Total Stars</span>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-num" id="follower-count">0</span>
-                    <span class="stat-label">Followers</span>
+                <!-- Stat Card 3 -->
+                <div class="bento-stat-card glass-panel group">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-num gradient-text" id="follower-count">0</span>
+                        <span class="stat-label">Followers</span>
+                    </div>
                 </div>
             </div>
         </section>
-          
-          <div class="hero-visual reveal delay-2">
-            <div class="orbit-container">
-                <div class="orbit-center">
-                    <img src="https://skillicons.dev/icons?i=laravel" alt="Laravel" class="center-icon" />
-                    <div class="center-glow"></div>
-                </div>
-                <div class="orbit-ring ring-1">
-                    <div class="orbit-icon"><img src="https://skillicons.dev/icons?i=php" alt="PHP" /></div>
-                    <div class="orbit-icon"><img src="https://skillicons.dev/icons?i=mysql" alt="MySQL" /></div>
-                </div>
-                <div class="orbit-ring ring-2">
-                    <div class="orbit-icon"><img src="https://skillicons.dev/icons?i=js" alt="JS" /></div>
-                    <div class="orbit-icon"><img src="https://skillicons.dev/icons?i=github" alt="GitHub" /></div>
-                </div>
-            </div>
-          </div>
     </main>
 
     <footer>

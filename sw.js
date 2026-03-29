@@ -1,4 +1,4 @@
-const CACHE_NAME = 'falah-porto-v2';
+const CACHE_NAME = 'falah-porto-v4';
 const ASSETS = [
     '/',
     '/index.html',
@@ -19,8 +19,8 @@ const ASSETS = [
     '/manifest.json'
 ];
 
-
 self.addEventListener('install', (e) => {
+    self.skipWaiting(); // Force the waiting service worker to become the active service worker.
     e.waitUntil(
         caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
     );
@@ -69,6 +69,8 @@ self.addEventListener('activate', (e) => {
                     return caches.delete(key);
                 }
             }));
+        }).then(() => {
+            return self.clients.claim();
         })
     );
 });
