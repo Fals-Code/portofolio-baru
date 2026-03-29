@@ -34,15 +34,32 @@ self.addEventListener('fetch', (e) => {
 
     e.respondWith(
         caches.match(e.request).then((res) => {
-            return res || fetch(e.request).catch(() => {
-                // Network failed, if it's a page navigation return the cached index
-                if (e.request.mode === 'navigate') {
-                    return caches.match('/index.html');
-                }
-            });
+            if (res) return res;
+
+            // Cloudflare Pages / Static hosts often strip .html
+            // If the request isn't found, try appending .html for clean URLs
+            const url = new URL(e.request.url);
+            if (e.request.mode === 'navigate' && !url.pathname.endsWith('.html') && url.pathname !== '/') {
+                return caches.match(url.pathname + '.html').then(htmlRes => {
+                    if (htmlRes) return htmlRes;
+                    return fetchWithFallback(e.request);
+                });
+            }
+
+            return fetchWithFallback(e.request);
         })
     );
 });
+
+function fetchWithFallback(request) {
+    return fetch(request).catch(err => {
+        // If network completely fails and it's a page navigation, return the index as a safety net
+        if (request.mode === 'navigate') {
+            return caches.match('/index.html');
+        }
+        throw err;
+    });
+}
 
 self.addEventListener('activate', (e) => {
     e.waitUntil(
