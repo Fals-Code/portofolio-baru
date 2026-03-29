@@ -2,7 +2,11 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fdfcf9" media="(prefers-color-scheme: light)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content="About Ahmad Mathlaul Falah - D4 Informatics Student & Laravel Backend Developer" />
     <meta name="author" content="Ahmad Mathlaul Falah" />
     <title>About | Falah.</title>
@@ -246,86 +250,7 @@
     <script src="assets/js/chatbot.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <script>
-    // ─── GitHub Language Stats ───────────────────────────────────────
-    (async () => {
-        const username = 'Fals-Code';
-        const wrap = document.getElementById('github-langs-wrap');
-        if (!wrap) return;
-
-        // Language color map
-        const langColors = {
-            PHP: '#4F5D95', JavaScript: '#f1e05a', HTML: '#e34c26',
-            CSS: '#563d7c', Blade: '#f7523f', Shell: '#89e051',
-            Python: '#3572A5', TypeScript: '#2b7489', 'Vue': '#2c3e50',
-            Java: '#b07219', Ruby: '#701516', Go: '#00ADD8',
-            Swift: '#F05138', Kotlin: '#A97BFF', Rust: '#dea584',
-        };
-
-        try {
-            // Fetch public repos
-            const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&type=owner`);
-            if (!res.ok) throw new Error('GitHub API failed');
-            const repos = await res.json();
-
-            // Fetch language bytes for each repo
-            const langTotals = {};
-            await Promise.allSettled(
-                repos.map(async (repo) => {
-                    if (repo.fork) return;
-                    const lr = await fetch(repo.languages_url);
-                    if (!lr.ok) return;
-                    const data = await lr.json();
-                    Object.entries(data).forEach(([lang, bytes]) => {
-                        langTotals[lang] = (langTotals[lang] || 0) + bytes;
-                    });
-                })
-            );
-
-            const total = Object.values(langTotals).reduce((a, b) => a + b, 0);
-            if (total === 0) throw new Error('No language data');
-
-            // Sort by bytes descending, take top 8
-            const sorted = Object.entries(langTotals)
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 8);
-
-            // Build UI
-            const bar = sorted.map(([lang, bytes]) => {
-                const pct = ((bytes / total) * 100).toFixed(1);
-                const color = langColors[lang] || '#6b7280';
-                return `<div class="gh-lang-segment" style="width:${pct}%;background:${color};" title="${lang}: ${pct}%"></div>`;
-            }).join('');
-
-            const cards = sorted.map(([lang, bytes], i) => {
-                const pct = ((bytes / total) * 100).toFixed(1);
-                const color = langColors[lang] || '#6b7280';
-                return `
-                <div class="gh-lang-card" style="animation-delay:${i * 0.07}s">
-                    <div class="gh-lang-dot" style="background:${color};box-shadow:0 0 8px ${color}66;"></div>
-                    <div class="gh-lang-info">
-                        <span class="gh-lang-name">${lang}</span>
-                        <span class="gh-lang-pct" style="color:${color}">${pct}%</span>
-                    </div>
-                    <div class="gh-lang-bar-wrap">
-                        <div class="gh-lang-bar-fill" style="width:${pct}%;background:${color};"></div>
-                    </div>
-                </div>`;
-            }).join('');
-
-            wrap.innerHTML = `
-                <div class="gh-meta">
-                    <span><i class="fab fa-github"></i> <strong>Fals-Code</strong></span>
-                    <span class="gh-repo-count">from ${repos.filter(r => !r.fork).length} repos</span>
-                </div>
-                <div class="gh-stacked-bar">${bar}</div>
-                <div class="gh-lang-grid">${cards}</div>`;
-
-        } catch(e) {
-            wrap.innerHTML = `<p class="text-dim" style="text-align:center;padding:2rem 0;"><i class="fab fa-github" style="font-size:2rem;opacity:.3;display:block;margin-bottom:1rem;"></i>Could not load language data from GitHub.</p>`;
-        }
-    })();
-    </script>
+    <!-- main.js handles GitHub loading -->
 
     <style>
     /* GitHub Language Stats */

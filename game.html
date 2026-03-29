@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#060810" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>Code Runner | Falah.</title>
     <link rel="icon" type="image/svg+xml" href="assets/imgs/favicon.svg" />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -15,12 +19,17 @@
             overflow: hidden;
             background: #0a0c14;
             font-family: 'Syne', sans-serif;
+            overscroll-behavior: none;
         }
 
         #game3dContainer {
             position: fixed;
             inset: 0;
             outline: none;
+            touch-action: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         /* ── HUD ─────────────────────────────────── */
