@@ -22,14 +22,19 @@ class MusicSystem {
         ];
 
         this.audio = new Audio();
-        this.audio.crossOrigin = "anonymous";
+        // Removed crossOrigin as it's not strictly needed for basic playback 
+        // and can cause blocks on some CDNs.
+        this.audio.preload = "auto";
         this.audio.loop = true;
         this.audio.volume = this.volume;
         
         // Handle loading errors
-        this.audio.onerror = () => {
-            console.error("Audio failed to load. Skipping to next track.");
-            this.nextTrack();
+        this.audio.onerror = (e) => {
+            console.error("MusicSystem: Audio error details:", e);
+            // Don't auto-skip on every tiny error, only if it's a fatal source error
+            if (this.audio.error && this.audio.error.code !== 4) { // 4 = MEDIA_ERR_SRC_NOT_SUPPORTED
+                 this.nextTrack();
+            }
         };
 
         this.init();
@@ -43,7 +48,7 @@ class MusicSystem {
         
         if (!this.playBtn) return;
 
-        // Load first track info
+        // Load default track info
         this.updateUI();
 
         if (this.volumeSlider) this.volumeSlider.value = this.volume;
@@ -61,14 +66,11 @@ class MusicSystem {
                 localStorage.setItem("musicVol", this.volume);
             });
         }
-
-        // Auto-pause when tab is hidden (Optional, usually better to keep music playing in bg)
-        // document.addEventListener('visibilitychange', () => { ... });
     }
 
     updateUI() {
         if (this.label) {
-            this.label.textContent = this.tracks[this.currentTrackIndex].title;
+            this.label.textContent = this.tracks[0].title;
         }
     }
 
@@ -81,19 +83,25 @@ class MusicSystem {
     }
 
     play() {
-        if (!this.audio.src) {
-            this.audio.src = this.tracks[this.currentTrackIndex].url;
+        console.log("MusicSystem: Attempting to play...");
+        
+        if (!this.audio.src || this.audio.src === "") {
+            this.audio.src = this.tracks[0].url;
+            this.audio.load();
         }
+        
+        const playPromise = this.audio.play();
 
-        this.audio.play()
-            .then(() => {
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                console.log("MusicSystem: Playback started.");
                 this.isPlaying = true;
                 this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
                 if (this.visualizer) this.visualizer.classList.add("playing");
-            })
-            .catch(err => {
-                console.warn("Audio playback failed. User interaction might be required.", err);
+            }).catch(error => {
+                console.error("MusicSystem: Playback failed.", error);
             });
+        }
     }
 
     pause() {
@@ -101,14 +109,6 @@ class MusicSystem {
         this.isPlaying = false;
         this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
         if (this.visualizer) this.visualizer.classList.remove("playing");
-    }
-
-    // Call this to change track: window.portfolioMusicSystem.nextTrack()
-    nextTrack() {
-        this.currentTrackIndex = (this.currentTrackIndex + 1) % this.tracks.length;
-        this.audio.src = this.tracks[this.currentTrackIndex].url;
-        this.updateUI();
-        if (this.isPlaying) this.play();
     }
 }
 

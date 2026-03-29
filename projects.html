@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="manifest" href="manifest.json" />
 </head>
-<body>
+<body data-barba="wrapper">
     <div class="loader" id="loader">
         <div class="loader-inner">
             <div class="loader-text">Falah<span>.</span></div>
@@ -44,6 +44,7 @@
         </div>
     </nav>
 
+    <div data-barba="container" data-barba-namespace="projects">
     <main class="pt-navbar">
         <!-- Mesh BG -->
         <div class="mesh-bg"></div>
@@ -157,6 +158,7 @@
             </div>
         </section>
     </main>
+    </div>
 
     <footer>
         <div class="footer-inner">
@@ -185,9 +187,6 @@
             <button id="musicPlayBtn" class="m-btn-play" aria-label="Play/Pause Music">
                 <i class="fas fa-play"></i>
             </button>
-            <button id="musicNextBtn" class="m-btn-next" onclick="window.portfolioMusicSystem.nextTrack()" aria-label="Next Track">
-                <i class="fas fa-step-forward"></i>
-            </button>
         </div>
     </div>
 
@@ -212,25 +211,10 @@
         </button>
     </div>
 
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="assets/js/music.js"></script>
     <script src="assets/js/chatbot.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        // Project filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card[data-tags]');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                projectCards.forEach(card => {
-                    const tags = card.dataset.tags;
-                    card.style.opacity = (filter === 'all' || tags.includes(filter)) ? '1' : '0.3';
-                    card.style.transform = (filter === 'all' || tags.includes(filter)) ? 'scale(1)' : 'scale(0.95)';
-                });
-            });
-        });
-    </script>
 </body>
 </html>

@@ -447,17 +447,17 @@ a {
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Slightly wider items */
+  gap: 4.5rem; /* Extreme breathing room between tech icons */
+  max-width: 1200px; /* Even wider container */
+  margin: 5rem auto 0; /* Dramatic top separation */
 }
 
 .tech-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.8rem 1rem;
+  padding: 2.5rem 2rem; /* Airy card interior */
   text-align: center;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: default;
@@ -500,26 +500,7 @@ a {
   padding-left: 2rem;
 }
 
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
-}
-
-.tech-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  text-align: center;
-  transition: var(--transition);
-}
-
-.tech-card:hover {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  transform: translateY(-5px);
-}
+/* Cleaned up duplicate tech-grid definitions */
 
 .timeline {
   position: relative;
@@ -579,15 +560,15 @@ a {
    ============================================= */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Wider cards */
+  gap: 6.5rem; /* Extreme luxury separation */
 }
 
 .service-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 3rem 2rem;
+  border-radius: var(--radius-lg);
+  padding: 6.5rem 5.5rem; /* Maximum airiness for content */
   transition: var(--transition);
 }
 
@@ -2189,6 +2170,25 @@ footer {
     .hero {
         min-height: -webkit-fill-available;
     }
+    .hero.hero-grid {
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+        gap: 3.5rem; /* Increased mobile gap */
+        text-align: center;
+    }
+    .hero-cta {
+        flex-direction: column !important; /* Stack vertically on mobile */
+        gap: 2rem !important;
+        align-items: center;
+    }
+    .premium-bento-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem; /* More mobile vertical breathing room */
+    }
+    .bento-stat-card {
+        padding: 4rem 2.5rem; /* Generous mobile card padding */
+        justify-content: center;
+    }
 }
 
 /* =============================================
@@ -2263,9 +2263,9 @@ footer {
     transform: scale(1.1);
 }
 .section {
-    padding: 6rem 1.5rem; /* Increased side padding for mobile safety */
+    padding: 15vh 10%; /* Increased vertical breathing room for maximum airiness */
     position: relative;
-    max-width: 1400px;
+    max-width: 1750px; /* Ultra-wide container for maximum airiness */
     margin: 0 auto;
     width: 100%;
 }
@@ -2273,13 +2273,9 @@ footer {
 .premium-bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem; /* Increased gap for desktop */
+    gap: 4rem; /* Adjusted gap for better balance */
     width: 100%;
     margin: 0 auto;
-}
-
-.bento-stat-card {
-    padding: 2.5rem 2rem; /* More internal breathing room */
 }
 
 .bento-stat-card {
@@ -2288,10 +2284,10 @@ footer {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 3rem 2.5rem; /* Increased padding for better desktop breathing room */
+    padding: 4rem 3rem; /* Balanced luxury padding */
     display: flex;
     align-items: center;
-    gap: 2rem; /* Wider gap between icon and text */
+    gap: 2.5rem;
     transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
@@ -2355,7 +2351,7 @@ footer {
 }
 
 .stat-num {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     font-weight: 800;
     line-height: 1;
     margin-bottom: 0.2rem;
@@ -2524,13 +2520,7 @@ footer {
 .photo-badge-card { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 99px; font-size: 0.875rem; font-weight: 700; white-space: nowrap; z-index: 2; }
 .photo-badge-card i { font-size: 1.1rem; }
 
-/* About Stats Bento */
-.premium-bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-.bento-stat-card { display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 2rem; border-radius: var(--radius-lg); }
-.stat-icon { width: 44px; height: 44px; border-radius: var(--radius); background: var(--accent-soft); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
-.stat-info { display: flex; flex-direction: column; }
-.stat-num { font-size: 1.75rem; font-weight: 800; font-family: var(--font-heading); line-height: 1; }
-.stat-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 0.25rem; }
+/* About Stats Bento - Cleaned up redundant small-gap overrides */
 
 @media (max-width: 960px) {
     .about-hero-grid { grid-template-columns: 1fr; text-align: center; }

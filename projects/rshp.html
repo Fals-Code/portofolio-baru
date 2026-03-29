@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="manifest" href="../manifest.json" />
 </head>
-<body>
+<body data-barba="wrapper">
     <div class="loader" id="loader">
         <div class="loader-inner">
             <div class="loader-text">Falah<span>.</span></div>
@@ -42,6 +42,7 @@
         </div>
     </nav>
 
+    <div data-barba="container" data-barba-namespace="project-detail">
     <main class="pt-navbar">
         <div class="mesh-bg"></div>
 
@@ -166,6 +167,7 @@ Table: patients
             </div>
         </section>
     </main>
+    </div>
 
     <footer>
         <div class="footer-inner">
@@ -192,9 +194,6 @@ Table: patients
             <button id="musicPlayBtn" class="m-btn-play" aria-label="Play/Pause Music">
                 <i class="fas fa-play"></i>
             </button>
-            <button id="musicNextBtn" class="m-btn-next" onclick="window.portfolioMusicSystem.nextTrack()" aria-label="Next Track">
-                <i class="fas fa-step-forward"></i>
-            </button>
         </div>
     </div>
 
@@ -216,6 +215,8 @@ Table: patients
         <button class="chatbot-toggle" id="chatbotToggle"><i class="fas fa-comment-dots"></i></button>
     </div>
 
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="../assets/js/music.js"></script>
     <script src="../assets/js/chatbot.js"></script>
     <script src="../assets/js/main.js"></script>
