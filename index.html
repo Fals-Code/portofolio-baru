@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#fdfcf9" media="(prefers-color-scheme: light)" />
@@ -154,12 +154,15 @@
             <div class="music-visualizer" id="musicVisualizer">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
-            <span class="music-label">Lofi Ambient</span>
+            <span class="music-label">Loading...</span>
         </div>
         <div class="music-controls">
             <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" class="volume-slider">
             <button id="musicPlayBtn" class="m-btn-play" aria-label="Play/Pause Music">
                 <i class="fas fa-play"></i>
+            </button>
+            <button id="musicNextBtn" class="m-btn-next" onclick="window.portfolioMusicSystem.nextTrack()" aria-label="Next Track">
+                <i class="fas fa-step-forward"></i>
             </button>
         </div>
     </div>

@@ -131,27 +131,49 @@ class Chatbot {
         }
     }
 
-    // Since we don't have the explicit API key proxy available here, 
-    // we use a simple mocked version based on keywords for offline/dev.
-    // Replace with real fetch() to your Anthropic Proxy endpoint.
     async mockAnthropicCall(userText) {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const lp = userText.toLowerCase();
-                let ans = "I'm not sure about that, but feel free to explore Falah's projects or contact him directly!";
-                if (lp.includes("laravel") || lp.includes("php")) {
-                    ans = "Falah specializes in Laravel and PHP! He has built complex systems like the RSHP Hospital Information System and a complete Warehouse Inventory app.";
-                } else if (lp.includes("project") || lp.includes("porto")) {
-                    ans = "Falah's top projects include the RSHP Hospital System, a comprehensive Warehouse Inventory app, and a robust Book Collection Manager.";
-                } else if (lp.includes("education") || lp.includes("unair") || lp.includes("study")) {
-                    ans = "He is a D4 Informatics Engineering student at Universitas Airlangga (UNAIR).";
-                } else if (lp.includes("hire") || lp.includes("freelance") || lp.includes("contact")) {
-                    ans = "Falah is definitely open for freelance and collaboration! You can reach him through the Contact page or directly via WhatsApp.";
-                } else if (lp.includes("halo") || lp.includes("hai") || lp.includes("hello")) {
-                    ans = "Hello! Do you have any questions about Falah's skills or projects?";
+                const isIndo = /[aeiou]ng|[aeiou]k|saya|kamu|apa|siapa|dimana|bagaimana|dan|yang|adalah/i.test(lp);
+                
+                let ans = isIndo 
+                    ? "Saya tidak yakin tentang hal itu, tapi silakan jelajahi proyek Falah atau hubungi dia langsung!"
+                    : "I'm not sure about that, but feel free to explore Falah's projects or contact him directly!";
+
+                // Intelligent keyword mapping with context
+                if (lp.includes("halo") || lp.includes("hai") || lp.includes("hi ") || lp === "hi") {
+                    ans = isIndo 
+                        ? "Halo! Saya asisten AI Falah. Ada yang bisa saya bantu terkait portofolio, keahlian, atau proyeknya?"
+                        : "Hello! I'm Falah's AI assistant. How can I help you today with his skills, projects, or background?";
+                } else if (lp.includes("siapa") || lp.includes("who is") || lp.includes("profile")) {
+                    ans = isIndo 
+                        ? "Ahmad Mathlaul Falah adalah seorang Backend Developer berbakat yang mendalami Laravel dan PHP. Saat ini dia menempuh pendidikan D4 Teknik Informatika di Universitas Airlangga."
+                        : "Ahmad Mathlaul Falah is a talented Backend Developer specializing in Laravel and PHP. He is currently pursuing his Informatics Engineering degree at Universitas Airlangga.";
+                } else if (lp.includes("laravel") || lp.includes("php") || lp.includes("skill") || lp.includes("keahlian")) {
+                    ans = isIndo
+                        ? "Keahlian utama Falah adalah Laravel, PHP, MySQL, dan JavaScript. Dia sangat mahir dalam membangun sistem manajemen basis data yang kompleks dan API yang skalabel."
+                        : "Falah's core strengths are Laravel, PHP, MySQL, and JavaScript. He excels at building complex database management systems and scalable APIs.";
+                } else if (lp.includes("project") || lp.includes("proyek") || lp.includes("buat apa")) {
+                    ans = isIndo
+                        ? "Beberapa proyek unggulannya adalah RSHP (Sistem Informasi RS), Warehouse Inventory System, dan Book Collection Manager. Semuanya dibangun dengan standar industri."
+                        : "His top projects include the RSHP Hospital System, a Warehouse Inventory app, and a Book Collection Manager—all built to high industry standards.";
+                } else if (lp.includes("contact") || lp.includes("hubungi") || lp.includes("whatsapp") || lp.includes("email")) {
+                    ans = isIndo
+                        ? "Kamu bisa menghubungi Falah melalui halaman 'Contact' atau langsung via WhatsApp di 082137609530. Dia terbuka untuk kolaborasi dan freelance!"
+                        : "You can reach Falah via the 'Contact' page or directly on WhatsApp at +62 82137609530. He is open to collaborations and freelance work!";
+                } else if (lp.includes("game") || lp.includes("play")) {
+                    ans = isIndo
+                        ? "Tentu! Falah juga membangun mesin game 3D kustom di situs ini. Kamu bisa mencobanya dengan mengetik 'game' di terminal atau klik menu Game di navigasi."
+                        : "Sure! Falah built a custom 3D game engine right here on this site. You can try it by typing 'game' in the terminal or selecting 'Game' from the menu.";
+                } else if (lp.includes("bahasa") || lp.includes("language")) {
+                    ans = isIndo
+                        ? "Saya bisa berkomunikasi dalam Bahasa Indonesia dan Bahasa Inggris, sama seperti Falah!"
+                        : "I can communicate in both Indonesian and English, just like Falah!";
                 }
+
                 resolve(ans);
-            }, 1000 + Math.random() * 1000); // 1-2s delay
+            }, 1000 + Math.random() * 1000);
         });
     }
 

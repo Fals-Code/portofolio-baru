@@ -1,15 +1,37 @@
 class MusicSystem {
     constructor() {
         this.isPlaying = false;
-        this.audioCtx = null;
-        this.masterGain = null;
-        this.oscillators = [];
-        this.lfo = null;
-        this.filter = null;
-        this.volume = 0.5;
-        this.fallbackAudio = null;
-        this.fallbackUrl = "https://youtu.be/y4zdDXPYo0I?si=XMK_3_7zHfZnrOom";
+        this.volume = parseFloat(localStorage.getItem("musicVol")) || 0.5;
+        this.currentTrackIndex = 0;
         
+        // --- CUSTOM MUSIC PLAYLIST ---
+        // These are very stable CDN links for Lofi/Ambient tracks
+        this.tracks = [
+            { 
+                title: "Lofi Dreamscape", 
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" 
+            },
+            { 
+                title: "Midnight Chill", 
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+            },
+            {
+                title: "Soft Focus",
+                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+            }
+        ];
+
+        this.audio = new Audio();
+        this.audio.crossOrigin = "anonymous";
+        this.audio.loop = true;
+        this.audio.volume = this.volume;
+        
+        // Handle loading errors
+        this.audio.onerror = () => {
+            console.error("Audio failed to load. Skipping to next track.");
+            this.nextTrack();
+        };
+
         this.init();
     }
 
@@ -17,11 +39,13 @@ class MusicSystem {
         this.playBtn = document.getElementById("musicPlayBtn");
         this.volumeSlider = document.getElementById("volumeSlider");
         this.visualizer = document.getElementById("musicVisualizer");
+        this.label = document.querySelector(".music-label");
         
         if (!this.playBtn) return;
 
-        // Restore state
-        this.volume = localStorage.getItem("musicVol") || 0.5;
+        // Load first track info
+        this.updateUI();
+
         if (this.volumeSlider) this.volumeSlider.value = this.volume;
         
         this.bindEvents();
@@ -33,91 +57,19 @@ class MusicSystem {
         if (this.volumeSlider) {
             this.volumeSlider.addEventListener("input", (e) => {
                 this.volume = e.target.value;
+                this.audio.volume = this.volume;
                 localStorage.setItem("musicVol", this.volume);
-                this.updateVolume();
             });
         }
 
-        // Auto-pause when tab is hidden
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden && this.isPlaying) {
-                this.pause();
-                this.wasAutoPaused = true;
-            } else if (!document.hidden && this.wasAutoPaused) {
-                this.play();
-                this.wasAutoPaused = false;
-            }
-        });
+        // Auto-pause when tab is hidden (Optional, usually better to keep music playing in bg)
+        // document.addEventListener('visibilitychange', () => { ... });
     }
 
-    initWebAudio() {
-        if (this.audioCtx) return true;
-        
-        try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            this.audioCtx = new AudioContext();
-            
-            this.masterGain = this.audioCtx.createGain();
-            this.masterGain.gain.value = this.volume;
-            
-            // Create a lowpass filter for "lofi/ambient" feel
-            this.filter = this.audioCtx.createBiquadFilter();
-            this.filter.type = "lowpass";
-            this.filter.frequency.value = 800;
-            this.filter.Q.value = 1;
-            
-            this.masterGain.connect(this.filter);
-            this.filter.connect(this.audioCtx.destination);
-            
-            // Generate procedural drones
-            this.createDrone(220, "sine", 0.3);      // A3
-            this.createDrone(277.18, "sine", 0.2);   // C#4
-            this.createDrone(329.63, "triangle", 0.15); // E4
-            this.createDrone(110, "triangle", 0.4);  // A2
-            
-            // LFO for filter sweep
-            this.lfo = this.audioCtx.createOscillator();
-            this.lfo.type = "sine";
-            this.lfo.frequency.value = 0.05; // very slow
-            
-            const lfoGain = this.audioCtx.createGain();
-            lfoGain.gain.value = 400; // Modulation depth
-            
-            this.lfo.connect(lfoGain);
-            lfoGain.connect(this.filter.frequency);
-            this.lfo.start();
-            
-            return true;
-        } catch (e) {
-            console.warn("Web Audio API not fully supported, falling back to HTML5 Audio", e);
-            this.initFallback();
-            return false;
+    updateUI() {
+        if (this.label) {
+            this.label.textContent = this.tracks[this.currentTrackIndex].title;
         }
-    }
-
-    initFallback() {
-        if (!this.fallbackAudio) {
-            this.fallbackAudio = new Audio(this.fallbackUrl);
-            this.fallbackAudio.loop = true;
-            this.fallbackAudio.volume = this.volume;
-        }
-    }
-
-    createDrone(freq, type, gainVol) {
-        const osc = this.audioCtx.createOscillator();
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
-        
-        const gain = this.audioCtx.createGain();
-        gain.gain.value = gainVol;
-        
-        // Slight detune for richness
-        osc.detune.value = (Math.random() - 0.5) * 10;
-        
-        osc.connect(gain);
-        gain.connect(this.masterGain);
-        
-        this.oscillators.push({ osc, gain });
     }
 
     togglePlay() {
@@ -129,50 +81,34 @@ class MusicSystem {
     }
 
     play() {
-        const useWebAudio = this.initWebAudio();
-        
-        if (useWebAudio && this.audioCtx.state === "suspended") {
-            this.audioCtx.resume();
-        }
-        
-        if (useWebAudio) {
-            if (this.oscillators.length === 0 || !this.oscillators[0].osc.started) {
-                 this.oscillators.forEach(node => {
-                     try { node.osc.start(); node.osc.started = true; } catch(e){}
-                 });
-            }
-            // Ramp gain up smoothly
-            this.masterGain.gain.setTargetAtTime(this.volume, this.audioCtx.currentTime, 0.5);
-        } else if (this.fallbackAudio) {
-            this.fallbackAudio.play().catch(e => console.error("Audio playback failed", e));
+        if (!this.audio.src) {
+            this.audio.src = this.tracks[this.currentTrackIndex].url;
         }
 
-        this.isPlaying = true;
-        this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        this.visualizer.classList.add("playing");
-        localStorage.setItem("musicPlaying", "true");
+        this.audio.play()
+            .then(() => {
+                this.isPlaying = true;
+                this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                if (this.visualizer) this.visualizer.classList.add("playing");
+            })
+            .catch(err => {
+                console.warn("Audio playback failed. User interaction might be required.", err);
+            });
     }
 
     pause() {
-        if (this.audioCtx) {
-            // Ramp gain down smoothly to avoid clicks
-            if(this.masterGain) this.masterGain.gain.setTargetAtTime(0, this.audioCtx.currentTime, 0.5);
-        } else if (this.fallbackAudio) {
-            this.fallbackAudio.pause();
-        }
-
+        this.audio.pause();
         this.isPlaying = false;
         this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
-        this.visualizer.classList.remove("playing");
-        localStorage.setItem("musicPlaying", "false");
+        if (this.visualizer) this.visualizer.classList.remove("playing");
     }
 
-    updateVolume() {
-        if (this.audioCtx && this.masterGain && this.isPlaying) {
-            this.masterGain.gain.setTargetAtTime(this.volume, this.audioCtx.currentTime, 0.1);
-        } else if (this.fallbackAudio) {
-            this.fallbackAudio.volume = this.volume;
-        }
+    // Call this to change track: window.portfolioMusicSystem.nextTrack()
+    nextTrack() {
+        this.currentTrackIndex = (this.currentTrackIndex + 1) % this.tracks.length;
+        this.audio.src = this.tracks[this.currentTrackIndex].url;
+        this.updateUI();
+        if (this.isPlaying) this.play();
     }
 }
 

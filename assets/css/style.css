@@ -1296,13 +1296,8 @@ footer {
   }
 }
 @keyframes blobMorph {
-  0%,
-  100% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  }
-  50% {
-    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
-  }
+  0%, 100% { border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; }
+  50% { border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%; }
 }
 
 @media (max-width: 900px) {
@@ -1382,15 +1377,8 @@ footer {
 }
 
 @keyframes pulseGlow {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.2;
-  }
-  50% {
-    transform: scale(1.3);
-    opacity: 0.4;
-  }
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.15); opacity: 0.35; }
 }
 
 @media (max-width: 900px) {
@@ -1403,9 +1391,9 @@ footer {
   .hero-visual {
     display: flex !important;
     justify-content: center;
-    transform: scale(0.65);
-    margin-top: -40px;
-    margin-bottom: -60px;
+    transform: scale(0.55); /* Reduced scale to prevent 'meleber' */
+    margin-top: -60px;
+    margin-bottom: -80px;
     width: 100%;
   }
 }
@@ -2127,7 +2115,7 @@ footer {
     cursor: pointer;
 }
 
-.m-btn-play {
+.m-btn-play, .m-btn-next {
     background: var(--accent-soft);
     color: var(--accent);
     border: none;
@@ -2142,7 +2130,7 @@ footer {
     transition: var(--transition);
 }
 
-.m-btn-play:hover {
+.m-btn-play:hover, .m-btn-next:hover {
     background: var(--accent);
     color: white;
 }
@@ -2168,14 +2156,14 @@ footer {
         height: auto;
     }
     .music-player-v2 {
-        bottom: unset;
-        top: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 0.5rem 1rem;
+        bottom: max(1.5rem, env(safe-area-inset-bottom));
+        left: 1.5rem;
+        top: auto;
+        transform: none;
+        padding: 0.6rem 1rem;
     }
     .music-player-v2:hover {
-        transform: translate(-50%, -2px);
+        transform: translateY(-2px);
     }
     .chatbot-toggle {
         width: 52px;
@@ -2274,13 +2262,24 @@ footer {
     position: relative;
     transform: scale(1.1);
 }
+.section {
+    padding: 6rem 1.5rem; /* Increased side padding for mobile safety */
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
 
-/* Premium Bento Grid */
 .premium-bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 1rem;
+    gap: 2.5rem; /* Increased gap for desktop */
+    width: 100%;
+    margin: 0 auto;
+}
+
+.bento-stat-card {
+    padding: 2.5rem 2rem; /* More internal breathing room */
 }
 
 .bento-stat-card {
@@ -2289,10 +2288,10 @@ footer {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 2.5rem 2rem;
+    padding: 3rem 2.5rem; /* Increased padding for better desktop breathing room */
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem; /* Wider gap between icon and text */
     transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
@@ -2758,8 +2757,8 @@ footer {
     .photo-card-wrap { width: 220px; margin: 0 auto; }
 
     /* Stats */
-    .premium-bento-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-    .bento-stat-card { padding: 1.25rem; }
+    .premium-bento-grid { grid-template-columns: 1fr; gap: 1.25rem; padding: 0 0.5rem; }
+    .bento-stat-card { padding: 2rem 1.5rem; }
 
     /* Services — 2 col on small screens */
     .services-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
@@ -2796,7 +2795,7 @@ footer {
     .project-cards-grid { grid-template-columns: 1fr; }
 
     /* Chatbot panel wider */
-    .chatbot-panel { width: calc(100vw - 2rem); right: 0; left: 0; margin: auto; }
+    .chatbot-panel { width: calc(100vw - 3rem); right: 0; left: 0; margin: auto; }
 }
 
 @media (max-width: 380px) {
