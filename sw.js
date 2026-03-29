@@ -27,8 +27,20 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+    // Bypass for non-GET and external requests (like API calls and external media)
+    if (e.request.method !== 'GET' || !e.request.url.startsWith(self.location.origin)) {
+        return;
+    }
+
     e.respondWith(
-        caches.match(e.request).then((res) => res || fetch(e.request))
+        caches.match(e.request).then((res) => {
+            return res || fetch(e.request).catch(() => {
+                // Network failed, if it's a page navigation return the cached index
+                if (e.request.mode === 'navigate') {
+                    return caches.match('/index.html');
+                }
+            });
+        })
     );
 });
 
