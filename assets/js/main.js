@@ -50,57 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   overlay.className = "theme-overlay";
   document.body.appendChild(overlay);
 
-  // --- Audio Player Injection ---
-  const audioHTML = `
-    <div class="audio-player" id="audioPlayer">
-        <div class="audio-visualizer">
-            <div class="vis-bar"></div><div class="vis-bar"></div><div class="vis-bar"></div>
-        </div>
-        <button class="audio-btn" id="audioToggle" title="Play/Pause Music">
-            <i class="fas fa-play"></i>
-        </button>
-        <audio id="bgMusic" loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-  `;
-  document.body.insertAdjacentHTML('beforeend', audioHTML);
-
-  const music = document.getElementById("bgMusic");
-  const audioToggleToken = document.getElementById("audioToggle");
-  const audioPlayerToken = document.getElementById("audioPlayer");
-  
-  if (audioToggleToken && music) {
-      // Restore music state
-      const isPlaying = localStorage.getItem("musicPlaying") === "true";
-      const savedTime = localStorage.getItem("musicTime") || 0;
-      music.currentTime = parseFloat(savedTime);
-      
-      if (isPlaying) {
-          music.play().catch(() => { /* Autoplay blocked */ });
-          audioToggleToken.innerHTML = '<i class="fas fa-pause"></i>';
-          audioPlayerToken.classList.add("playing");
-      }
-
-      audioToggleToken.addEventListener("click", () => {
-          if (music.paused) {
-              music.play();
-              audioToggleToken.innerHTML = '<i class="fas fa-pause"></i>';
-              audioPlayerToken.classList.add("playing");
-              localStorage.setItem("musicPlaying", "true");
-          } else {
-              music.pause();
-              audioToggleToken.innerHTML = '<i class="fas fa-play"></i>';
-              audioPlayerToken.classList.remove("playing");
-              localStorage.setItem("musicPlaying", "false");
-          }
-      });
-
-      // Save time periodically
-      setInterval(() => {
-          if (!music.paused) localStorage.setItem("musicTime", music.currentTime);
-      }, 2000);
-  }
+  // --- Legacy Audio Player Removed (Replaced by MusicSystem) ---
 
   // --- Terminal Intro / Interactive Shell ---
   const terminalOverlay = document.getElementById("terminal-intro");

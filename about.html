@@ -221,6 +221,25 @@
     
     <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
+    <!-- AI Chatbot (Reused across pages) -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-panel hidden" id="chatbotPanel">
+            <!-- Bot UI -->
+            <div class="chatbot-header">
+                <div class="chatbot-avatar"><div class="bot-status"></div><i class="fas fa-robot"></i></div>
+                <div><h4>Falah Bot</h4><span class="status-text">Online</span></div>
+                <button class="close-chat" id="closeChatBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages"></div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off">
+                <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chatbot-toggle" id="chatbotToggle"><i class="fas fa-comment-dots"></i></button>
+    </div>
+
+    <script src="assets/js/chatbot.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

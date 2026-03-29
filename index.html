@@ -126,6 +126,51 @@
     
     <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
+    <!-- Music Player V2 -->
+    <div class="music-player-v2" id="musicPlayerV2">
+        <div class="music-info">
+            <div class="music-visualizer" id="musicVisualizer">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+            <span class="music-label">Lofi Ambient</span>
+        </div>
+        <div class="music-controls">
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" class="volume-slider">
+            <button id="musicPlayBtn" class="m-btn-play" aria-label="Play/Pause Music">
+                <i class="fas fa-play"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-panel hidden" id="chatbotPanel">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                   <div class="bot-status"></div>
+                   <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h4>Falah Bot</h4>
+                    <span class="status-text">Online</span>
+                </div>
+                <button class="close-chat" id="closeChatBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <!-- Messages populated by JS -->
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off">
+                <button id="sendMessageBtn" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Toggle Chatbot">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <script src="assets/js/music.js"></script>
+    <script src="assets/js/chatbot.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

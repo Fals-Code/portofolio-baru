@@ -1,17 +1,20 @@
-const CACHE_NAME = 'falah-porto-v1';
+const CACHE_NAME = 'falah-porto-v2';
 const ASSETS = [
     '/',
     '/index.html',
     '/about.html',
     '/projects.html',
     '/blog.html',
+    '/blog-detail.html',
     '/contact.html',
     '/game.html',
     '/projects/rshp.html',
     '/projects/warehouse.html',
     '/assets/css/style.css',
     '/assets/js/main.js',
-    '/assets/js/game.js',
+    '/assets/js/chatbot.js',
+    '/assets/js/music.js',
+    '/assets/js/game3d.js',
     '/assets/imgs/favicon.svg',
     '/manifest.json'
 ];
