@@ -42,62 +42,116 @@
     </nav>
 
     <main class="pt-navbar">
-        <section id="portfolio" class="section">
-            <p class="section-label reveal">What I Built</p>
-            <h2 class="section-title reveal">Portfolio</h2>
-            <div class="section-divider reveal"></div>
-            <div class="bento-grid">
-                <!-- Large Item: RSHP -->
-                <div class="bento-item bento-wide reveal">
-                    <p class="section-label">Featured Project</p>
-                    <h3>RSHP – Hospital Info System</h3>
-                    <p class="text-dim">Digitalizing patient registration and doctor scheduling with real-time integration.</p>
-                    <div class="timeline-tags" style="margin-top: 1rem;">
-                        <span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Eloquent</span>
-                    </div>
-                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                        <a href="projects/rshp.html" class="btn btn-primary btn-sm">Case Study</a>
-                        <a href="https://github.com/Fals-Code/Proyek_RSHPV1" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
+        <!-- Mesh BG -->
+        <div class="mesh-bg"></div>
 
-                <!-- Wide Item: Warehouse -->
-                <div class="bento-item reveal delay-1">
-                    <p class="section-label">Academic</p>
-                    <h3>Warehouse Inventory</h3>
-                    <p class="text-dim">Automated stock management system for warehouse operations.</p>
-                    <div class="timeline-tags" style="margin-top: 1rem;">
-                        <span class="tag">Laravel</span><span class="tag">MySQL</span>
-                    </div>
-                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                        <a href="projects/warehouse.html" class="portfolio-link">Study <i class="fas fa-eye"></i></a>
-                        <a href="https://github.com/Fals-Code/Proyek_PBDV1" target="_blank" class="portfolio-link">Code <i class="fab fa-github"></i></a>
-                    </div>
-                </div>
+        <!-- Hero -->
+        <section class="section projects-hero">
+            <div class="project-hero-inner">
+                <p class="section-label reveal"><span class="dot"></span> What I've Built</p>
+                <h1 class="reveal delay-1">My <span class="gradient-text">Projects</span></h1>
+                <p class="reveal delay-2 projects-hero-sub">A curated collection of real-world systems. From hospital management to inventory automation — all built with Laravel & modern backend architecture.</p>
+            </div>
+        </section>
 
-                <!-- Tall Item: Book Collection -->
-                <div class="bento-item bento-tall reveal delay-2">
-                    <p class="section-label">Experimental</p>
-                    <h3>Book Collection</h3>
-                    <p class="text-dim">Deep exploration of Laravel ecosystem for personal library management.</p>
-                    <div class="timeline-tags" style="margin-top: 1rem;">
-                        <span class="tag">Laravel</span><span class="tag">WIP</span>
-                    </div>
-                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                        <a href="https://github.com/Fals-Code/Framework_koleksi_buku" target="_blank" class="portfolio-link">GitHub <i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <!-- Regular Item: Status -->
-                <div class="bento-item reveal delay-3">
-                    <p class="section-label">Status</p>
-                    <h3 style="margin-top: 5px;">Currently Active</h3>
-                    <p class="text-dim">Exploring Backend Architecture & Microservices.</p>
-                    <span class="tag" style="margin-top: 1.5rem;">Available for work</span>
-                </div>
+        <!-- Filter bar -->
+        <section class="section pt-0">
+            <div class="project-filter-bar reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="laravel">Laravel</button>
+                <button class="filter-btn" data-filter="fullstack">Full-stack</button>
+                <button class="filter-btn" data-filter="wip">WIP</button>
             </div>
 
+            <!-- Project Cards Grid -->
+            <div class="projects-grid">
+                <!-- RSHP -->
+                <article class="project-card featured reveal" data-tags="laravel fullstack">
+                    <div class="project-card-inner">
+                        <div class="project-card-header">
+                            <div class="project-icon-wrap" style="background: linear-gradient(135deg, #e8533a22, #e8533a44);">
+                                <i class="fas fa-hospital" style="color: var(--accent);"></i>
+                            </div>
+                            <div class="project-links-top">
+                                <a href="https://github.com/Fals-Code/Proyek_RSHPV1" target="_blank" class="icon-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-badge featured-badge"> Featured</div>
+                        <h3>RSHP – Hospital Info System</h3>
+                        <p class="project-desc">Digitalizing patient registration and doctor scheduling with real-time integration. A complete backend system built for healthcare operations.</p>
+                        <div class="project-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Eloquent</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="projects/rshp.html" class="btn btn-primary btn-sm"><i class="fas fa-book-open"></i> Case Study</a>
+                            <a href="https://github.com/Fals-Code/Proyek_RSHPV1" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
 
+                <!-- Warehouse -->
+                <article class="project-card reveal delay-1" data-tags="laravel fullstack">
+                    <div class="project-card-inner">
+                        <div class="project-card-header">
+                            <div class="project-icon-wrap" style="background: linear-gradient(135deg, #3b82f622, #3b82f644);">
+                                <i class="fas fa-warehouse" style="color: #3b82f6;"></i>
+                            </div>
+                            <div class="project-links-top">
+                                <a href="https://github.com/Fals-Code/Proyek_PBDV1" target="_blank" class="icon-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>Warehouse Inventory System</h3>
+                        <p class="project-desc">Automated stock management with DB transactions & audit trails. Built to eliminate manual stock discrepancies in warehouse operations.</p>
+                        <div class="project-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Audit Trail</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="projects/warehouse.html" class="btn btn-primary btn-sm"><i class="fas fa-book-open"></i> Case Study</a>
+                            <a href="https://github.com/Fals-Code/Proyek_PBDV1" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Book Collection -->
+                <article class="project-card reveal delay-2" data-tags="laravel wip">
+                    <div class="project-card-inner">
+                        <div class="project-card-header">
+                            <div class="project-icon-wrap" style="background: linear-gradient(135deg, #10b98122, #10b98144);">
+                                <i class="fas fa-book" style="color: #10b981;"></i>
+                            </div>
+                            <div class="project-links-top">
+                                <a href="https://github.com/Fals-Code/Framework_koleksi_buku" target="_blank" class="icon-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-badge wip-badge"> WIP</div>
+                        <h3>Book Collection Manager</h3>
+                        <p class="project-desc">Deep exploration of the Laravel ecosystem for personal library management. Features authentication, CRUD, and a clean UI.</p>
+                        <div class="project-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Livewire</span>
+                            <span class="tag">WIP</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/Fals-Code/Framework_koleksi_buku" target="_blank" class="btn btn-outline btn-sm"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Status card -->
+                <article class="project-card status-card reveal delay-3" data-tags="all">
+                    <div class="project-card-inner status-inner">
+                        <div class="status-pulse-dot"></div>
+                        <h3>Currently Active</h3>
+                        <p class="project-desc">Exploring Microservices & Backend Architecture patterns. Open to freelance collaborations and new projects.</p>
+                        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top: 1.5rem;"><i class="fas fa-paper-plane"></i> Work Together</a>
+                    </div>
+                </article>
+            </div>
         </section>
     </main>
 
@@ -120,10 +174,9 @@
     
     <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- AI Chatbot (Reused across pages) -->
+    <!-- AI Chatbot -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-panel hidden" id="chatbotPanel">
-            <!-- Bot UI -->
             <div class="chatbot-header">
                 <div class="chatbot-avatar"><div class="bot-status"></div><i class="fas fa-robot"></i></div>
                 <div><h4>Falah Bot</h4><span class="status-text">Online</span></div>
@@ -140,5 +193,22 @@
 
     <script src="assets/js/chatbot.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Project filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card[data-tags]');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                projectCards.forEach(card => {
+                    const tags = card.dataset.tags;
+                    card.style.opacity = (filter === 'all' || tags.includes(filter)) ? '1' : '0.3';
+                    card.style.transform = (filter === 'all' || tags.includes(filter)) ? 'scale(1)' : 'scale(0.95)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

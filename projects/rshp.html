@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Case Study: RSHP Hospital Info System | Falah." />
     <title>Case Study: RSHP | Falah.</title>
     <link rel="icon" type="image/svg+xml" href="../assets/imgs/favicon.svg" />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -16,7 +17,6 @@
             <div class="loader-text">Falah<span>.</span></div>
         </div>
     </div>
-
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <nav class="navbar">
@@ -40,41 +40,125 @@
     </nav>
 
     <main class="pt-navbar">
-        <header class="section" style="padding-bottom: 2rem; text-align: center;">
-            <p class="section-label reveal">Case Study</p>
-            <h1 class="section-title reveal" style="margin: 0 auto;">RSHP – Hospital Info System</h1>
-            <div class="section-divider reveal" style="margin: 2rem auto;"></div>
-            <div class="tag reveal delay-1">HealthTech</div>
-            <div class="tag reveal delay-1">Backend Logic</div>
-        </header>
+        <div class="mesh-bg"></div>
 
-        <section class="section" style="padding-top: 2rem;">
-            <div class="bento-grid">
-                <div class="bento-item bento-wide reveal">
-                    <p class="section-label">Challenge</p>
-                    <h3>Managing Hospital Synchronicity</h3>
-                    <p class="text-dim" style="margin-top: 1rem;">Data pendaftaran pasien dan pendaftaran sering bentrok karena kurangnya sinkronisasi real-time antar jadwal dokter dan sistem reservasi.</p>
+        <!-- Case Study Hero -->
+        <section class="case-study-hero section">
+            <div class="cs-hero-inner">
+                <a href="../projects.html" class="cs-back reveal"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+                <div class="cs-badge reveal delay-1"><i class="fas fa-hospital"></i> Healthcare Tech</div>
+                <h1 class="reveal delay-1">RSHP – <span class="gradient-text">Hospital Info System</span></h1>
+                <p class="reveal delay-2 cs-subtitle">Digitalizing patient registration and doctor scheduling with real-time data integration.</p>
+                <div class="cs-meta reveal delay-2">
+                    <span><i class="fas fa-calendar"></i> 2024</span>
+                    <span><i class="fas fa-code"></i> Laravel + MySQL</span>
+                    <span><i class="fas fa-users"></i> Team Project</span>
                 </div>
-                <div class="bento-item reveal delay-1">
-                    <p class="section-label">Solution</p>
-                    <h3>Dynamic Scheduling</h3>
-                    <p class="text-dim" style="margin-top: 1rem;">Membangun sistem validasi otomatis menggunakan Laravel & Eloquent untuk memastikan integritas data pendaftaran.</p>
-                </div>
-                <div class="bento-item bento-wide reveal delay-2">
-                    <p class="section-label">Technical Details</p>
-                    <h3>Schema Architecture</h3>
-                    <pre style="margin-top: 2rem; background: var(--bg); padding: 1.5rem; border-radius: 12px; font-size: 0.85rem; color: var(--accent); border: 1px solid var(--border); overflow-x: auto;">
-Table: doctors
-- id (PK), name, specialization, schedule_days (json)
-
-Table: appointments
-- id (PK), doctor_id (FK), patient_name, appointment_date
-- status (enum: pending, confirmed, cancelled)
-                    </pre>
+                <div class="reveal delay-3" style="display:flex; gap: 1rem; margin-top: 2rem; flex-wrap:wrap;">
+                    <a href="https://github.com/Fals-Code/Proyek_RSHPV1" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
                 </div>
             </div>
-            
-            <div class="reveal delay-3" style="text-align: center; margin-top: 4rem;">
+        </section>
+
+        <!-- Content Sections -->
+        <section class="section pt-0">
+            <!-- KPIs -->
+            <div class="cs-kpi-grid reveal">
+                <div class="cs-kpi-card">
+                    <span class="cs-kpi-num gradient-text">100%</span>
+                    <span class="cs-kpi-label">Paperless Ops</span>
+                </div>
+                <div class="cs-kpi-card">
+                    <span class="cs-kpi-num gradient-text">Real-time</span>
+                    <span class="cs-kpi-label">Data Sync</span>
+                </div>
+                <div class="cs-kpi-card">
+                    <span class="cs-kpi-num gradient-text">3</span>
+                    <span class="cs-kpi-label">Core Modules</span>
+                </div>
+                <div class="cs-kpi-card">
+                    <span class="cs-kpi-num gradient-text">Laravel</span>
+                    <span class="cs-kpi-label">Backend Stack</span>
+                </div>
+            </div>
+
+            <!-- Challenge & Solution -->
+            <div class="cs-two-col reveal">
+                <div class="cs-panel glass-panel">
+                    <div class="cs-panel-icon" style="background: rgba(239,68,68,0.1); color: #ef4444;"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3>The Challenge</h3>
+                    <p>Data pendaftaran pasien dan jadwal dokter sering bentrok karena kurangnya sinkronisasi real-time. Proses manual menyebabkan antrian panjang dan kesalahan data.</p>
+                </div>
+                <div class="cs-panel glass-panel">
+                    <div class="cs-panel-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;"><i class="fas fa-lightbulb"></i></div>
+                    <h3>The Solution</h3>
+                    <p>Membangun sistem validasi otomatis menggunakan Laravel & Eloquent untuk memastikan integritas data pendaftaran, dengan antrian real-time dan notifikasi dokter.</p>
+                </div>
+            </div>
+
+            <!-- Technical Detail -->
+            <div class="cs-section-block reveal">
+                <h2 class="cs-section-title">Database Schema</h2>
+                <div class="cs-code-block glass-panel">
+                    <div class="cs-code-header">
+                        <span class="cs-code-dots"><span></span><span></span><span></span></span>
+                        <span class="cs-code-filename">schema.sql</span>
+                    </div>
+                    <pre><code>Table: doctors
+  - id (PK), name, specialization
+  - schedule_days (JSON), max_patients
+
+Table: appointments
+  - id (PK), doctor_id (FK)
+  - patient_name, appointment_date
+  - status (enum: pending, confirmed, cancelled)
+
+Table: patients
+  - id (PK), nik, name, dob, address</code></pre>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="cs-section-block reveal">
+                <h2 class="cs-section-title">Tech Stack</h2>
+                <div class="cs-tech-grid">
+                    <div class="cs-tech-item"><img src="https://skillicons.dev/icons?i=laravel" alt="Laravel" /><span>Laravel</span></div>
+                    <div class="cs-tech-item"><img src="https://skillicons.dev/icons?i=php" alt="PHP" /><span>PHP</span></div>
+                    <div class="cs-tech-item"><img src="https://skillicons.dev/icons?i=mysql" alt="MySQL" /><span>MySQL</span></div>
+                    <div class="cs-tech-item"><img src="https://skillicons.dev/icons?i=js" alt="JavaScript" /><span>JavaScript</span></div>
+                    <div class="cs-tech-item"><img src="https://skillicons.dev/icons?i=github" alt="GitHub" /><span>GitHub</span></div>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="cs-section-block reveal">
+                <h2 class="cs-section-title">Key Features</h2>
+                <div class="cs-features-grid">
+                    <div class="cs-feature-item glass-panel">
+                        <i class="fas fa-calendar-check" style="color: var(--accent);"></i>
+                        <h4>Smart Scheduling</h4>
+                        <p>Auto-validates appointment conflicts against doctor's existing schedule.</p>
+                    </div>
+                    <div class="cs-feature-item glass-panel">
+                        <i class="fas fa-sync-alt" style="color: #3b82f6;"></i>
+                        <h4>Real-time Sync</h4>
+                        <p>Live updates across patient and doctor queues without page reload.</p>
+                    </div>
+                    <div class="cs-feature-item glass-panel">
+                        <i class="fas fa-shield-alt" style="color: #10b981;"></i>
+                        <h4>Data Integrity</h4>
+                        <p>Eloquent transactions ensure no duplicate or conflicting appointments.</p>
+                    </div>
+                    <div class="cs-feature-item glass-panel">
+                        <i class="fas fa-chart-bar" style="color: #f59e0b;"></i>
+                        <h4>Admin Dashboard</h4>
+                        <p>Reporting tools for managing patient flow and doctor availability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="reveal" style="text-align: center; margin-top: 4rem;">
                 <a href="../projects.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
             </div>
         </section>
@@ -91,18 +175,14 @@ Table: appointments
         </div>
     </footer>
 
-    <!-- Global Elements -->
     <div class="floating-cta">
         <a href="https://wa.me/6282137609530" target="_blank" class="cta-btn"><i class="fab fa-whatsapp"></i></a>
         <a href="mailto:ahmadmathlaulfalah14@gmail.com" class="cta-btn"><i class="fas fa-envelope"></i></a>
     </div>
-    
     <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- AI Chatbot (Reused across pages) -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-panel hidden" id="chatbotPanel">
-            <!-- Bot UI -->
             <div class="chatbot-header">
                 <div class="chatbot-avatar"><div class="bot-status"></div><i class="fas fa-robot"></i></div>
                 <div><h4>Falah Bot</h4><span class="status-text">Online</span></div>
