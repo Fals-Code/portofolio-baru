@@ -1,4 +1,4 @@
-const CACHE_NAME = 'falah-porto-v4';
+const CACHE_NAME = 'falah-porto-v5';
 const ASSETS = [
     '/',
     '/index.html',
@@ -55,7 +55,14 @@ function fetchWithFallback(request) {
     return fetch(request).catch(err => {
         // If network completely fails and it's a page navigation, return the index as a safety net
         if (request.mode === 'navigate') {
-            return caches.match('/index.html');
+            return caches.match('/index.html').then(idxRes => {
+                if (idxRes) return idxRes;
+                // If cache is empty and network is down, return a hardcoded fallback response
+                return new Response(
+                    '<html><body style="font-family:sans-serif;text-align:center;padding:10%;"><h2>App is offline</h2><p>Please check your connection or ssl settings and refresh.</p></body></html>',
+                    { headers: { 'Content-Type': 'text/html' }, status: 503 }
+                );
+            });
         }
         throw err;
     });
