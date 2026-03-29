@@ -1,4 +1,4 @@
-const CACHE_NAME = 'falah-porto-v5';
+const CACHE_NAME = 'falah-porto-v6';
 const ASSETS = [
     '/',
     '/index.html',
@@ -19,55 +19,18 @@ const ASSETS = [
     '/manifest.json'
 ];
 
+// 1. Install & Caching
 self.addEventListener('install', (e) => {
-    self.skipWaiting(); // Force the waiting service worker to become the active service worker.
+    self.skipWaiting();
     e.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
-    );
-});
-
-self.addEventListener('fetch', (e) => {
-    // Bypass for non-GET and external requests (like API calls and external media)
-    if (e.request.method !== 'GET' || !e.request.url.startsWith(self.location.origin)) {
-        return;
-    }
-
-    e.respondWith(
-        caches.match(e.request).then((res) => {
-            if (res) return res;
-
-            // Cloudflare Pages / Static hosts often strip .html
-            // If the request isn't found, try appending .html for clean URLs
-            const url = new URL(e.request.url);
-            if (e.request.mode === 'navigate' && !url.pathname.endsWith('.html') && url.pathname !== '/') {
-                return caches.match(url.pathname + '.html').then(htmlRes => {
-                    if (htmlRes) return htmlRes;
-                    return fetchWithFallback(e.request);
-                });
-            }
-
-            return fetchWithFallback(e.request);
+        caches.open(CACHE_NAME).then((cache) => {
+            // Menggunakan map agar jika satu file gagal, yang lain tetap masuk cache
+            return Promise.allSettled(ASSETS.map(url => cache.add(url)));
         })
     );
 });
 
-function fetchWithFallback(request) {
-    return fetch(request).catch(err => {
-        // If network completely fails and it's a page navigation, return the index as a safety net
-        if (request.mode === 'navigate') {
-            return caches.match('/index.html').then(idxRes => {
-                if (idxRes) return idxRes;
-                // If cache is empty and network is down, return a hardcoded fallback response
-                return new Response(
-                    '<html><body style="font-family:sans-serif;text-align:center;padding:10%;"><h2>App is offline</h2><p>Please check your connection or ssl settings and refresh.</p></body></html>',
-                    { headers: { 'Content-Type': 'text/html' }, status: 503 }
-                );
-            });
-        }
-        throw err;
-    });
-}
-
+// 2. Activate & Cleanup (Hapus Cache Lama)
 self.addEventListener('activate', (e) => {
     e.waitUntil(
         caches.keys().then((keyList) => {
@@ -76,8 +39,36 @@ self.addEventListener('activate', (e) => {
                     return caches.delete(key);
                 }
             }));
-        }).then(() => {
-            return self.clients.claim();
-        })
+        }).then(() => self.clients.claim())
+    );
+});
+
+// 3. Fetch Strategy: NETWORK FIRST
+self.addEventListener('fetch', (e) => {
+    if (e.request.method !== 'GET' || !e.request.url.startsWith(self.location.origin)) {
+        return;
+    }
+
+    e.respondWith(
+        fetch(e.request)
+            .then((response) => {
+                // Jika sukses dari internet, simpan/update di cache
+                const resClone = response.clone();
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(e.request, resClone);
+                });
+                return response;
+            })
+            .catch(() => {
+                // Jika internet GAGAL (Offline), cari di Cache
+                return caches.match(e.request).then((res) => {
+                    if (res) return res;
+
+                    // Fallback khusus untuk navigasi halaman (.html)
+                    if (e.request.mode === 'navigate') {
+                        return caches.match('/index.html');
+                    }
+                });
+            })
     );
 });
