@@ -560,15 +560,15 @@ a {
    ============================================= */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Wider cards */
-  gap: 6.5rem; /* Extreme luxury separation */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 5.5rem; /* Ultra-luxury separation */
 }
 
 .service-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 6.5rem 5.5rem; /* Maximum airiness for content */
+  padding: 4rem 3.5rem; /* Premium balanced padding */
   transition: var(--transition);
 }
 
@@ -1781,8 +1781,8 @@ footer {
    ============================================= */
 .chatbot-container {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 2.5rem;
+    right: 2.5rem; /* Restoring to original right position */
     z-index: 1000;
 }
 
@@ -2003,19 +2003,19 @@ footer {
    ============================================= */
 .music-player-v2 {
     position: fixed;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: 2.5rem;
+    left: 2.5rem;
     z-index: 1000;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
     background: var(--bg-nav);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--border);
-    padding: 0.7rem 1.2rem;
+    padding: 0.8rem 1.5rem;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     transition: var(--transition);
 }
 
@@ -2263,9 +2263,9 @@ footer {
     transform: scale(1.1);
 }
 .section {
-    padding: 15vh 10%; /* Increased vertical breathing room for maximum airiness */
+    padding: 15vh 10% !important; /* Standardized premium spacing */
     position: relative;
-    max-width: 1750px; /* Ultra-wide container for maximum airiness */
+    max-width: 1750px; 
     margin: 0 auto;
     width: 100%;
 }
@@ -2273,9 +2273,9 @@ footer {
 .premium-bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 4rem; /* Adjusted gap for better balance */
+    gap: 5.5rem; /* Ultra-airy luxury gap */
     width: 100%;
-    margin: 0 auto;
+    margin: 6rem auto 0; /* Dramatic separation from hero */
 }
 
 .bento-stat-card {
@@ -2845,7 +2845,8 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 480px) {
     .chatbot-container {
         bottom: max(env(safe-area-inset-bottom, 0px) + 0.5rem, 1.25rem);
-        right: max(env(safe-area-inset-right, 0px) + 0.5rem, 1.25rem);
+        left: max(env(safe-area-inset-left, 0px) + 0.5rem, 1.25rem);
+        right: auto;
     }
     .chatbot-panel {
         bottom: 72px;

@@ -158,6 +158,53 @@ function animateValue(obj, start, end, duration) {
   window.requestAnimationFrame(step);
 }
 
+/* ─── Terminal Manager ────────────────────────────────────────── */
+const TerminalManager = {
+  text: [
+    "Initializing portfolio...",
+    "Loading assets...",
+    "Running system check...",
+    "Welcome to Falah's Workspace v2.0",
+    "Type 'help' to see commands..."
+  ],
+  delay: 20,
+  
+  async init() {
+    const term = document.getElementById("terminal-intro");
+    const body = document.getElementById("terminal-body");
+    if (!term || !body) return;
+
+    // Check if seen this session
+    if (sessionStorage.getItem("terminal_seen")) {
+      term.classList.add("hidden");
+      return;
+    }
+
+    // Start typing
+    for (const line of this.text) {
+      await this.typeLine(body, line);
+      await this.sleep(400);
+    }
+
+    await this.sleep(800);
+    term.classList.add("hidden");
+    sessionStorage.setItem("terminal_seen", "true");
+  },
+
+  async typeLine(container, text) {
+    const lineEl = document.createElement("div");
+    lineEl.className = "terminal-line";
+    container.appendChild(lineEl);
+    
+    for (let i = 0; i < text.length; i++) {
+      lineEl.textContent += text[i];
+      await this.sleep(this.delay);
+    }
+  },
+
+  sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+};
+
 const App = {
   init() {
     this.initPage();
@@ -167,6 +214,9 @@ const App = {
   initPage() {
     console.log("App: Initializing page components...");
     
+    // --- Terminal Manager ---
+    TerminalManager.init();
+
     // --- GitHub Manager ---
     if (typeof GitHubManager !== 'undefined') {
       GitHubManager.init();
@@ -180,7 +230,7 @@ const App = {
               entry.target.classList.add("visible"); 
           } 
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
     
     revealElements.forEach(el => {
         revealObserver.observe(el);

@@ -1,42 +1,15 @@
+/**
+ * MusicSystem V2 - YouTube IFrame API Integration
+ * Handles persistent audio across Barba.js transitions
+ */
 class MusicSystem {
     constructor() {
+        this.player = null;
         this.isPlaying = false;
+        this.isReady = false;
         this.volume = parseFloat(localStorage.getItem("musicVol")) || 0.5;
-        this.currentTrackIndex = 0;
+        this.videoId = "y4zdDXPYo0I"; // Coldplay - Viva La Vida
         
-        // --- CUSTOM MUSIC PLAYLIST ---
-        // These are very stable CDN links for Lofi/Ambient tracks
-        this.tracks = [
-            { 
-                title: "Lofi Dreamscape", 
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" 
-            },
-            { 
-                title: "Midnight Chill", 
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-            },
-            {
-                title: "Soft Focus",
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-            }
-        ];
-
-        this.audio = new Audio();
-        // Removed crossOrigin as it's not strictly needed for basic playback 
-        // and can cause blocks on some CDNs.
-        this.audio.preload = "auto";
-        this.audio.loop = true;
-        this.audio.volume = this.volume;
-        
-        // Handle loading errors
-        this.audio.onerror = (e) => {
-            console.error("MusicSystem: Audio error details:", e);
-            // Don't auto-skip on every tiny error, only if it's a fatal source error
-            if (this.audio.error && this.audio.error.code !== 4) { // 4 = MEDIA_ERR_SRC_NOT_SUPPORTED
-                 this.nextTrack();
-            }
-        };
-
         this.init();
     }
 
@@ -45,74 +18,100 @@ class MusicSystem {
         this.volumeSlider = document.getElementById("volumeSlider");
         this.visualizer = document.getElementById("musicVisualizer");
         this.label = document.querySelector(".music-label");
-        
-        if (!this.playBtn) return;
 
-        // Load default track info
-        this.updateUI();
-
-        if (this.volumeSlider) this.volumeSlider.value = this.volume;
-        
-        this.bindEvents();
-    }
-
-    bindEvents() {
-        this.playBtn.addEventListener("click", () => this.togglePlay());
-        
         if (this.volumeSlider) {
+            this.volumeSlider.value = this.volume;
             this.volumeSlider.addEventListener("input", (e) => {
-                this.volume = e.target.value;
-                this.audio.volume = this.volume;
+                this.volume = parseFloat(e.target.value);
+                if (this.player && this.isReady) {
+                    this.player.setVolume(this.volume * 100);
+                }
                 localStorage.setItem("musicVol", this.volume);
             });
         }
+
+        if (this.playBtn) {
+            this.playBtn.addEventListener("click", () => this.togglePlay());
+        }
+
+        // Initialize YouTube Player when API is ready
+        if (window.YT && window.YT.Player) {
+            this.onYouTubeIframeAPIReady();
+        } else {
+            // The global function called by YT API
+            window.onYouTubeIframeAPIReady = () => {
+                this.onYouTubeIframeAPIReady();
+            };
+        }
     }
 
-    updateUI() {
-        if (this.label) {
-            this.label.textContent = this.tracks[0].title;
+    onYouTubeIframeAPIReady() {
+        console.log("MusicSystem: YT API Ready, initializing player...");
+        this.player = new YT.Player('youtube-player', {
+            height: '10',
+            width: '10',
+            videoId: this.videoId,
+            playerVars: {
+                'autoplay': 0,
+                'controls': 0,
+                'disablekb': 1,
+                'enablejsapi': 1,
+                'origin': window.location.origin,
+                'fs': 0,
+                'modestbranding': 1,
+                'rel': 0,
+                'showinfo': 0,
+                'iv_load_policy': 3,
+                'playlist': this.videoId // Required for looping single video
+            },
+            events: {
+                'onReady': (event) => this.onPlayerReady(event),
+                'onStateChange': (event) => this.onPlayerStateChange(event),
+                'onError': (error) => console.error("YT Player Error:", error)
+            }
+        });
+    }
+
+    onPlayerReady(event) {
+        this.isReady = true;
+        this.player.setVolume(this.volume * 100);
+        if (this.label) this.label.textContent = "Coldplay - Viva La Vida";
+        console.log("MusicSystem: Player is ready.");
+    }
+
+    onPlayerStateChange(event) {
+        // YT.PlayerState.PLAYING = 1, PAUSED = 2, ENDED = 0
+        if (event.data === YT.PlayerState.PLAYING) {
+            this.isPlaying = true;
+            this.updateUI();
+        } else {
+            this.isPlaying = false;
+            this.updateUI();
         }
     }
 
     togglePlay() {
+        if (!this.isReady) return;
         if (this.isPlaying) {
-            this.pause();
+            this.player.pauseVideo();
         } else {
-            this.play();
+            this.player.playVideo();
         }
     }
 
-    play() {
-        console.log("MusicSystem: Attempting to play...");
-        
-        if (!this.audio.src || this.audio.src === "") {
-            this.audio.src = this.tracks[0].url;
-            this.audio.load();
+    updateUI() {
+        if (!this.playBtn) return;
+        if (this.isPlaying) {
+            this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            if (this.visualizer) this.visualizer.classList.add("playing");
+        } else {
+            this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            if (this.visualizer) this.visualizer.classList.remove("playing");
         }
-        
-        const playPromise = this.audio.play();
-
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
-                console.log("MusicSystem: Playback started.");
-                this.isPlaying = true;
-                this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                if (this.visualizer) this.visualizer.classList.add("playing");
-            }).catch(error => {
-                console.error("MusicSystem: Playback failed.", error);
-            });
-        }
-    }
-
-    pause() {
-        this.audio.pause();
-        this.isPlaying = false;
-        this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
-        if (this.visualizer) this.visualizer.classList.remove("playing");
     }
 }
 
-// Global initialization
-window.addEventListener("DOMContentLoaded", () => {
+// Global instance to persist across Barba transitions
+if (!window.portfolioMusicSystem) {
     window.portfolioMusicSystem = new MusicSystem();
-});
+}
